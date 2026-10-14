@@ -69,7 +69,7 @@
  * Programa de demostración del ejercicio 4: simulador de historial de navegación resuelto con
  * una pila sobre arreglo de String de tamaño fijo.
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio04_HistorialNavegacion {
@@ -398,28 +398,4 @@ class HistorialNavegacion {
     }
 }
 
-/*
- * ============================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * ============================================================================
- * Compilación: javac Ejercicio04_HistorialNavegacion.java -d /tmp/v4
- * Ejecución:   java -cp /tmp/v4 Ejercicio04_HistorialNavegacion
- * Toda la sesión está cableada en main(); el programa no lee entrada por consola.
- *
- * ID    | Objetivo                              | Entrada exacta                               | Resultado esperado                                                      | Criterio de aprobación
- * ------+---------------------------------------+----------------------------------------------+-------------------------------------------------------------------------+--------------------------------------------------------
- * CP-01 | Flujo nominal: 'atrás' va a la página | HistorialNavegacion(5); visitar de            | volverAtras() devuelve "wiki.org/Pila_informatica" y luego              | Las dos líneas "volverAtras() -> llega a:" muestran
- *       | inmediatamente anterior               | buscador.com, .../resultados?q=pilas,         | "buscador.com/resultados?q=pilas", nunca "buscador.com"                 | esas dos URLs en ese orden
- *       |                                       | wiki.org/Pila_informatica, wiki.org/LIFO;     |                                                                         |
- *       |                                       | volverAtras() x2                              |                                                                         |
- * CP-02 | Estructura vacía: sin páginas          | HistorialNavegacion(3) recién creado;          | IllegalStateException "No hay ninguna página cargada: el historial     | Se imprimen los dos mensajes y top = -1 en el estado
- *       |                                       | paginaActual() y volverAtras()                | está vacío." y "No hay página anterior: el historial tiene 0 página(s)."| interno
- * CP-03 | Rama abandonada: se pierde el         | tras CP-01, visitar("docs.oracle.com/         | top = 2, la posición [2] pasa a tener la URL nueva y la [3] queda      | El estado interno muestra [2] = docs.oracle.com/... y
- *       | 'siguiente'                           | javase/tutorial")                             | en null marcada como "* (fuera del historial)"                          | [3] = null con la marca * (fuera del historial)
- * CP-04 | Error forzado: historial lleno        | visitar hasta 5/5 y luego                     | IllegalStateException "El historial está lleno: profundidad máxima 5   | Se imprime el mensaje y el estado posterior sigue en
- *       |                                       | visitar("otra-pagina.com")                    | páginas. No se puede registrar la visita."                              | top = 4 con estaLleno = true
- * CP-05 | Error forzado: 'atrás' con una sola   | volver atrás hasta que quede 1 página y       | IllegalStateException "No hay página anterior: el historial tiene 1    | Se imprime "puedeVolverAtras() -> false" y el mensaje
- *       | página, y URL en blanco               | luego volverAtras(); además visitar("   ")    | página(s)..." e IllegalArgumentException "La URL no puede ser nula ni   | de las dos excepciones; el programa llega al final
- *       |                                       |                                               | estar en blanco."                                                       |
- * ============================================================================
- */
+
