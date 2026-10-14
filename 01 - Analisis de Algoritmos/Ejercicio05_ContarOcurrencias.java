@@ -17,7 +17,7 @@
  *
  * Complejidad: O(n) temporal (mejor = peor = promedio) y O(1) espacial.
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio05_ContarOcurrencias {
@@ -179,17 +179,4 @@ public class Ejercicio05_ContarOcurrencias {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio05_ContarOcurrencias.java -d /tmp/v1
-Ejecución:   java -cp /tmp/v1 Ejercicio05_ContarOcurrencias
-Todos los casos ya están cableados en main(); no se lee entrada por consola.
 
-ID    | Objetivo                                      | Entrada exacta                       | Resultado esperado                                       | Criterio de aprobación
-------+-----------------------------------------------+--------------------------------------+----------------------------------------------------------+-------------------------------------------------------------
-CP-01 | Flujo nominal: varias apariciones dispersas   | {10, 20, 10, 30, 10}, valor 10       | 3 ocurrencias y 5 comparaciones                          | Termina en "-> OK" y Comparaciones = 5 (= n)
-CP-02 | Valor límite: aparece en todas las posiciones | {7, 7, 7, 7}, valor 7                | 4 ocurrencias y 4 comparaciones                          | Termina en "-> OK": el recorrido no se cortó en la primera
-CP-03 | Valor límite: no aparece nunca                | {1, 2, 3}, valor 9                   | 0 ocurrencias y 3 comparaciones                          | Termina en "-> OK" y Comparaciones = 3, igual que CP-02/n
-CP-04 | Entrada vacía                                 | new int[0], valor 1                  | 0 ocurrencias y 0 comparaciones, sin excepción           | Termina en "-> OK" y Comparaciones = 0
-CP-05 | Entrada nula (error de validación)            | null, valor 1                        | IllegalArgumentException "El vector no puede ser nulo."  | Se imprime el mensaje de la excepción y "-> OK"
-*/
