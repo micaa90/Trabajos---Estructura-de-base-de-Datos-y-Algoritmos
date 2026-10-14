@@ -55,7 +55,7 @@ Complejidad espacial: O(1) — una única referencia auxiliar, independientement
  * uno inexistente, mostrando en cada caso el resultado y la cantidad de nodos visitados para
  * hacer visible el costo del acceso secuencial.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio02_BuscarElemento {
@@ -504,19 +504,4 @@ class ListaEnlazada {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio02_BuscarElemento.java -d /tmp/v5/ej02
-Ejecución:   java -cp /tmp/v5/ej02 Ejercicio02_BuscarElemento
-Todos los casos están cableados en main(): el programa no lee entrada por consola,
-así que cada caso se verifica leyendo el bloque correspondiente de la salida.
 
-ID    | Objetivo                                         | Entrada exacta                                  | Resultado esperado                                   | Criterio de aprobación
-------+--------------------------------------------------+-------------------------------------------------+------------------------------------------------------+------------------------------------------------
-CP-01 | Flujo nominal: dato presente en el medio        | lista 10,20,30,40; buscar(30)                   | true con 3 nodos visitados                           | Bloque 4: "buscar(30) = true | nodos visitados = 3"
-CP-02 | Lista vacía: el ciclo no se ejecuta             | lista sin inserciones; buscar(10)               | false con 0 nodos visitados                          | Bloque 1 imprime 0 visitados y no lanza excepción
-CP-03 | Primer nodo: mejor caso, corte inmediato        | lista 10,20,30,40; buscar(10)                   | true con 1 nodo visitado                             | Bloque 3 imprime exactamente 1 visitado
-CP-04 | Último nodo: peor caso con éxito                | lista 10,20,30,40; buscar(40)                   | true con 4 nodos visitados                           | Bloque 5 imprime 4 visitados (= size)
-CP-05 | Dato inexistente (caso de error del método,     | lista 10,20,30,40; buscar(99)                   | false con 4 nodos visitados                          | Bloque 6: false y visitados = size, sin excepción
-      | buscar no valida posiciones)                    |                                                 |                                                      |
-*/
