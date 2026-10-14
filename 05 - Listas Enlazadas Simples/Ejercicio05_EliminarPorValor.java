@@ -65,7 +65,7 @@ Complejidad espacial: O(1) — dos referencias auxiliares.
  * desde {@code head} y el Garbage Collector lo recoge más adelante, sin que el programa pueda
  * saber cuándo.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio05_EliminarPorValor {
@@ -768,19 +768,4 @@ class ListaEnlazada {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio05_EliminarPorValor.java -d /tmp/v5/ej05
-Ejecución:   java -cp /tmp/v5/ej05 Ejercicio05_EliminarPorValor
-Todos los casos están cableados en main(): el programa no lee entrada por consola,
-así que cada caso se verifica leyendo el bloque correspondiente de la salida.
 
-ID    | Objetivo                                         | Entrada exacta                                  | Resultado esperado                                   | Criterio de aprobación
-------+--------------------------------------------------+-------------------------------------------------+------------------------------------------------------+------------------------------------------------
-CP-01 | Flujo nominal: eliminar un nodo del medio       | lista 20,30,40,50; eliminar(30)                 | true y "20 -> 40 -> 50 -> null", size = 3            | Bloque 4 imprime esa cadena y "[consistente]"
-CP-02 | Lista vacía: eliminar no rompe nada             | lista sin inserciones; eliminar(10)             | false, lista sigue en "null" con size = 0            | Bloque 1 imprime false sin lanzar excepción
-CP-03 | Primer nodo: hay que mover head                 | lista 10,20,30,40,50; eliminar(10)              | true y "20 -> 30 -> 40 -> 50 -> null", size = 4      | Bloque 3: la cadena arranca en 20
-CP-04 | Último nodo: el nuevo último hereda el null     | lista 20,40,50; eliminar(50)                    | true y "20 -> 40 -> null", size = 2                  | Bloque 5 termina la cadena en "40 -> null"
-CP-05 | Dato inexistente (caso de error del método,     | lista 20,40; eliminar(99)                       | false, size y cadena sin cambios                     | Bloque 6: estado antes igual a estado después
-      | eliminar no valida posiciones)                  |                                                 |                                                      |
-*/
