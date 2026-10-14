@@ -50,7 +50,7 @@
  * contador; el método recursivo privado trabaja siempre con cantidades no negativas, lo que
  * garantiza que el caso base sea alcanzable.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio03_MultiplicacionPorSumas {
@@ -200,7 +200,7 @@ public class Ejercicio03_MultiplicacionPorSumas {
 
 /*
  * =====================================================================================
- * AJUSTES REALIZADOS AL PROMPT (requerido por la consigna general del práctico)
+ * AJUSTES REALIZADOS AL PROMPT 
  * =====================================================================================
  * Cambio 1: se agregó al prompt "analizá qué pasa si el factor que se reduce es negativo y
  *   cómo resolverlo".
@@ -219,46 +219,4 @@ public class Ejercicio03_MultiplicacionPorSumas {
  * =====================================================================================
  */
 
-/*
- * =====================================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * Compilar: javac Ejercicio03_MultiplicacionPorSumas.java -d /tmp/v2
- * Ejecutar: java -cp /tmp/v2 Ejercicio03_MultiplicacionPorSumas
- * =====================================================================================
- * ID    | CP-03-01
- * Obj.  | Verificar el flujo nominal y la conmutatividad del resultado y del costo.
- * Entr. | multiplicar(4, 3) y multiplicar(3, 4) — ya incluidos en el main.
- * Esper.| Ambas líneas: obtenido = 12, esperado = 12, llamadas = 4, OK.
- * Crit. | Aprueba si los dos productos valen 12 y las dos informan la misma cantidad de
- *       | llamadas (prueba que siempre se reduce el factor menor).
- * -------------------------------------------------------------------------------------
- * ID    | CP-03-02
- * Obj.  | Verificar el caso base: cuando un factor es 0 no debe hacerse ninguna suma.
- * Entr. | multiplicar(7, 0) y multiplicar(0, 7) — ya incluidos en el main.
- * Esper.| Ambas líneas: obtenido = 0, esperado = 0, llamadas = 1, OK.
- * Crit. | Aprueba si devuelve 0 en los dos órdenes y la profundidad es 1 (solo el caso base).
- * -------------------------------------------------------------------------------------
- * ID    | CP-03-03
- * Obj.  | Verificar el límite inferior no trivial: multiplicar por 1 (una única suma).
- * Entr. | multiplicar(1, 9) — ya incluido en el main.
- * Esper.| Línea: obtenido = 9, esperado = 9, llamadas = 2, OK.
- * Crit. | Aprueba si devuelve 9 con exactamente dos niveles de pila.
- * -------------------------------------------------------------------------------------
- * ID    | CP-03-04
- * Obj.  | Cubrir la entrada "vacía" del dominio y los signos. El parámetro es int primitivo,
- *       | por lo que no existe entrada nula; el análogo del conjunto vacío de sumandos es el
- *       | factor 0, y los signos son el otro borde del dominio.
- * Entr. | multiplicar(0, 7), multiplicar(-4, 3), multiplicar(4, -3), multiplicar(-4, -3).
- * Esper.| 0, -12, -12 y 12 respectivamente, cada uno igual a su esperado, todos OK.
- * Crit. | Aprueba si los tres casos con negativos devuelven el signo correcto y ninguno
- *       | produce StackOverflowError.
- * -------------------------------------------------------------------------------------
- * ID    | CP-03-05
- * Obj.  | Forzar el error de rango por exceso de sumas encadenadas (riesgo de pila).
- * Entr. | multiplicar(20000, 30000) — ya incluido en el main vía probarError.
- * Esper.| Línea "obtenido = El factor menor en valor absoluto es 20000 y excede el máximo
- *       | de sumas encadenadas (10000) ..." terminada en OK.
- * Crit. | Aprueba si lanza IllegalArgumentException, se captura y el programa termina
- *       | normalmente.
- * =====================================================================================
- */
+
