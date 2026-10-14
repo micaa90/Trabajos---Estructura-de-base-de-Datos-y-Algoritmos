@@ -59,7 +59,7 @@ objeto Nodo que ya estaba en el Heap.
  * contenido, local e inofensiva) y modificar su referencia {@code siguiente} (operación
  * estructural, capaz de romper la lista o crear un ciclo).</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio07_ModificarElemento {
@@ -873,18 +873,4 @@ class ListaEnlazada {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio07_ModificarElemento.java -d /tmp/v5/ej07
-Ejecución:   java -cp /tmp/v5/ej07 Ejercicio07_ModificarElemento
-Todos los casos están cableados en main(): el programa no lee entrada por consola,
-así que cada caso se verifica leyendo el bloque correspondiente de la salida.
 
-ID    | Objetivo                                         | Entrada exacta                                  | Resultado esperado                                   | Criterio de aprobación
-------+--------------------------------------------------+-------------------------------------------------+------------------------------------------------------+------------------------------------------------
-CP-01 | Flujo nominal: modificar una posición del medio | lista 10,20,30,40; modificar(2, 99)             | "10 -> 20 -> 99 -> 40 -> null" con size = 4          | Bloque 2: size antes y después valen 4
-CP-02 | Lista vacía: no hay nada que modificar          | lista sin inserciones; modificar(0, 1)          | IndexOutOfBoundsException mencionando "está vacía"   | Bloque 8 imprime el mensaje y size sigue en 0
-CP-03 | Primer nodo: ni head cambia                     | lista 10,20,99,40; modificar(0, -5)             | "-5 -> 20 -> 99 -> 40 -> null" con size = 4          | Bloque 3: la cadena mantiene 4 posiciones
-CP-04 | Último nodo: la posición size - 1               | lista -5,20,99,40; modificar(3, 77)             | "-5 -> 20 -> 99 -> 77 -> null" con size = 4          | Bloque 4: el null final sigue después del 77
-CP-05 | Posición inválida: negativa y size              | lista de size 4; modificar(-1,0) y (4,0)        | Dos IndexOutOfBoundsException y lista sin cambios    | Bloques 6 y 7: size antes = size después = 4
-*/
