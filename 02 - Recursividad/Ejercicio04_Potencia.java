@@ -53,7 +53,7 @@
  * sea visible en la salida, y ambas detectan el desborde del {@code long} en lugar de
  * envolver el resultado en silencio.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio04_Potencia {
@@ -285,7 +285,7 @@ public class Ejercicio04_Potencia {
 
 /*
  * =====================================================================================
- * AJUSTES REALIZADOS AL PROMPT (requerido por la consigna general del práctico)
+ * AJUSTES REALIZADOS AL PROMPT 
  * =====================================================================================
  * Cambio 1: se agregó "ambas versiones deben contar la cantidad de llamadas recursivas".
  *   Motivo: la primera respuesta decía que la potencia rápida es O(log e) sin mostrarlo.
@@ -304,46 +304,4 @@ public class Ejercicio04_Potencia {
  * =====================================================================================
  */
 
-/*
- * =====================================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * Compilar: javac Ejercicio04_Potencia.java -d /tmp/v2
- * Ejecutar: java -cp /tmp/v2 Ejercicio04_Potencia
- * =====================================================================================
- * ID    | CP-04-01
- * Obj.  | Verificar el flujo nominal en las dos versiones con un valor verificable a mano.
- * Entr. | potencia(2, 10) y potenciaRapida(2, 10) — ya incluidos en el main.
- * Esper.| Línea "2^10 | lineal = 1024 (11 llamadas) | rapida = 1024 (5 llamadas) |
- *       | esperado = 1024 | OK".
- * Crit. | Aprueba si ambas devuelven 1024 y la rápida usa estrictamente menos llamadas.
- * -------------------------------------------------------------------------------------
- * ID    | CP-04-02
- * Obj.  | Verificar el caso base (exponente 0) en las dos versiones, incluido 0^0.
- * Entr. | potencia(2, 0) y potencia(0, 0) — ya incluidos en el main.
- * Esper.| Las dos líneas informan 1 en lineal, rápida y esperado, con 1 llamada cada una, OK.
- * Crit. | Aprueba si ambas devuelven 1 (y no 0) sin recursar más de una vez.
- * -------------------------------------------------------------------------------------
- * ID    | CP-04-03
- * Obj.  | Verificar el límite superior del tipo: la mayor potencia de 2 que cabe en long.
- * Entr. | potencia(2, 62) — ya incluido en el main.
- * Esper.| Línea con lineal = rapida = esperado = 4611686018427387904, OK.
- * Crit. | Aprueba si el valor coincide exactamente y no aparece un número negativo.
- * -------------------------------------------------------------------------------------
- * ID    | CP-04-04
- * Obj.  | Cubrir los bordes del dominio: base 0, base 1 y base negativa con exponente par e
- *       | impar. Los parámetros son primitivos, por lo que no existe entrada nula; el
- *       | análogo del caso vacío es el exponente 0 (ninguna multiplicación a realizar).
- * Entr. | potencia(0, 5), potencia(1, 100), potencia(-3, 3), potencia(-3, 4).
- * Esper.| 0, 1, -27 y 81 respectivamente, cada uno igual a su esperado, todos OK.
- * Crit. | Aprueba si el signo del resultado sigue la paridad del exponente y 0^5 da 0.
- * -------------------------------------------------------------------------------------
- * ID    | CP-04-05
- * Obj.  | Forzar los dos errores: desborde del long y exponente fuera de rango.
- * Entr. | potencia(2, 63) y potencia(2, -4) — ya incluidos en el main vía probarError.
- * Esper.| Para 2^63, ambas versiones informan "OK: ArithmeticException: long overflow".
- *       | Para 2^-4, ambas informan "OK: IllegalArgumentException: No se admiten exponentes
- *       | negativos (-4) ...".
- * Crit. | Aprueba si las cuatro invocaciones lanzan la excepción esperada, se capturan y el
- *       | programa termina normalmente sin StackOverflowError.
- * =====================================================================================
- */
+
