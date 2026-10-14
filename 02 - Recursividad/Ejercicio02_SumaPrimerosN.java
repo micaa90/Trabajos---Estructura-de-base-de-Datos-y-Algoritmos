@@ -45,7 +45,7 @@
  * la fórmula cerrada de Gauss {@code n(n+1)/2}, que calcula el mismo valor por un camino
  * algorítmicamente independiente y sirve como oráculo de prueba.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio02_SumaPrimerosN {
@@ -168,7 +168,7 @@ public class Ejercicio02_SumaPrimerosN {
 
 /*
  * =====================================================================================
- * AJUSTES REALIZADOS AL PROMPT (requerido por la consigna general del práctico)
+ * AJUSTES REALIZADOS AL PROMPT 
  * =====================================================================================
  * Cambio 1: se incorporó al prompt "proponé usar la fórmula cerrada n(n+1)/2 como
  *   verificación independiente".
@@ -185,44 +185,4 @@ public class Ejercicio02_SumaPrimerosN {
  * =====================================================================================
  */
 
-/*
- * =====================================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * Compilar: javac Ejercicio02_SumaPrimerosN.java -d /tmp/v2
- * Ejecutar: java -cp /tmp/v2 Ejercicio02_SumaPrimerosN
- * =====================================================================================
- * ID    | CP-02-01
- * Obj.  | Verificar el flujo nominal con un n mediano contra la fórmula cerrada.
- * Entr. | sumar(100) — ya incluido en el main.
- * Esper.| Línea "n = 100 | recursivo = 5050 | formula n(n+1)/2 = 5050 | COINCIDEN (OK)".
- * Crit. | Aprueba si ambos valores son 5050 y la línea dice COINCIDEN.
- * -------------------------------------------------------------------------------------
- * ID    | CP-02-02
- * Obj.  | Verificar el caso base de la recursión.
- * Entr. | sumar(0) — ya incluido en el main.
- * Esper.| Línea con recursivo = 0 y formula = 0, COINCIDEN (OK).
- * Crit. | Aprueba si devuelve 0 (y no 1) sin lanzar excepción.
- * -------------------------------------------------------------------------------------
- * ID    | CP-02-03
- * Obj.  | Verificar el límite inferior no trivial, con un único sumando.
- * Entr. | sumar(1) — ya incluido en el main.
- * Esper.| Línea con recursivo = 1 y formula = 1, COINCIDEN (OK).
- * Crit. | Aprueba si devuelve 1, lo que prueba que el nivel n = 1 suma 1 + sumar(0).
- * -------------------------------------------------------------------------------------
- * ID    | CP-02-04
- * Obj.  | Cubrir la entrada "vacía" del dominio: el rango sin ningún elemento a sumar.
- *       | El parámetro es un int primitivo, por lo que no existe entrada nula; el análogo
- *       | del conjunto vacío es n = 0, y debe devolver el neutro de la suma.
- * Entr. | sumar(0) comparado contra sumarConFormula(0) — ya incluido en el main.
- * Esper.| Ambos devuelven 0 y la línea dice COINCIDEN (OK).
- * Crit. | Aprueba si ninguna de las dos vías devuelve un valor distinto de 0.
- * -------------------------------------------------------------------------------------
- * ID    | CP-02-05
- * Obj.  | Forzar los dos errores de rango: dominio negativo y profundidad de pila excesiva.
- * Entr. | sumar(-5) y sumar(10001) — ya incluidos en el main vía probarError.
- * Esper.| Dos líneas con "obtenido = No se admite n negativo: -5" y
- *       | "obtenido = n = 10001 excede el máximo de recursión segura (10000) ...", ambas OK.
- * Crit. | Aprueba si las dos lanzan IllegalArgumentException, se capturan y el programa
- *       | termina normalmente, sin StackOverflowError.
- * =====================================================================================
- */
+
