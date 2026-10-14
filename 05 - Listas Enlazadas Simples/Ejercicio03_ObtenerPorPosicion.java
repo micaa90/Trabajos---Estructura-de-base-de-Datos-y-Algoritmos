@@ -57,7 +57,7 @@ Contraste: un arreglo resuelve el mismo acceso en O(1) con aritmética de direcc
  * <p>El punto del ejercicio es que recibir una posición NO implica acceso directo: aunque la
  * firma se parezca a {@code vector[i]}, adentro hay un recorrido nodo por nodo.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez  
  * @version 1.0
  */
 public class Ejercicio03_ObtenerPorPosicion {
@@ -595,18 +595,4 @@ class ListaEnlazada {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio03_ObtenerPorPosicion.java -d /tmp/v5/ej03
-Ejecución:   java -cp /tmp/v5/ej03 Ejercicio03_ObtenerPorPosicion
-Todos los casos están cableados en main(): el programa no lee entrada por consola,
-así que cada caso se verifica leyendo el bloque correspondiente de la salida.
 
-ID    | Objetivo                                         | Entrada exacta                                  | Resultado esperado                                   | Criterio de aprobación
-------+--------------------------------------------------+-------------------------------------------------+------------------------------------------------------+------------------------------------------------
-CP-01 | Flujo nominal: leer una posición del medio      | lista 10,20,30,40; obtener(2)                   | 30 con 3 nodos recorridos                            | Bloque 4: "obtener(2) = 30 | nodos recorridos = 3"
-CP-02 | Lista vacía: ninguna posición es válida         | lista sin inserciones; obtener(0)               | IndexOutOfBoundsException mencionando "está vacía"   | Bloque 1 imprime el mensaje y el programa continúa
-CP-03 | Primer nodo: mejor caso                         | lista 10,20,30,40; obtener(0)                   | 10 con 1 nodo recorrido                              | Bloque 3 imprime exactamente 1 nodo recorrido
-CP-04 | Último nodo: peor caso                          | lista 10,20,30,40; obtener(3)                   | 40 con 4 nodos recorridos                            | Bloque 5 imprime 40 y 4 nodos recorridos
-CP-05 | Posición inválida: negativa y size              | lista 10,20,30,40; obtener(-1) y obtener(4)     | Dos IndexOutOfBoundsException con mensajes distintos | Bloques 6 y 7 explican el rango válido 0..3
-*/
