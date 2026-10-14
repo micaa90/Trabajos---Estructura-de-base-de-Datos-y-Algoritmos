@@ -51,7 +51,7 @@
  * <p>Complejidad: O(n^2) temporal en el caso promedio para los tres; O(1) espacial adicional
  * (los tres ordenan in situ).</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio09_ComparacionAlgoritmosSimples {
@@ -377,52 +377,4 @@ class MetricasSimples {
     }
 }
 
-/*
- * ===========================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * ===========================================================================
- * Compilacion: javac Ejercicio09_ComparacionAlgoritmosSimples.java -d /tmp/v3
- * Ejecucion:   java -cp /tmp/v3 Ejercicio09_ComparacionAlgoritmosSimples
- *
- * ID: CP-09-01  (flujo nominal)
- *   Objetivo: ordenar el mismo arreglo desordenado con los tres algoritmos y comparar metricas.
- *   Entrada exacta: escenario "Desordenado" con {5, 2, 9, 1, 7, 6}.
- *   Resultado esperado: los tres dan [1, 2, 5, 6, 7, 9] y "Los tres resultados son identicos:
- *                       true"; Bubble 14 comparaciones / 7 intercambios; Selection 15
- *                       comparaciones / 3 intercambios; Insertion 10 comparaciones /
- *                       7 desplazamientos.
- *   Criterio de aprobacion: estaOrdenado=true en los tres y los tres arreglos coinciden.
- *
- * ID: CP-09-02  (mejor caso)
- *   Objetivo: ver que algoritmo gana con un arreglo ya ordenado.
- *   Entrada exacta: escenario "Ya ordenado" con {1, 2, 5, 6, 7, 9}.
- *   Resultado esperado: Bubble 5 comparaciones / 0 intercambios; Insertion 5 comparaciones /
- *                       0 desplazamientos; Selection 15 comparaciones / 0 intercambios.
- *   Criterio de aprobacion: Bubble e Insertion hacen n-1 = 5 comparaciones y Selection
- *                           hace n(n-1)/2 = 15, confirmando que solo los dos primeros
- *                           tienen mejor caso O(n).
- *
- * ID: CP-09-03  (peor caso)
- *   Objetivo: ver que algoritmo pierde con el arreglo invertido.
- *   Entrada exacta: escenario "Ordenado al reves" con {9, 7, 6, 5, 2, 1}.
- *   Resultado esperado: Bubble 15 comparaciones / 15 intercambios (45 escrituras);
- *                       Insertion 15 comparaciones / 15 desplazamientos (20 escrituras);
- *                       Selection 15 comparaciones / 3 intercambios (9 escrituras).
- *   Criterio de aprobacion: los movimientos de Bubble e Insertion llegan a n(n-1)/2 = 15 y
- *                           Selection se mantiene en <= n-1 = 5 intercambios.
- *
- * ID: CP-09-04  (entrada vacia)
- *   Objetivo: comprobar que los tres toleran un arreglo sin elementos.
- *   Entrada exacta: escenario "Arreglo vacio" con new int[] {}.
- *   Resultado esperado: los tres imprimen [], estaOrdenado=true, resultados identicos=true y
- *                       la tabla queda en 0 comparaciones y 0 movimientos.
- *   Criterio de aprobacion: no hay excepcion y todos los contadores quedan en cero.
- *
- * ID: CP-09-05  (un elemento)
- *   Objetivo: comprobar el caso minimo no vacio.
- *   Entrada exacta: escenario "Un solo elemento" con new int[] {8}.
- *   Resultado esperado: los tres imprimen [8], estaOrdenado=true y 0 comparaciones y
- *                       0 movimientos en la tabla.
- *   Criterio de aprobacion: ningun ciclo externo se ejecuta y los arreglos quedan intactos.
- * ===========================================================================
- */
+
