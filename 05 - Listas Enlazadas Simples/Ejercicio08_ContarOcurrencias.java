@@ -55,7 +55,7 @@ Complejidad espacial: O(1) — una referencia auxiliar y dos contadores enteros.
  * problemas de existencia ({@code buscar}) admiten corte anticipado, los de agregación
  * ({@code contarOcurrencias}) exigen recorrer todo.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio08_ContarOcurrencias {
@@ -889,19 +889,4 @@ class ListaEnlazada {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio08_ContarOcurrencias.java -d /tmp/v5/ej08
-Ejecución:   java -cp /tmp/v5/ej08 Ejercicio08_ContarOcurrencias
-Todos los casos están cableados en main(): el programa no lee entrada por consola,
-así que cada caso se verifica leyendo el bloque correspondiente de la salida.
 
-ID    | Objetivo                                         | Entrada exacta                                  | Resultado esperado                                   | Criterio de aprobación
-------+--------------------------------------------------+-------------------------------------------------+------------------------------------------------------+------------------------------------------------
-CP-01 | Flujo nominal: el caso del enunciado            | lista 10,20,10,30,10; contarOcurrencias(10)     | 3 con 5 nodos visitados                              | Bloque 2 imprime 3 y la línea termina en "OK"
-CP-02 | Lista vacía: el ciclo no se ejecuta             | lista sin inserciones; contarOcurrencias(10)    | 0 con 0 nodos visitados                              | Bloque 6 imprime 0 y 0 sin lanzar excepción
-CP-03 | Primer nodo: contraste contra buscar()          | lista 10,20,10,30,10; buscar(10)                | true visitando 1 nodo, contra 5 del conteo           | Bloque 3 imprime 1 contra 5
-CP-04 | Último nodo: la coincidencia final no se pierde | lista 10,20,30,10; contarOcurrencias(10)        | 2 con 4 nodos visitados                              | Bloque 8 imprime 2 (no 1)
-CP-05 | Dato inexistente (este método no valida         | lista 10,20,10,30,10; contarOcurrencias(99)     | 0 con 5 nodos visitados                              | Bloque 5: 0 ocurrencias y visitados = size
-      | posiciones, así que no hay caso de rango)       |                                                 |                                                      |
-*/
