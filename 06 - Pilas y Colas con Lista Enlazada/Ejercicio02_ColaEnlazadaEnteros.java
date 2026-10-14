@@ -75,7 +75,7 @@
  * Collector) al desencolar, así que no sobra ni falta espacio y no hay nada que "dar la
  * vuelta". El precio es la memoria extra por cada referencia y la pérdida de localidad.
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 
@@ -507,17 +507,4 @@ public class Ejercicio02_ColaEnlazadaEnteros {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio02_ColaEnlazadaEnteros.java -d /tmp/v6/ej02
-Ejecución:   java -cp /tmp/v6/ej02 Ejercicio02_ColaEnlazadaEnteros
-Todos los casos están cableados en main(); el programa no lee entrada por consola.
 
-ID    | Objetivo                                                | Entrada exacta                                           | Resultado esperado                                                          | Criterio de aprobación
-------+---------------------------------------------------------+----------------------------------------------------------+-----------------------------------------------------------------------------+------------------------------------------------------------------
-CP-01 | Flujo nominal FIFO: la salida respeta el orden de entrada| encolar(10), encolar(20), encolar(30) y 3 desencolar()    | "FRENTE -> 10 -> 20 -> 30 -> null" y salidas 10, 20, 30 en ese orden        | La línea de orden observado informa "10, 20, 30" y termina en "-> OK"
-CP-02 | Estructura vacía: imprimir y consultar sin elementos    | cola recién creada, estaVacia() e imprimir()              | estaVacia() = true, "FRENTE -> null   (cola vacía)", head -> null, tail -> null | Las dos referencias informan null y no se lanza excepción
-CP-03 | Un solo elemento: head y tail son el MISMO nodo         | encolar(10) sobre cola vacía (caso especial 1)            | headYTailCoinciden() = true, head -> 10, tail -> 10                          | La línea "¿head y tail apuntan al MISMO nodo?" informa true y "-> OK"
-CP-04 | Vaciar por completo y volver a cargar (bug de tail)     | desencolar hasta vaciar y luego encolar(44), encolar(55)  | tail vuelve a null al vaciar; después verFrente() = 44 y contiene(44) = true | "¿tail volvió a null?" informa true, y el elemento 44 resulta accesible
-CP-05 | Error forzado: desencolar con la cola vacía             | desencolar() sobre la cola recién creada                  | IllegalStateException "No se puede desencolar: la cola está vacía."         | Se imprime el mensaje de la excepción seguido de "-> OK" y el programa continúa
-*/
