@@ -24,7 +24,7 @@
  * <p>Complejidad: O(n) en el mejor caso (arreglo ya ordenado, corte temprano),
  * O(n^2) en el peor y en el caso promedio; O(1) espacial adicional.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio01_BurbujaPasoAPaso {
@@ -251,44 +251,4 @@ class MetricasBurbuja {
     int pasadas;
 }
 
-/*
- * ===========================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * ===========================================================================
- * Compilacion: javac Ejercicio01_BurbujaPasoAPaso.java -d /tmp/v3
- * Ejecucion:   java -cp /tmp/v3 Ejercicio01_BurbujaPasoAPaso
- *
- * ID: CP-01-01  (flujo nominal)
- *   Objetivo: ordenar un arreglo desordenado mostrando el estado tras cada pasada.
- *   Entrada exacta: int[] numeros = {5, 2, 9, 1, 7, 6} (ya cargado en el main).
- *   Resultado esperado: 4 pasadas; final [1, 2, 5, 6, 7, 9]; 14 comparaciones;
- *                       7 intercambios; "Verificacion estaOrdenado(): true".
- *   Criterio de aprobacion: el arreglo final es ascendente, estaOrdenado() da true
- *                           y el 9 aparece en la ultima posicion ya en la pasada 1.
- *
- * ID: CP-01-02  (mejor caso)
- *   Objetivo: comprobar el corte temprano con entrada ya ordenada.
- *   Entrada exacta: linea "Ya ordenado (mejor caso)" con {1, 2, 3, 4, 5, 6}.
- *   Resultado esperado: pasadas=1, comparaciones=5 (n-1), intercambios=0, ordenado=true.
- *   Criterio de aprobacion: una sola pasada y cero intercambios, confirmando O(n).
- *
- * ID: CP-01-03  (peor caso)
- *   Objetivo: validar la cota teorica n(n-1)/2 con entrada invertida.
- *   Entrada exacta: linea "Ordenado al reves (peor caso)" con {6, 5, 4, 3, 2, 1}.
- *   Resultado esperado: comparaciones=15 e intercambios=15, iguales a 6*5/2 = 15;
- *                       el bloque final de verificacion teorica imprime ambos valores.
- *   Criterio de aprobacion: comparaciones observadas == n(n-1)/2 == 15.
- *
- * ID: CP-01-04  (entrada vacia)
- *   Objetivo: comprobar que un arreglo vacio no rompe el programa.
- *   Entrada exacta: linea "Arreglo vacio" con new int[] {}.
- *   Resultado esperado: "[] -> [] | pasadas=0 comparaciones=0 intercambios=0 | ordenado=true".
- *   Criterio de aprobacion: no se lanza excepcion y estaOrdenado() devuelve true.
- *
- * ID: CP-01-05  (un elemento)
- *   Objetivo: comprobar el caso minimo no vacio.
- *   Entrada exacta: linea "Un solo elemento" con new int[] {42}.
- *   Resultado esperado: "[42] -> [42] | pasadas=0 comparaciones=0 intercambios=0 | ordenado=true".
- *   Criterio de aprobacion: el ciclo externo no se ejecuta y el arreglo queda intacto.
- * ===========================================================================
- */
+
