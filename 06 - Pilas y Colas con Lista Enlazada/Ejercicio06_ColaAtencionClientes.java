@@ -117,7 +117,7 @@
  * queda inalcanzable (basura para el GC) cuando se lo atiende. El precio es la memoria extra
  * por referencia y la pérdida de localidad.
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 
@@ -950,17 +950,3 @@ public class Ejercicio06_ColaAtencionClientes {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio06_ColaAtencionClientes.java -d /tmp/v6/ej06
-Ejecución:   java -cp /tmp/v6/ej06 Ejercicio06_ColaAtencionClientes
-Todos los casos están cableados en main(); el programa no lee entrada por consola.
-
-ID    | Objetivo                                                  | Entrada exacta                                                          | Resultado esperado                                                            | Criterio de aprobación
-------+-----------------------------------------------------------+-------------------------------------------------------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------
-CP-01 | Flujo nominal FIFO: se atiende en orden de llegada        | llegan Ana, Bruno, Carla, Diego, Elena y Bruno(2); se atiende a todos    | secuencia de atención "T1, T2, T3, T4, T5, T6"                                | La línea "¿Coincide con el orden de llegada...?" informa true y "-> OK"
-CP-02 | Estructura vacía: atender y consultar sin clientes        | fila recién creada, atenderProximo() y consultarProximo()               | IllegalStateException "No hay clientes en espera..." y "No hay próximo cliente..." | Se imprimen los dos mensajes seguidos de "-> OK" y el programa continúa
-CP-03 | Un solo cliente: head y tail son el MISMO nodo            | agregarCliente("Ana","Apertura de cuenta") sobre la fila vacía          | headYTailCoinciden() = true, head -> [T1 Ana / ...], tail igual                | La línea del caso especial 1 informa true y "-> OK"
-CP-04 | Vaciar la fila por completo y que llegue alguien después  | atender a los 6 y luego agregarCliente("Fabián","Cambio de domicilio")  | tail vuelve a null; después consultarProximo() = [T7 Fabián / ...] y estaEnEspera = true | "¿tail volvió a null?" informa true y estaEnEspera(Fabián) informa true
-CP-05 | Datos obligatorios inválidos (errores forzados)           | agregarCliente(null,"Consulta") y agregarCliente("Hugo","  ")           | IllegalArgumentException "El nombre del cliente es obligatorio." y "El motivo de consulta es obligatorio." | Se imprimen los dos mensajes seguidos de "-> OK" y cantidadEnEspera() no cambia
-*/
