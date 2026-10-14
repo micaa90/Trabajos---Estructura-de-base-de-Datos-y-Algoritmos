@@ -55,7 +55,7 @@
  * O(n) espacial adicional por el arreglo auxiliar mas O(log n) de pila. Es estable y NO
  * ordena in situ.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio08_MergeSortPasoAPaso {
@@ -382,53 +382,4 @@ class MetricasMerge {
     boolean mostrarTraza;
 }
 
-/*
- * ===========================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * ===========================================================================
- * Compilacion: javac Ejercicio08_MergeSortPasoAPaso.java -d /tmp/v3
- * Ejecucion:   java -cp /tmp/v3 Ejercicio08_MergeSortPasoAPaso
- *
- * ID: CP-08-01  (flujo nominal)
- *   Objetivo: ordenar 8 elementos mostrando DIVIDO, CORTE y FUSIONO con indentacion.
- *   Entrada exacta: int[] numeros = {38, 27, 43, 3, 9, 82, 10, 1} (ya cargado en el main).
- *   Resultado esperado: final [1, 3, 9, 10, 27, 38, 43, 82]; 7 divisiones; 8 cortes;
- *                       7 fusiones; 17 comparaciones; 24 copias; 4 niveles de recursion;
- *                       estaOrdenado=true.
- *   Criterio de aprobacion: aparecen todos los DIVIDO antes del primer FUSIONO de cada
- *                           rama, el ultimo FUSIONO reconstruye el arreglo completo y el
- *                           resultado esta ordenado.
- *
- * ID: CP-08-02  (mejor caso)
- *   Objetivo: comprobar que con entrada ya ordenada la estructura de niveles no cambia.
- *   Entrada exacta: linea "Ya ordenado (mejor caso)" con {1,2,3,4,5,6,7,8}.
- *   Resultado esperado: divisiones=7, fusiones=7, niveles=4, comparaciones=12, ordenado=true.
- *   Criterio de aprobacion: la cantidad de divisiones, fusiones y niveles es la misma que
- *                           en el peor caso; solo bajan las comparaciones.
- *
- * ID: CP-08-03  (peor caso)
- *   Objetivo: comprobar que el peor caso tambien es O(n log n).
- *   Entrada exacta: linea "Ordenado al reves (peor caso)" con {8,7,6,5,4,3,2,1}.
- *   Resultado esperado: final [1,2,3,4,5,6,7,8]; divisiones=7, fusiones=7, niveles=4,
- *                       comparaciones=12, ordenado=true.
- *   Criterio de aprobacion: niveles=4 y comparaciones=12, exactamente los mismos valores
- *                           que en CP-08-02: con la entrada invertida cada fusion agota una
- *                           mitad de entrada y copia la cola sin comparar, de modo que se
- *                           alcanza la cota inferior de n/2*log2(n) = 12. Ambos casos quedan
- *                           muy por debajo de n*log2(n) = 24.
- *
- * ID: CP-08-04  (entrada vacia)
- *   Objetivo: comprobar que el arreglo vacio no entra en la recursion.
- *   Entrada exacta: linea "Arreglo vacio" con new int[] {}.
- *   Resultado esperado: "[] (vacio) -> [] (vacio) | divisiones=0 fusiones=0 comparaciones=0
- *                       niveles=0 | ordenado=true".
- *   Criterio de aprobacion: no se reserva el auxiliar, no hay excepcion y ordenado=true.
- *
- * ID: CP-08-05  (un elemento)
- *   Objetivo: comprobar la condicion de corte con un unico elemento.
- *   Entrada exacta: linea "Un solo elemento" con new int[] {5}.
- *   Resultado esperado: "[5] -> [5] | divisiones=0 fusiones=0 comparaciones=0 niveles=1
- *                       | ordenado=true".
- *   Criterio de aprobacion: la primera llamada corta de inmediato, sin dividir ni fusionar.
- * ===========================================================================
- */
+
