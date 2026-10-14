@@ -119,7 +119,7 @@
  * responder sobre la expresión. El precio es la memoria extra por referencia y la pérdida de
  * localidad: los nodos quedan dispersos en el Heap en lugar de contiguos.
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 
@@ -760,17 +760,4 @@ public class Ejercicio07_ParentesisBalanceados {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio07_ParentesisBalanceados.java -d /tmp/v6/ej07
-Ejecución:   java -cp /tmp/v6/ej07 Ejercicio07_ParentesisBalanceados
-Todas las expresiones están cableadas en main(); el programa no lee entrada por consola.
 
-ID    | Objetivo                                                     | Entrada exacta                            | Resultado esperado                                                                  | Criterio de aprobación
-------+--------------------------------------------------------------+-------------------------------------------+-------------------------------------------------------------------------------------+------------------------------------------------------------------
-CP-01 | Flujo nominal: los dos ejemplos válidos del enunciado        | "(2 + 3) * (5 - 1)" y "((a + b) * c)"     | BALANCEADO con profundidad máxima 1 y 2 respectivamente                             | Las dos líneas de comprobación automática informan "-> OK"
-CP-02 | Condición 2: aperturas sin cerrar                            | "(2 + 3"                                  | NO BALANCEADO (condición 2), posición 0, profundidad máxima 1                        | El resultado informa condición 2 y señala la apertura de la posición 0
-CP-03 | Condición 1 y contraejemplo de contar: el ORDEN importa      | "())("                                    | NO BALANCEADO (condición 1), posición 2, profundidad máxima 1                        | El resultado informa condición 1 y posición 2, pese a haber 2 aperturas y 2 cierres
-CP-04 | Valores límite: cadena vacía, sin paréntesis y muy anidada   | "", "a + b * 2" y "((((1))))"             | Las tres BALANCEADO, con profundidad máxima 0, 0 y 4                                 | Las tres comprobaciones automáticas informan "-> OK"
-CP-05 | Condición 3 y error forzado de la pila                       | "(a + b]" y desapilar() sobre pila vacía  | NO BALANCEADO (condición 3) en la posición 6, e IllegalStateException "No se puede desapilar: la pila está vacía." | El resultado informa condición 3 y se imprime el mensaje de la excepción seguido de "-> OK"
-*/
