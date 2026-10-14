@@ -18,7 +18,7 @@
  *
  * Complejidad: O(n) temporal en las dos versiones; O(n) espacial con auxiliar y O(1) in situ.
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio07_InvertirVector {
@@ -334,17 +334,4 @@ public class Ejercicio07_InvertirVector {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio07_InvertirVector.java -d /tmp/v1
-Ejecución:   java -cp /tmp/v1 Ejercicio07_InvertirVector
-Todos los casos ya están cableados en main(); no se lee entrada por consola.
 
-ID    | Objetivo                                                | Entrada exacta            | Resultado esperado                                                        | Criterio de aprobación
-------+---------------------------------------------------------+---------------------------+---------------------------------------------------------------------------+------------------------------------------------------------
-CP-01 | Flujo nominal impar: ambas versiones invierten bien     | {10, 20, 30, 40, 50}      | [50, 40, 30, 20, 10]; A con 5 copias, B con 2 intercambios                | [A] dice "OK (original intacto)" y [B] "OK (invertido en el lugar)"
-CP-02 | Flujo nominal par: cantidad de intercambios = n/2       | {1, 2, 3, 4}              | [4, 3, 2, 1]; A con 4 copias, B con 2 intercambios                        | Ambas líneas terminan en "OK" e intercambios = 2
-CP-03 | Valor límite: un solo elemento (el ciclo no entra)      | {5}                       | [5]; A con 1 copia, B con 0 intercambios                                  | Ambas terminan en "OK" e intercambios = 0
-CP-04 | Entrada vacía                                           | new int[0]                | [] en ambas; 0 copias y 0 intercambios, sin excepción                     | Ambas terminan en "OK" y no hay stack trace
-CP-05 | Entrada nula (error de validación)                      | null                      | IllegalArgumentException "El vector no puede ser nulo." en ambas versiones | Se imprimen las dos líneas "-> OK:" con el mensaje
-*/
