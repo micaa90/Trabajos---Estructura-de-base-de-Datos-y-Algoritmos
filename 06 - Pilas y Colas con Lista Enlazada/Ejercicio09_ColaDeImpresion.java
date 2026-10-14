@@ -65,7 +65,7 @@
  * propósito un trabajo de 200 páginas antes de uno de 1 página y calcula cuánto espera cada
  * uno.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio09_ColaDeImpresion {
