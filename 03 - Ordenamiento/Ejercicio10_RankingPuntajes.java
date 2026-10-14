@@ -63,7 +63,7 @@
  * de referencias. Comparar dos jugadores es O(1) por el puntaje y O(L) solo cuando hay
  * empate y hay que mirar el nombre.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio10_RankingPuntajes {
@@ -403,52 +403,4 @@ class MetricasRanking {
     boolean mostrarTraza;
 }
 
-/*
- * ===========================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * ===========================================================================
- * Compilacion: javac Ejercicio10_RankingPuntajes.java -d /tmp/v3
- * Ejecucion:   java -cp /tmp/v3 Ejercicio10_RankingPuntajes
- *
- * ID: CP-10-01  (flujo nominal, incluye empates)
- *   Objetivo: armar el ranking de 6 jugadores con dos pares empatados y ver el desempate.
- *   Entrada exacta: Ana(1200), Pedro(900), Lucia(1500), Sofia(1200), Bruno(1100), Diego(900)
- *                   (ya cargados en el main).
- *   Resultado esperado: 1 Lucia 1500, 2 Ana 1200, 3 Sofia 1200, 4 Bruno 1100, 5 Diego 900,
- *                       6 Pedro 900; 9 comparaciones; 5 desplazamientos;
- *                       estaOrdenado()=true.
- *   Criterio de aprobacion: los empates quedan en orden alfabetico (Ana antes de Sofia,
- *                           Diego antes de Pedro), tal como declara el criterio, y
- *                           estaOrdenado() devuelve true.
- *
- * ID: CP-10-02  (mejor caso)
- *   Objetivo: comprobar el mejor caso O(n) con un ranking ya ordenado.
- *   Entrada exacta: linea "Ya ordenado (mejor caso)" con Lucia(1500), Ana(1200),
- *                   Bruno(1100), Diego(900).
- *   Resultado esperado: mismo orden de salida, comparaciones=3 (n-1), desplazamientos=0,
- *                       ordenado=true.
- *   Criterio de aprobacion: desplazamientos=0 y comparaciones=n-1=3, que es la situacion
- *                           habitual de un ranking que se actualiza.
- *
- * ID: CP-10-03  (peor caso)
- *   Objetivo: validar la cota n(n-1)/2 con el ranking cargado de menor a mayor.
- *   Entrada exacta: linea "Invertido (peor caso)" con Diego(900), Bruno(1100), Ana(1200),
- *                   Lucia(1500).
- *   Resultado esperado: salida [Lucia(1500), Ana(1200), Bruno(1100), Diego(900)];
- *                       comparaciones=6 y desplazamientos=6, iguales a 4*3/2 = 6; ordenado=true.
- *   Criterio de aprobacion: desplazamientos observados == n(n-1)/2 == 6.
- *
- * ID: CP-10-04  (entrada vacia)
- *   Objetivo: comprobar que un arreglo sin jugadores no rompe el programa.
- *   Entrada exacta: linea "Arreglo vacio" con new Jugador[] {}.
- *   Resultado esperado: "[] -> [] | comparaciones=0 desplazamientos=0 | ordenado=true".
- *   Criterio de aprobacion: no se lanza excepcion y estaOrdenado() devuelve true.
- *
- * ID: CP-10-05  (un elemento)
- *   Objetivo: comprobar el caso minimo no vacio.
- *   Entrada exacta: linea "Un solo jugador" con new Jugador[] {new Jugador("Ana", 1200)}.
- *   Resultado esperado: "[Ana(1200)] -> [Ana(1200)] | comparaciones=0 desplazamientos=0
- *                       | ordenado=true".
- *   Criterio de aprobacion: el ciclo externo no se ejecuta y el arreglo queda intacto.
- * ===========================================================================
- */
+
