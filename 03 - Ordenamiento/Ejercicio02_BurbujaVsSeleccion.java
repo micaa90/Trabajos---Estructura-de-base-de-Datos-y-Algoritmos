@@ -32,7 +32,7 @@
  *
  * <p>Complejidad: O(n^2) temporal en el caso promedio para ambos; O(1) espacial adicional.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio02_BurbujaVsSeleccion {
@@ -306,48 +306,4 @@ class MetricasComparativa {
     }
 }
 
-/*
- * ===========================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * ===========================================================================
- * Compilacion: javac Ejercicio02_BurbujaVsSeleccion.java -d /tmp/v3
- * Ejecucion:   java -cp /tmp/v3 Ejercicio02_BurbujaVsSeleccion
- *
- * ID: CP-02-01  (flujo nominal)
- *   Objetivo: comparar ambos algoritmos sobre el mismo arreglo desordenado.
- *   Entrada exacta: escenario "Desordenado" con {5, 2, 9, 1, 7}.
- *   Resultado esperado: ambos dan [1, 2, 5, 7, 9]; Bubble 10 comparaciones y 5 intercambios;
- *                       Selection 10 comparaciones y 3 intercambios; resultados coinciden = true.
- *   Criterio de aprobacion: misma cantidad de comparaciones (10 = n(n-1)/2) y menos
- *                           intercambios en seleccion que en burbuja.
- *
- * ID: CP-02-02  (mejor caso)
- *   Objetivo: mostrar la ventaja del corte temprano de burbuja con datos ya ordenados.
- *   Entrada exacta: escenario "Ya ordenado" con {1, 2, 3, 4, 5}.
- *   Resultado esperado: Bubble 4 comparaciones y 0 intercambios; Selection 10 comparaciones
- *                       y 0 intercambios.
- *   Criterio de aprobacion: burbuja compara exactamente n-1 = 4 veces; seleccion sigue
- *                           comparando n(n-1)/2 = 10 porque no detecta el orden previo.
- *
- * ID: CP-02-03  (peor caso)
- *   Objetivo: exhibir la diferencia maxima de intercambios con entrada invertida.
- *   Entrada exacta: escenario "Ordenado al reves" con {5, 4, 3, 2, 1}.
- *   Resultado esperado: Bubble 10 comparaciones y 10 intercambios; Selection 10 comparaciones
- *                       y 2 intercambios.
- *   Criterio de aprobacion: intercambios de burbuja = n(n-1)/2 = 10 y los de seleccion
- *                           no superan n-1 = 4.
- *
- * ID: CP-02-04  (entrada vacia)
- *   Objetivo: verificar que ambos metodos toleren un arreglo sin elementos.
- *   Entrada exacta: escenario "Arreglo vacio" con new int[] {}.
- *   Resultado esperado: ambos imprimen [] con estaOrdenado=true y 0 comparaciones
- *                       y 0 intercambios en la tabla.
- *   Criterio de aprobacion: no hay excepcion y la tabla queda en ceros.
- *
- * ID: CP-02-05  (un elemento)
- *   Objetivo: verificar el caso minimo no vacio.
- *   Entrada exacta: escenario "Un solo elemento" con new int[] {7}.
- *   Resultado esperado: ambos imprimen [7], estaOrdenado=true, 0 comparaciones y 0 intercambios.
- *   Criterio de aprobacion: ningun ciclo externo se ejecuta y el arreglo queda intacto.
- * ===========================================================================
- */
+
