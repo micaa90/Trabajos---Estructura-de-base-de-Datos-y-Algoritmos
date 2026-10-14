@@ -52,7 +52,7 @@
  * <p>No se convierte el número a texto: la reducción se hace con división entera por 10, que
  * es la operación que elimina el último dígito en base 10.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio06_ContarDigitos {
@@ -162,7 +162,7 @@ public class Ejercicio06_ContarDigitos {
 
 /*
  * =====================================================================================
- * AJUSTES REALIZADOS AL PROMPT (requerido por la consigna general del práctico)
+ * AJUSTES REALIZADOS AL PROMPT 
  * =====================================================================================
  * Cambio 1: se agregó "qué pasa con el 0 como entrada y por qué hay que decidir explícitamente
  *   si tiene 0 o 1 dígito".
@@ -181,44 +181,4 @@ public class Ejercicio06_ContarDigitos {
  * =====================================================================================
  */
 
-/*
- * =====================================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * Compilar: javac Ejercicio06_ContarDigitos.java -d /tmp/v2
- * Ejecutar: java -cp /tmp/v2 Ejercicio06_ContarDigitos
- * =====================================================================================
- * ID    | CP-06-01
- * Obj.  | Verificar el flujo nominal con un número de varios dígitos y ceros intermedios.
- * Entr. | contarDigitos(1002) y contarDigitos(4072) — ya incluidos en el main.
- * Esper.| Ambas líneas: obtenido = 4, esperado = 4, OK.
- * Crit. | Aprueba si los ceros intermedios se cuentan como dígitos y el total es 4.
- * -------------------------------------------------------------------------------------
- * ID    | CP-06-02
- * Obj.  | Verificar el caso base: cualquier número menor que 10 tiene un solo dígito.
- * Entr. | contarDigitos(7) y contarDigitos(9) — ya incluidos en el main.
- * Esper.| Ambas líneas: obtenido = 1, esperado = 1, OK.
- * Crit. | Aprueba si devuelven 1 sin ejecutar ninguna llamada recursiva.
- * -------------------------------------------------------------------------------------
- * ID    | CP-06-03
- * Obj.  | Verificar los límites: el salto del caso base al primer recursivo, y el máximo int.
- * Entr. | contarDigitos(9), contarDigitos(10) y contarDigitos(2147483647).
- * Esper.| 1, 2 y 10 respectivamente, cada uno igual a su esperado, todos OK.
- * Crit. | Aprueba si 9 da 1, 10 da 2 (frontera del caso base) y Integer.MAX_VALUE da 10.
- * -------------------------------------------------------------------------------------
- * ID    | CP-06-04
- * Obj.  | Cubrir la entrada mínima del dominio y la decisión explícita sobre el 0. El
- *       | parámetro es int primitivo, por lo que no existe entrada nula; el análogo del caso
- *       | vacío es el 0, donde no queda ningún dígito por quitar.
- * Entr. | contarDigitos(0) — ya incluido en el main.
- * Esper.| Línea "numero = 0 | obtenido = 1 | esperado = 1 | OK".
- * Crit. | Aprueba si devuelve 1 (decisión documentada) y no 0.
- * -------------------------------------------------------------------------------------
- * ID    | CP-06-05
- * Obj.  | Forzar el error de rango por entrada negativa, que sin validación daría un
- *       | resultado incorrecto silencioso.
- * Entr. | contarDigitos(-1002) — ya incluido en el main vía probarError.
- * Esper.| Línea "obtenido = Solo se admiten enteros no negativos; se recibió: -1002 ..." y OK.
- * Crit. | Aprueba si lanza IllegalArgumentException y NO devuelve 1, que es lo que devolvería
- *       | el caso base si el negativo no se rechazara.
- * =====================================================================================
- */
+
