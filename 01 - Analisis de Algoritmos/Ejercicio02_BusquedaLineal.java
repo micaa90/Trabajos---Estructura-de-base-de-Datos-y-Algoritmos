@@ -21,7 +21,7 @@
  * Complejidad: O(1) en el mejor caso, O(n) en el peor y O(n) en promedio;
  * espacial O(1).
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio02_BusquedaLineal {
@@ -221,17 +221,4 @@ public class Ejercicio02_BusquedaLineal {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio02_BusquedaLineal.java -d /tmp/v1
-Ejecución:   java -cp /tmp/v1 Ejercicio02_BusquedaLineal
-Todos los casos ya están cableados en main(); no se lee entrada por consola.
 
-ID    | Objetivo                                     | Entrada exacta                       | Resultado esperado                                              | Criterio de aprobación
-------+----------------------------------------------+--------------------------------------+-----------------------------------------------------------------+---------------------------------------------------------
-CP-01 | Flujo nominal: elemento presente en el medio | vector {4,8,15,16,23}, valor 15      | posición 2 y 3 posiciones recorridas                            | La línea del caso termina en "-> OK"
-CP-02 | Valor límite: mejor caso en la posición 0    | vector {4,8,15,16,23}, valor 4       | posición 0 y 1 posición recorrida                               | Termina en "-> OK": el corte anticipado evita recorrer más
-CP-03 | Peor caso ausente: contador igual a n       | vector {4,8,15,16,23}, valor 7       | posición -1 y 5 posiciones recorridas                           | Termina en "-> OK" y recorridas = longitud del vector
-CP-04 | Entrada vacía                                | new int[0], valor 1                  | posición -1 y 0 posiciones recorridas                           | Termina en "-> OK" sin lanzar excepción
-CP-05 | Entrada nula (error de validación)           | null, valor 1                        | IllegalArgumentException "El vector no puede ser nulo."         | Se imprime el mensaje de la excepción y "-> OK"
-*/
