@@ -60,7 +60,7 @@ eliminado.
  * apuntar al siguiente del eliminado: el doble salto
  * {@code anterior.setSiguiente(anterior.getSiguiente().getSiguiente())}.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio06_EliminarPorPosicion {
@@ -829,18 +829,4 @@ class ListaEnlazada {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio06_EliminarPorPosicion.java -d /tmp/v5/ej06
-Ejecución:   java -cp /tmp/v5/ej06 Ejercicio06_EliminarPorPosicion
-Todos los casos están cableados en main(): el programa no lee entrada por consola,
-así que cada caso se verifica leyendo el bloque correspondiente de la salida.
 
-ID    | Objetivo                                         | Entrada exacta                                  | Resultado esperado                                   | Criterio de aprobación
-------+--------------------------------------------------+-------------------------------------------------+------------------------------------------------------+------------------------------------------------
-CP-01 | Flujo nominal: eliminar una posición del medio  | lista 10,20,30,40,50; eliminarEnPosicion(2)     | "10 -> 20 -> 40 -> 50 -> null", size = 4             | Bloque 3 imprime esa cadena y "[consistente]"
-CP-02 | Lista vacía: ninguna posición es válida         | lista sin inserciones; eliminarEnPosicion(0)    | IndexOutOfBoundsException mencionando "está vacía"   | Bloque 1 imprime el mensaje y size sigue en 0
-CP-03 | Primer nodo: la posición 0 mueve head          | lista 10,20,40,50; eliminarEnPosicion(0)        | "20 -> 40 -> 50 -> null", size = 3                   | Bloque 4: la cadena arranca en 20
-CP-04 | Último nodo: posición size - 1                 | lista 20,40,50; eliminarEnPosicion(2)           | "20 -> 40 -> null", size = 2                         | Bloque 5 termina la cadena en "40 -> null"
-CP-05 | Posición inválida: size y negativa              | lista de size 2; posiciones 2 y -1              | Dos IndexOutOfBoundsException y lista sin cambios    | Bloques 6 y 7: size antes = size después
-*/
