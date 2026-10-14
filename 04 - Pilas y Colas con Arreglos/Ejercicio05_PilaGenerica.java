@@ -72,7 +72,7 @@
  * Programa de demostración del ejercicio 5: pila genérica {@code Pila<T>} sobre arreglo de
  * tamaño fijo, probada con tres tipos distintos.
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio05_PilaGenerica {
@@ -453,28 +453,4 @@ class Pila<T> {
     }
 }
 
-/*
- * ============================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * ============================================================================
- * Compilación: javac Ejercicio05_PilaGenerica.java -d /tmp/v4
- * Ejecución:   java -cp /tmp/v4 Ejercicio05_PilaGenerica
- * Todos los casos están cableados en main(); el programa no lee entrada por consola.
- *
- * ID    | Objetivo                              | Entrada exacta                              | Resultado esperado                                                     | Criterio de aprobación
- * ------+---------------------------------------+---------------------------------------------+------------------------------------------------------------------------+-------------------------------------------------------
- * CP-01 | Flujo nominal con tres tipos distintos| Pila<Integer>(4) con 10,20,30;              | Integer: pop()+peek() = 50 sin casting. String: pop().toUpperCase()    | Aparecen "pop() + peek() = 50", "TERCERO" y el
- *       | sobre una sola clase                  | Pila<String>(3) con primero/segundo/tercero;| -> "TERCERO". Alumno: pop() -> "Ana Ruiz (legajo 45823)"               | legajo 45823 accedido sin casting
- *       |                                       | Pila<Alumno>(3) con 3 alumnos                |                                                                        |
- * CP-02 | Estructura vacía                      | vaciar la Pila<String> con pops sucesivos   | los pops devuelven relleno, segundo, primero (orden LIFO) y el estado  | El estado final muestra top = -1 y las 3 posiciones
- *       |                                       |                                             | final tiene top = -1, size = 0, isEmpty = true                         | marcadas con * en null
- * CP-03 | Estructura llena                      | sobre la Pila<String> con 3 elementos,      | isFull() -> true con top = 2 y las 3 posiciones ocupadas sin marca *   | "isFull() -> true" y top = 2 con capacidad 3
- *       |                                       | push("relleno")                              |                                                                        |
- * CP-04 | Error forzado: push en pila llena y   | push("desborde") sobre la pila llena;       | IllegalStateException "Desbordamiento: la pila está llena (capacidad   | Se imprimen los dos mensajes de excepción
- *       | push(null)                            | push(null) sobre la pila vacía               | 3)." e IllegalArgumentException "No se admiten elementos null en la    |
- *       |                                       |                                             | pila."                                                                  |
- * CP-05 | Error forzado: pop/peek en vacía y    | pop() y peek() sobre la Pila<String> vacía; | IllegalStateException "Subdesbordamiento: la pila está vacía." y "La   | Se imprimen los tres mensajes y el programa llega a
- *       | capacidad negativa                    | new Pila<String>(-2)                         | pila está vacía: no hay tope para consultar."; IllegalArgument-        | "=== Fin de la demostración ==="
- *       |                                       |                                             | Exception "La capacidad no puede ser negativa: -2"                      |
- * ============================================================================
- */
+
