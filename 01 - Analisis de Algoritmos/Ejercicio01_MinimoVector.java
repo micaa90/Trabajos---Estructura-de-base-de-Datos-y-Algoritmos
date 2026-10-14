@@ -22,7 +22,7 @@
  *
  * Complejidad: O(n) temporal (mejor = peor = promedio) y O(1) espacial.
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio01_MinimoVector {
@@ -194,17 +194,3 @@ public class Ejercicio01_MinimoVector {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio01_MinimoVector.java -d /tmp/v1
-Ejecución:   java -cp /tmp/v1 Ejercicio01_MinimoVector
-Todos los casos ya están cableados en main(); no se lee entrada por consola.
-
-ID    | Objetivo                                   | Entrada exacta                        | Resultado esperado                                          | Criterio de aprobación
-------+--------------------------------------------+---------------------------------------+-------------------------------------------------------------+--------------------------------------------------------
-CP-01 | Flujo nominal: mínimo en posición interna  | {7, 3, 9, 1, 5}                       | "Esperado: 1 | Obtenido: 1 | Comparaciones: 4"              | La línea del caso termina en "-> OK" y Comparaciones = 4
-CP-02 | Valor límite: vector de un solo elemento   | {42}                                  | "Esperado: 42 | Obtenido: 42 | Comparaciones: 0"            | Termina en "-> OK" y Comparaciones = 0 (no hay pares)
-CP-03 | Valor límite: extremos del tipo int        | {2147483647, -2147483648, 0}          | "Esperado: -2147483648 | Obtenido: -2147483648"             | Termina en "-> OK": no hay desbordamiento ni signo erróneo
-CP-04 | Entrada vacía                              | new int[0]                            | IllegalArgumentException "El vector no puede ser nulo ni vacío." | Se imprime el mensaje de la excepción y "-> OK"
-CP-05 | Entrada nula (error de rango/validación)   | null                                  | IllegalArgumentException "El vector no puede ser nulo ni vacío." | Se imprime "Vector: null", el mensaje y "-> OK"
-*/
