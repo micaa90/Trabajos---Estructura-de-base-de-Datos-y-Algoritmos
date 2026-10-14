@@ -43,7 +43,7 @@
  * <p>Complejidad: O(n^2) temporal en este escenario con pivote inicial; O(n) de pila de
  * recursion. Con pivote del medio sobre la misma entrada: O(n log n) temporal y O(log n) de pila.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio07_PeorCasoQuicksort {
@@ -413,50 +413,4 @@ class MetricasPeorCaso {
     boolean mostrarTraza;
 }
 
-/*
- * ===========================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * ===========================================================================
- * Compilacion: javac Ejercicio07_PeorCasoQuicksort.java -d /tmp/v3
- * Ejecucion:   java -cp /tmp/v3 Ejercicio07_PeorCasoQuicksort
- *
- * ID: CP-07-01  (flujo nominal / peor caso del enunciado)
- *   Objetivo: medir el peor caso con pivote inicial sobre un arreglo ya ordenado.
- *   Entrada exacta: int[] numeros = {1, 2, 3, 4, 5, 6, 7} (ya cargado en el main).
- *   Resultado esperado: 13 invocaciones, 12 llamadas recursivas, 6 particiones,
- *                       21 comparaciones (= 7*6/2), profundidad maxima 6, ordenado=true;
- *                       en cada linea de traza el lado izquierdo aparece como "[] (vacio)".
- *   Criterio de aprobacion: comparaciones observadas == n(n-1)/2 == 21 y profundidad == n-1 == 6.
- *
- * ID: CP-07-02  (mejor caso de la misma entrada, pivote del medio)
- *   Objetivo: comprobar que cambiar el pivote arregla el peor caso.
- *   Entrada exacta: segunda corrida del main, misma entrada {1,2,3,4,5,6,7} con PIVOTE_MEDIO.
- *   Resultado esperado: 7 invocaciones, 6 llamadas recursivas, 3 particiones,
- *                       10 comparaciones, profundidad maxima 2, ordenado=true.
- *   Criterio de aprobacion: comparaciones (10) menores que 21 y profundidad (2) del orden
- *                           de log2(7) ~ 2,8 en lugar de 6.
- *
- * ID: CP-07-03  (peor caso extremo: desborde de pila)
- *   Objetivo: comprobar el consumo de pila O(n) del peor caso.
- *   Entrada exacta: llamada demostrarDesbordeDePila(60000) al final del main.
- *   Resultado esperado: se imprime "StackOverflowError capturado" junto con la profundidad
- *                       alcanzada antes de desbordar (aprox. 1475 en la JVM probada; el valor
- *                       exacto depende del tamano de pila de cada JVM).
- *   Criterio de aprobacion: el programa informa el error y sigue terminando normalmente,
- *                           sin abortar con traza de excepcion no controlada.
- *
- * ID: CP-07-04  (entrada vacia)
- *   Objetivo: comprobar que el arreglo vacio corta en el caso base.
- *   Entrada exacta: linea "Arreglo vacio" con new int[] {}.
- *   Resultado esperado: "[] (vacio) -> [] (vacio) | invocaciones=1 particiones=0
- *                       comparaciones=0 profundidadMax=0 | ordenado=true".
- *   Criterio de aprobacion: una sola invocacion, sin excepcion de indice fuera de rango.
- *
- * ID: CP-07-05  (un elemento)
- *   Objetivo: comprobar el caso base con un unico elemento.
- *   Entrada exacta: linea "Un solo elemento" con new int[] {5}.
- *   Resultado esperado: "[5] -> [5] | invocaciones=1 particiones=0 comparaciones=0
- *                       profundidadMax=0 | ordenado=true".
- *   Criterio de aprobacion: no se particiona y el arreglo queda intacto.
- * ===========================================================================
- */
+
