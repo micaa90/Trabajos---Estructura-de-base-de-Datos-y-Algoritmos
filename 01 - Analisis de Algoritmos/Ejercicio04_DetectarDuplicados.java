@@ -28,7 +28,7 @@ import java.util.Set;
  *
  * Complejidad: ver tabla; cada método documenta la suya.
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio04_DetectarDuplicados {
@@ -327,18 +327,4 @@ public class Ejercicio04_DetectarDuplicados {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio04_DetectarDuplicados.java -d /tmp/v1
-Ejecución:   java -cp /tmp/v1 Ejercicio04_DetectarDuplicados
-Todos los casos ya están cableados en main(); no se lee entrada por consola.
-Los tiempos en nanosegundos varían entre corridas; solo se evalúa su orden de magnitud relativo.
 
-ID    | Objetivo                                           | Entrada exacta                            | Resultado esperado                                            | Criterio de aprobación
-------+----------------------------------------------------+-------------------------------------------+---------------------------------------------------------------+---------------------------------------------------------------
-CP-01 | Flujo nominal: ambas soluciones coinciden en true  | {3, 7, 2, 7}                              | Esp. true, Anid. true, 5 ops anidado, 4 ops HashSet           | La fila termina en "OK" y ambos resultados son true
-CP-02 | Flujo nominal negativo: sin duplicados             | {3, 7, 2, 9}                              | Esp. false, 6 ops anidado (= n(n-1)/2), 4 ops HashSet         | La fila termina en "OK" y ops anidado = 6
-CP-03 | Valor límite: peor caso anidado con n = 20000      | generarDuplicadoAlFinal(20000)            | true en ambas; ~199.990.000 ops anidado contra 20.000 HashSet  | La fila termina en "OK" y ops anidado supera 10^8
-CP-04 | Entrada vacía y de un solo elemento                | new int[0] y {5}                          | false en ambas, 0 ops anidado; HashSet 0 y 1 op               | Ambas filas terminan en "OK" sin excepciones
-CP-05 | Entrada nula (error de validación)                 | null                                      | IllegalArgumentException "El vector no puede ser nulo." x2    | Se imprimen las dos líneas "-> OK:" con el mensaje
-*/
