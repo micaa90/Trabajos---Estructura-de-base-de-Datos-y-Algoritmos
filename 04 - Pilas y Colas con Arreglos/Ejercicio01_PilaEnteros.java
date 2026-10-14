@@ -54,7 +54,7 @@
  * <p>Recorre todos los casos límite del análisis: pila vacía, pila llena, pop y peek sobre
  * pila vacía, push sobre pila llena, capacidad 0, vaciado total y reutilización posterior.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio01_PilaEnteros {
@@ -344,24 +344,4 @@ class PilaEnteros {
     }
 }
 
-/*
- * ============================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * ============================================================================
- * Compilación: javac Ejercicio01_PilaEnteros.java -d /tmp/v4
- * Ejecución:   java -cp /tmp/v4 Ejercicio01_PilaEnteros
- * Todos los casos están cableados en main(); el programa no lee entrada por consola.
- *
- * ID    | Objetivo                          | Entrada exacta                              | Resultado esperado                                                      | Criterio de aprobación
- * ------+-----------------------------------+---------------------------------------------+-------------------------------------------------------------------------+-----------------------------------------------------------
- * CP-01 | Flujo nominal LIFO                | new PilaEnteros(4); push(10),push(20),      | pop devuelve 30 (el último insertado), peek devuelve 20 sin modificar    | "pop() -> 30" y "peek() -> 20"; después de peek, top sigue
- *       |                                   | push(30), pop(), peek()                     | la pila; top queda en 1                                                 | valiendo 1 en imprimirEstado()
- * CP-02 | Estructura vacía: consultas        | pila recién construida PilaEnteros(4)       | isEmpty = true, size = 0, top = -1, vista LIFO "(vacía)"                | La primera impresión de estado muestra top = -1 y size = 0
- * CP-03 | Estructura llena: detección        | push(10),push(20),push(30),pop(),push(40),  | isFull = true, size = 4, top = 3, ninguna posición marcada con *        | "isFull() -> true" y top = 3 con capacidad 4
- *       |                                   | push(50)                                    |                                                                         |
- * CP-04 | Error forzado: push en pila llena | sobre la pila de CP-03, push(60)            | IllegalStateException "Desbordamiento: la pila está llena (capacidad 4)."| Se imprime el mensaje de la excepción y el estado queda intacto
- *       |                                   |                                             |                                                                         | (top = 3, size = 4)
- * CP-05 | Error forzado: pop/peek en vacía  | vaciar la pila con pops y luego pop()       | IllegalStateException "Subdesbordamiento: la pila está vacía." y        | Se imprimen los dos mensajes de excepción y el programa
- *       |                                   | y peek()                                    | "La pila está vacía: no hay tope para consultar."                       | continúa hasta "=== Fin de la demostración ==="
- * ============================================================================
- */
+
