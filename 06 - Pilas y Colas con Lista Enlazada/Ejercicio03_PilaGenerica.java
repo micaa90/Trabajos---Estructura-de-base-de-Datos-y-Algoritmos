@@ -96,7 +96,7 @@
  * capacidad fija: cada apilado reserva un nodo nuevo en el Heap. Y tampoco existe el
  * problema del new T[] descripto arriba, que es específico de la versión con arreglo.
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 
@@ -612,17 +612,4 @@ public class Ejercicio03_PilaGenerica {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio03_PilaGenerica.java -d /tmp/v6/ej03
-Ejecución:   java -cp /tmp/v6/ej03 Ejercicio03_PilaGenerica
-Todos los casos están cableados en main(); el programa no lee entrada por consola.
 
-ID    | Objetivo                                                  | Entrada exacta                                                   | Resultado esperado                                                           | Criterio de aprobación
-------+-----------------------------------------------------------+------------------------------------------------------------------+------------------------------------------------------------------------------+-------------------------------------------------------------------
-CP-01 | Flujo nominal con los tres tipos pedidos                  | Pila<Integer> {10,20,30}, Pila<String> {alfa,beta,gamma}, Pila<Libro> con 3 libros | Cada imprimir() muestra "TOPE -> <último apilado> -> ... -> null" y desapilar() devuelve el último | Las tres pilas imprimen en orden inverso al de entrada y devuelven el tope correcto
-CP-02 | Estructura vacía: imprimir y consultar sin elementos      | Pila<String> recién creada, estaVacia() e imprimir()             | estaVacia() = true, tamanio() = 0, "TOPE -> null   (pila vacía)"             | Aparece la marca "(pila vacía)" sin lanzar excepción
-CP-03 | Un solo elemento con tipo propio e igualdad por contenido | apilar(a) con a = Libro("Rayuela","Cortázar") y contiene(b) igual | a == b da false y a.equals(b) da true; contiene(b) da true                   | Las tres líneas de la sección "== contra equals()" informan false, true y true
-CP-04 | Vaciar por completo y volver a cargar                     | apilar("único"), desapilar(), apilar("nuevo")                    | tras vaciar queda "TOPE -> null"; después verTope() = "nuevo"                | El verTope() final informa "nuevo" y contiene("nuevo") da true
-CP-05 | Errores forzados: pila vacía y dato null                  | desapilar() sobre pila vacía y apilar(null)                      | IllegalStateException "...la pila está vacía." e IllegalArgumentException "No se admiten elementos null en la pila." | Se imprimen los dos mensajes seguidos de "-> OK" y el programa continúa
-*/
