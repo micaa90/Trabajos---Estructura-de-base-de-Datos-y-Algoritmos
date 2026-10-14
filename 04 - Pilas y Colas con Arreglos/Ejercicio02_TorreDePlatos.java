@@ -59,7 +59,7 @@
  * Programa de demostración del ejercicio 2: simulador de una torre de platos resuelto con
  * una pila sobre arreglo de tamaño fijo.
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio02_TorreDePlatos {
@@ -390,26 +390,3 @@ class TorreDePlatos {
     }
 }
 
-/*
- * ============================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * ============================================================================
- * Compilación: javac Ejercicio02_TorreDePlatos.java -d /tmp/v4
- * Ejecución:   java -cp /tmp/v4 Ejercicio02_TorreDePlatos
- * Todos los casos están cableados en main(); el programa no lee entrada por consola.
- *
- * ID    | Objetivo                            | Entrada exacta                                 | Resultado esperado                                                       | Criterio de aprobación
- * ------+-------------------------------------+------------------------------------------------+--------------------------------------------------------------------------+---------------------------------------------------------
- * CP-01 | Flujo nominal: orden LIFO de salida | TorreDePlatos(5); agregarPlato de "Playo       | retirarPlato() devuelve primero "Playo chico (apilado #4)" y luego        | Las dos líneas "retirarPlato() ->" muestran #4 y #3 en
- *       |                                     | grande","Hondo","Postre","Playo chico";         | "Postre (apilado #3)": orden inverso al de apilado                       | ese orden, nunca #1
- *       |                                     | retirarPlato() x2                               |                                                                          |
- * CP-02 | Consulta no destructiva (peek)      | sobre la torre con 4 platos, verPlatoSuperior() | devuelve "Playo chico (apilado #4)" y la torre sigue con 4 platos        | La impresión posterior muestra "Torre (4/5 platos)" y
- *       |                                     |                                                 |                                                                          | top = 3 sin cambios
- * CP-03 | Estructura llena: altura máxima     | tras CP-01, agregarPlato("Sopero"),            | estaLlena() -> true con 5/5 platos y ninguna posición marcada con *      | "estaLlena() -> true" y top = 4
- *       |                                     | "Bandeja", "Ensaladera"                         |                                                                          |
- * CP-04 | Error forzado: torre llena          | sobre la torre de CP-03, agregarPlato("Fuente") | IllegalStateException "La torre está llena: altura máxima 5 platos..."   | Se imprime el mensaje y el estado posterior sigue en
- *       |                                     |                                                 |                                                                          | top = 4, 5/5 platos
- * CP-05 | Error forzado: torre vacía          | desarmar la torre completa y luego               | IllegalStateException "La torre está vacía: no hay plato para retirar."  | Se imprimen los dos mensajes y el programa llega a
- *       |                                     | retirarPlato() y verPlatoSuperior()             | y "La torre está vacía: no hay plato arriba."                            | "=== Fin de la demostración ==="
- * ============================================================================
- */
