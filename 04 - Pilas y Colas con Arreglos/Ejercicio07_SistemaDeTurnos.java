@@ -78,7 +78,7 @@
  * llegan 2 más, se imprime la fila, la sala se declara llena, se atiende a todos y se intenta
  * atender con la fila vacía.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio07_SistemaDeTurnos {
@@ -579,28 +579,4 @@ class SistemaDeTurnos {
     }
 }
 
-/*
- * ============================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * ============================================================================
- * Compilación: javac Ejercicio07_SistemaDeTurnos.java -d /tmp/v4
- * Ejecución:   java -cp /tmp/v4 Ejercicio07_SistemaDeTurnos
- * Todos los casos están cableados en main(); el programa no lee entrada por consola.
- *
- * ID    | Objetivo                          | Entrada exacta                              | Resultado esperado                                                      | Criterio de aprobación
- * ------+-----------------------------------+---------------------------------------------+-------------------------------------------------------------------------+-----------------------------------------------------------
- * CP-01 | Flujo nominal: el orden de        | new SistemaDeTurnos(6); agregarPersona de   | consultarPrimero() devuelve "turno 1 - Ana Torres"; las dos atenciones  | Se imprime "ATENDIDO: turno 1 - Ana Torres" y después
- *       | atención es el orden de llegada   | Ana, Bruno, Carla y Diego;                  | devuelven el turno 1 y el turno 2, en ese orden, y la fila no cambia    | "ATENDIDO: turno 2 - Bruno Díaz", en ese orden
- *       |                                   | consultarPrimero(); atenderSiguiente() x2   | al consultar                                                            |
- * CP-02 | Estructura vacía: fila sin gente  | sistema recién construido y, más adelante,  | "(nadie esperando)", front = 0, rear = -1, enEspera = 0,                | La primera imprimirFila() muestra "(nadie esperando)" y
- *       |                                   | después de atender a todos                  | filaVacia = true                                                        | el estado final muestra enEspera = 0
- * CP-03 | Estructura llena: sala al límite  | tras atender 2, agregarPersona de Elena y   | salaLlena = true con solo 4 personas en espera sobre capacidad 6:       | "salaLlena() -> true" junto con "cantidadEnEspera() = 4
- *       | con posiciones desperdiciadas     | Facundo (rear llega al índice 5)            | las 2 posiciones de los ya atendidos quedaron inutilizables             | sobre capacidad 6" y el mensaje de las 2 posiciones
- * CP-04 | Error forzado: llega gente con la | agregarPersona("Gabriela Luna") con la sala | IllegalStateException "La sala de espera está llena (capacidad 6):     | Se imprime el mensaje de la excepción y la fila sigue
- *       | sala llena, y nombre inválido     | llena; agregarPersona("   ");               | Gabriela Luna no puede entrar." e IllegalArgumentException "El nombre   | con las mismas 4 personas; ningún turno se consume
- *       |                                   | agregarPersona(null)                        | de la persona no puede estar vacío." (dos veces)                        | para los nombres inválidos
- * CP-05 | Error forzado: atender y          | atender a todos y luego atenderSiguiente(), | IllegalStateException "No hay nadie en la fila: no se puede atender.",  | Se imprimen los tres mensajes de excepción y el programa
- *       | consultar con la fila vacía       | consultarPrimero() y                        | "No hay nadie en la fila: no hay a quién consultar." y "La sala de      | llega a "=== Fin de la demostración ==="
- *       |                                   | agregarPersona("Hugo Vera")                 | espera está llena (capacidad 6): Hugo Vera no puede entrar."            |
- * ============================================================================
- */
+
