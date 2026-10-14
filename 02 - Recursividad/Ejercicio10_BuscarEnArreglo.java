@@ -64,7 +64,7 @@ import java.util.Arrays;
  * {@code java.util.Arrays.toString} está en los métodos de impresión, es utilitaria para mostrar
  * el arreglo en la consola y no forma parte de la búsqueda.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio10_BuscarEnArreglo {
@@ -240,7 +240,7 @@ public class Ejercicio10_BuscarEnArreglo {
 
 /*
  * =====================================================================================
- * AJUSTES REALIZADOS AL PROMPT (requerido por la consigna general del práctico)
+ * AJUSTES REALIZADOS AL PROMPT 
  * =====================================================================================
  * Cambio 1: se agregó la pregunta por el orden en que se evalúan los dos casos base.
  *   Motivo: la primera respuesta los listaba como equivalentes ("encontró" y "llegó al final"),
@@ -265,49 +265,4 @@ public class Ejercicio10_BuscarEnArreglo {
  * =====================================================================================
  */
 
-/*
- * =====================================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * Compilar: javac Ejercicio10_BuscarEnArreglo.java -d /tmp/r2
- * Ejecutar: java -cp /tmp/r2 Ejercicio10_BuscarEnArreglo
- * =====================================================================================
- * ID    | CP-10-01
- * Obj.  | Verificar el flujo nominal: dato presente en una posición intermedia.
- * Entr. | buscar({4, 8, 15, 16}, 15) — ya incluido en el main.
- * Esper.| "arreglo = [4, 8, 15, 16] | dato = 15 | obtenido = 2 | esperado = 2 | OK".
- * Crit. | Aprueba si devuelve 2 (índice basado en 0) tras examinar las posiciones 0, 1 y 2.
- * -------------------------------------------------------------------------------------
- * ID    | CP-10-02
- * Obj.  | Verificar el caso base de coincidencia en los dos extremos del recorrido: primera
- *       | posición (mejor caso) y última posición (peor caso con éxito).
- * Entr. | buscar({4, 8, 15, 16}, 4) y buscar({4, 8, 15, 16}, 16) — ya incluidos en el main.
- * Esper.| Devuelven 0 y 3 respectivamente, iguales a su esperado, OK.
- * Crit. | Aprueba si el 4 se resuelve con un único marco de pila y el 16 con cuatro.
- * -------------------------------------------------------------------------------------
- * ID    | CP-10-03
- * Obj.  | Verificar el caso base del fin del arreglo con un dato inexistente, y el contrato de
- *       | la primera aparición cuando el dato está repetido.
- * Entr. | buscar({4, 8, 15, 16}, 7) y buscar({9, 3, 9, 3}, 9) — ya incluidos en el main.
- * Esper.| Devuelven -1 y 0 respectivamente, iguales a su esperado, OK.
- * Crit. | Aprueba si el 7 devuelve -1 después de examinar las cuatro posiciones y el 9 devuelve
- *       | 0 y no 2, es decir que corta en la primera coincidencia.
- * -------------------------------------------------------------------------------------
- * ID    | CP-10-04
- * Obj.  | Cubrir la entrada vacía, que es el caso donde los dos casos base se tocan: no hay
- *       | ninguna posición que examinar y el del límite se cumple en la primera llamada.
- * Entr. | buscar(new int[0], 5) — ya incluido en el main.
- * Esper.| "arreglo = [] | dato = 5 | obtenido = -1 | esperado = -1 | OK".
- * Crit. | Aprueba si devuelve -1 sin lanzar ArrayIndexOutOfBoundsException, que es exactamente
- *       | lo que ocurriría si los dos casos base se evaluaran en orden inverso.
- * -------------------------------------------------------------------------------------
- * ID    | CP-10-05
- * Obj.  | Forzar los dos errores validados: arreglo nulo y arreglo que excede la profundidad de
- *       | recursión segura.
- * Entr. | buscar(null, 5) y buscar(new int[10001], 1) — ya incluidos vía probarError.
- * Esper.| "buscar(null, 5) | esperado = IllegalArgumentException | obtenido = No se admite un
- *       | arreglo null: ... | OK" y "arreglo de 10001 elementos | ... excede el máximo de
- *       | recursión segura (10000) ... | OK".
- * Crit. | Aprueba si las dos lanzan IllegalArgumentException, se capturan y el programa termina
- *       | normalmente, sin NullPointerException ni StackOverflowError.
- * =====================================================================================
- */
+
