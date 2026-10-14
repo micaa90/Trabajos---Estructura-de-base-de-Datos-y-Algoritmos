@@ -35,7 +35,7 @@
  * <p>Complejidad: O(n) en el mejor caso (entrada ya ordenada), O(n^2) en el peor
  * (entrada invertida) y O(n^2) en promedio; O(1) espacial adicional (ordena in situ).</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio03_InsercionCasiOrdenado {
@@ -245,44 +245,4 @@ class MetricasInsercion {
     long desplazamientos;
 }
 
-/*
- * ===========================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * ===========================================================================
- * Compilacion: javac Ejercicio03_InsercionCasiOrdenado.java -d /tmp/v3
- * Ejecucion:   java -cp /tmp/v3 Ejercicio03_InsercionCasiOrdenado
- *
- * ID: CP-03-01  (flujo nominal)
- *   Objetivo: ordenar el arreglo casi ordenado del enunciado contando desplazamientos.
- *   Entrada exacta: int[] numeros = {1, 2, 3, 5, 4, 6, 7} (ya cargado en el main).
- *   Resultado esperado: final [1, 2, 3, 4, 5, 6, 7]; comparaciones=7; desplazamientos=1;
- *                       solo la insercion del 4 informa un desplazamiento.
- *   Criterio de aprobacion: estaOrdenado()=true y desplazamientos=1, muy por debajo
- *                           de la cota del peor caso (21).
- *
- * ID: CP-03-02  (mejor caso)
- *   Objetivo: comprobar el mejor caso O(n) con entrada ya ordenada.
- *   Entrada exacta: linea "Ya ordenado (mejor caso)" con {1, 2, 3, 4, 5, 6, 7}.
- *   Resultado esperado: comparaciones=6 (n-1) y desplazamientos=0, ordenado=true.
- *   Criterio de aprobacion: desplazamientos=0 y comparaciones exactamente n-1 = 6.
- *
- * ID: CP-03-03  (peor caso)
- *   Objetivo: validar la cota n(n-1)/2 con entrada invertida.
- *   Entrada exacta: escenario "Ordenado al reves (contraste)" con {7, 6, 5, 4, 3, 2, 1}.
- *   Resultado esperado: comparaciones=21 y desplazamientos=21; la linea de cota teorica
- *                       imprime 21.
- *   Criterio de aprobacion: desplazamientos observados == n(n-1)/2 == 21.
- *
- * ID: CP-03-04  (entrada vacia)
- *   Objetivo: comprobar que el arreglo vacio no rompe el programa.
- *   Entrada exacta: linea "Arreglo vacio" con new int[] {}.
- *   Resultado esperado: "[] -> [] | comparaciones=0 desplazamientos=0 | ordenado=true".
- *   Criterio de aprobacion: no se lanza excepcion y estaOrdenado() devuelve true.
- *
- * ID: CP-03-05  (un elemento)
- *   Objetivo: comprobar el caso minimo no vacio.
- *   Entrada exacta: linea "Un solo elemento" con new int[] {9}.
- *   Resultado esperado: "[9] -> [9] | comparaciones=0 desplazamientos=0 | ordenado=true".
- *   Criterio de aprobacion: el ciclo externo no se ejecuta y el arreglo queda intacto.
- * ===========================================================================
- */
+
