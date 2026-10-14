@@ -73,7 +73,7 @@
  * las dos direcciones coincidan: si una referencia {@code anterior} queda mal puesta, el
  * recorrido hacia adelante sigue funcionando y el error pasa desapercibido.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio10_ListaDoblementeEnlazada {
