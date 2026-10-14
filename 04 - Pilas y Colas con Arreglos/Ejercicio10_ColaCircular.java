@@ -65,7 +65,7 @@
  * {@code enqueue} que allá era rechazado acá se acepta, reutilizando la posición que la cola
  * simple había declarado inutilizable.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio10_ColaCircular {
