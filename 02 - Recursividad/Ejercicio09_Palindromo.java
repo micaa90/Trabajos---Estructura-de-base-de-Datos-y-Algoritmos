@@ -57,7 +57,7 @@
  * es igual al último, y que lo que queda entre ellos también es palíndromo: una definición
  * autosimilar, y por eso el problema es recursivo.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio09_Palindromo {
@@ -301,7 +301,7 @@ public class Ejercicio09_Palindromo {
 
 /*
  * =====================================================================================
- * AJUSTES REALIZADOS AL PROMPT (requerido por la consigna general del práctico)
+ * AJUSTES REALIZADOS AL PROMPT 
  * =====================================================================================
  * Cambio 1: se agregó "mencioná la alternativa con dos índices que evita crear substrings".
  *   Motivo: la primera respuesta solo contemplaba substring(1, length() - 1). Es correcta y
@@ -323,51 +323,4 @@ public class Ejercicio09_Palindromo {
  * =====================================================================================
  */
 
-/*
- * =====================================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * Compilar: javac Ejercicio09_Palindromo.java -d /tmp/r2
- * Ejecutar: java -cp /tmp/r2 Ejercicio09_Palindromo
- * =====================================================================================
- * ID    | CP-09-01
- * Obj.  | Verificar el flujo nominal positivo en longitud impar y par, con las dos versiones.
- * Entr. | esPalindromo("reconocer") y esPalindromo("abba") — ya incluidos en el main.
- * Esper.| "palabra = "reconocer" | indices = true | substring = true | esperado = true | OK" y
- *       | la línea equivalente para "abba".
- * Crit. | Aprueba si ambas versiones devuelven true y coinciden entre sí en los dos casos.
- * -------------------------------------------------------------------------------------
- * ID    | CP-09-02
- * Obj.  | Verificar el corte anticipado en los dos lugares posibles: diferencia en los extremos
- *       | y diferencia en el medio.
- * Entr. | esPalindromo("java") y esPalindromo("abcda") — ya incluidos en el main.
- * Esper.| Las dos líneas informan indices = false, substring = false, esperado = false, OK.
- * Crit. | Aprueba si ambas devuelven false; "java" decide con una sola comparación de extremos
- *       | ('j' != 'a') y "abcda" con dos ('a' == 'a', después 'b' != 'd').
- * -------------------------------------------------------------------------------------
- * ID    | CP-09-03
- * Obj.  | Verificar las longitudes mínimas que sí comparan extremos, una positiva y una
- *       | negativa, que son la frontera del caso base.
- * Entr. | esPalindromo("aa") y esPalindromo("ab") — ya incluidos en el main.
- * Esper.| "aa" informa true y "ab" informa false, cada uno igual a su esperado, OK.
- * Crit. | Aprueba si "aa" devuelve true tras una comparación y una llamada al caso base
- *       | (inicio = 1 > fin = 0) y "ab" devuelve false sin llamada recursiva.
- * -------------------------------------------------------------------------------------
- * ID    | CP-09-04
- * Obj.  | Cubrir la entrada vacía y la de un solo carácter, que son los dos casos base, y la
- *       | frase con mayúsculas y espacios normalizada antes de comparar.
- * Entr. | esPalindromo(""), esPalindromo("a") y esPalindromo(normalizar("Anita lava la tina")).
- * Esper.| Los tres informan true. La salida muestra además normalizada = "anitalavalatina" y
- *       | que la frase SIN normalizar da false.
- * Crit. | Aprueba si "" y "a" devuelven true sin comparar nada, la frase normalizada da true y
- *       | la frase cruda da false (comportamiento correcto: el algoritmo compara lo que recibe).
- * -------------------------------------------------------------------------------------
- * ID    | CP-09-05
- * Obj.  | Forzar los tres errores validados: entrada nula, cadena que excede la profundidad de
- *       | recursión segura e índices fuera de rango en la sobrecarga.
- * Entr. | esPalindromo(null), esPalindromo("x".repeat(10001)) y esPalindromo("ana", 0, 99).
- * Esper.| Las tres líneas informan esperado = IllegalArgumentException, el mensaje recibido y OK.
- * Crit. | Aprueba si las tres lanzan IllegalArgumentException, se capturan y el programa termina
- *       | normalmente, sin NullPointerException, StringIndexOutOfBoundsException ni
- *       | StackOverflowError.
- * =====================================================================================
- */
+
