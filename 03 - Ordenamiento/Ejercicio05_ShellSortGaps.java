@@ -41,7 +41,7 @@
  * O(1) espacial adicional, ordena in situ. No es estable: los saltos pueden adelantar un
  * elemento por encima de otro de igual valor.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio05_ShellSortGaps {
@@ -323,45 +323,4 @@ class MetricasShell {
     int etapas;
 }
 
-/*
- * ===========================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * ===========================================================================
- * Compilacion: javac Ejercicio05_ShellSortGaps.java -d /tmp/v3
- * Ejecucion:   java -cp /tmp/v3 Ejercicio05_ShellSortGaps
- *
- * ID: CP-05-01  (flujo nominal)
- *   Objetivo: ordenar 10 elementos mostrando gap y estado por etapa, y comparar con Insertion.
- *   Entrada exacta: int[] numeros = {45, 12, 78, 33, 90, 25, 67, 54, 2, 38} (ya en el main).
- *   Resultado esperado: etapas con gap = 5, 2 y 1; final [2,12,25,33,38,45,54,67,78,90];
- *                       estaOrdenado=true; ShellSort con MENOS desplazamientos (13) que
- *                       Insertion Sort puro (25).
- *   Criterio de aprobacion: se imprimen las tres etapas con su gap, el resultado esta
- *                           ordenado y los desplazamientos de ShellSort < los de Insertion.
- *
- * ID: CP-05-02  (mejor caso)
- *   Objetivo: comprobar que con entrada ya ordenada no hay desplazamientos.
- *   Entrada exacta: linea "Ya ordenado (mejor caso)" con {1,2,3,4,5,6,7,8}.
- *   Resultado esperado: etapas=3, desplazamientos=0, ordenado=true.
- *   Criterio de aprobacion: desplazamientos=0 en las tres etapas (gap 4, 2, 1).
- *
- * ID: CP-05-03  (peor caso)
- *   Objetivo: observar el comportamiento con entrada invertida.
- *   Entrada exacta: linea "Ordenado al reves (peor caso)" con {8,7,6,5,4,3,2,1}.
- *   Resultado esperado: final [1,2,3,4,5,6,7,8]; desplazamientos=12, muy por debajo de los
- *                       28 = n(n-1)/2 que haria Insertion Sort puro.
- *   Criterio de aprobacion: ordenado=true y desplazamientos < 28.
- *
- * ID: CP-05-04  (entrada vacia)
- *   Objetivo: comprobar que el arreglo vacio no rompe el calculo del gap inicial.
- *   Entrada exacta: linea "Arreglo vacio" con new int[] {}.
- *   Resultado esperado: "[] -> [] | etapas=0 comparaciones=0 desplazamientos=0 | ordenado=true".
- *   Criterio de aprobacion: con n = 0 el gap inicial es 0, el ciclo no entra y no hay excepcion.
- *
- * ID: CP-05-05  (un elemento)
- *   Objetivo: comprobar el caso minimo no vacio.
- *   Entrada exacta: linea "Un solo elemento" con new int[] {5}.
- *   Resultado esperado: "[5] -> [5] | etapas=0 comparaciones=0 desplazamientos=0 | ordenado=true".
- *   Criterio de aprobacion: con n = 1 el gap inicial tambien es 0, no se ejecuta ninguna etapa.
- * ===========================================================================
- */
+
