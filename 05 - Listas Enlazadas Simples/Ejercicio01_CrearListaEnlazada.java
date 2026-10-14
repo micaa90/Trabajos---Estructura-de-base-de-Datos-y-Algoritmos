@@ -62,7 +62,7 @@ sola referencia auxiliar de recorrido).
  * al inicio, y después de cada una muestra el {@code size} junto con el recuento real de
  * nodos enlazados para verificar que coinciden.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio01_CrearListaEnlazada {
@@ -425,19 +425,4 @@ class ListaEnlazada {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio01_CrearListaEnlazada.java -d /tmp/v5/ej01
-Ejecución:   java -cp /tmp/v5/ej01 Ejercicio01_CrearListaEnlazada
-Todos los casos están cableados en main(): el programa no lee entrada por consola,
-así que cada caso se verifica leyendo el bloque correspondiente de la salida.
 
-ID    | Objetivo                                         | Entrada exacta                                  | Resultado esperado                                   | Criterio de aprobación
-------+--------------------------------------------------+-------------------------------------------------+------------------------------------------------------+------------------------------------------------
-CP-01 | Flujo nominal: construir la lista completa       | main(): 10, 20, 30 al final y 5, 1 al inicio    | Estado final "1 -> 5 -> 10 -> 20 -> 30 -> null"      | La última línea del bloque 4 imprime esa cadena
-CP-02 | Lista vacía: imprimir y consultar sin romper     | main() bloque 1, sin ninguna inserción          | "null", estaVacia() = true, getSize() = 0            | No se lanza excepción y se imprime exactamente "null"
-CP-03 | Primer nodo: insertarAlInicio mueve head        | main() bloque 3, insertarAlInicio(1)            | "1 -> 5 -> 10 -> 20 -> 30 -> null", size = 5         | El 1 aparece al principio y el resto queda intacto
-CP-04 | Último nodo: insertarAlFinal con lista vacía    | main() bloque 2, insertarAlFinal(10)            | "10 -> null", size = 1                               | El nodo nuevo es a la vez primero y último
-CP-05 | Consistencia de size (reemplaza al caso de      | main() bloque 4, getSize() contra               | Ambos valen 5 y se imprime "true"                    | Toda línea de estado termina en "[consistente]"
-      | posición inválida, que todavía no aplica)       | contarNodosEnlazados()                          |                                                      |
-*/
