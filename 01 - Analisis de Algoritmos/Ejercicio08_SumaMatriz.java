@@ -23,7 +23,7 @@
  *
  * Complejidad: O(f * c) temporal (mejor = peor = promedio) y O(1) espacial.
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio08_SumaMatriz {
@@ -262,17 +262,4 @@ public class Ejercicio08_SumaMatriz {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio08_SumaMatriz.java -d /tmp/v1
-Ejecución:   java -cp /tmp/v1 Ejercicio08_SumaMatriz
-Todos los casos ya están cableados en main(); no se lee entrada por consola.
 
-ID    | Objetivo                                           | Entrada exacta                                 | Resultado esperado                                            | Criterio de aprobación
-------+----------------------------------------------------+------------------------------------------------+---------------------------------------------------------------+-----------------------------------------------------------
-CP-01 | Flujo nominal: matriz 3x4 con valores conocidos    | {{1,2,3,4},{5,6,7,8},{9,10,11,12}}             | suma 78 y 12 operaciones (= f * c)                            | Termina en "-> OK" y operaciones = 12
-CP-02 | Valor límite: una sola fila y una sola columna     | {{5,-5,10}} y {{1},{2},{3}}                    | sumas 10 y 6, con 3 operaciones cada una                      | Ambos casos terminan en "-> OK"
-CP-03 | Valor límite: suma que desbordaría un int          | {{2147483647, 2147483647}}                     | suma 4294967294 con 2 operaciones                             | Termina en "-> OK": el resultado es positivo, no -2
-CP-04 | Entrada vacía                                      | new int[0][0] y {{}, {}}                       | suma 0 y 0 operaciones, sin excepción                         | Ambos terminan en "-> OK" y operaciones = 0
-CP-05 | Entrada nula (error de validación)                 | null y {{1,2}, null}                           | IllegalArgumentException "La matriz no puede ser nula." y "La fila 1 de la matriz es nula." | Se imprimen ambos mensajes y "-> OK"
-*/
