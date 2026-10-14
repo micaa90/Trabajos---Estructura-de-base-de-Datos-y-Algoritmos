@@ -69,7 +69,7 @@
  * cabecera de objeto por cada elemento, más la pérdida de localidad de memoria (los nodos
  * quedan dispersos en el Heap, mientras un arreglo es contiguo y aprovecha mejor la caché).
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 
@@ -424,17 +424,4 @@ public class Ejercicio01_PilaEnlazadaEnteros {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio01_PilaEnlazadaEnteros.java -d /tmp/v6/ej01
-Ejecución:   java -cp /tmp/v6/ej01 Ejercicio01_PilaEnlazadaEnteros
-Todos los casos están cableados en main(); el programa no lee entrada por consola.
 
-ID    | Objetivo                                              | Entrada exacta                                        | Resultado esperado                                                        | Criterio de aprobación
-------+-------------------------------------------------------+-------------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------------------
-CP-01 | Flujo nominal LIFO: el último en entrar sale primero  | apilar(10), apilar(20), apilar(30), desapilar()       | imprimir() da "TOPE -> 30 -> 20 -> 10 -> null" y desapilar() devuelve 30  | La línea de imprimir() coincide carácter por carácter y el primer desapilar() imprime 30
-CP-02 | Estructura vacía: imprimir y consultar sin elementos  | pila recién creada, estaVacia() e imprimir()          | estaVacia() = true, tamanio() = 0, "TOPE -> null   (pila vacía)"          | Se imprime la marca "(pila vacía)" y no se lanza ninguna excepción
-CP-03 | Un solo elemento: tope y fondo son el mismo nodo      | apilar(10) sobre pila vacía, verTope()                | verTope() = 10 y "TOPE -> 10 -> null" con tamanio=1                       | head apunta a 10 y el único nodo termina en null
-CP-04 | Vaciar por completo y volver a cargar                 | desapilar 3 veces hasta vaciar y luego apilar(77)     | head -> null al vaciar, y después verTope() = 77 con tamanio=1            | Tras el apilado el verTope() informa 77: el elemento nuevo es accesible
-CP-05 | Error forzado: desapilar con la pila vacía            | desapilar() sobre la pila recién creada               | IllegalStateException "No se puede desapilar: la pila está vacía."        | Se imprime el mensaje de la excepción seguido de "-> OK" y el programa continúa
-*/
