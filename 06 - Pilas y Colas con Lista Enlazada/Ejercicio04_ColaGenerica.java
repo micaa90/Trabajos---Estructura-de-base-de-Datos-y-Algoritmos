@@ -89,7 +89,7 @@
  * necesitaría el truco del Object[] con @SuppressWarnings, porque new T[] es ilegal; acá no,
  * porque cada nodo guarda un solo campo de tipo T.
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 
@@ -746,17 +746,4 @@ public class Ejercicio04_ColaGenerica {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio04_ColaGenerica.java -d /tmp/v6/ej04
-Ejecución:   java -cp /tmp/v6/ej04 Ejercicio04_ColaGenerica
-Todos los casos están cableados en main(); el programa no lee entrada por consola.
 
-ID    | Objetivo                                                   | Entrada exacta                                                    | Resultado esperado                                                            | Criterio de aprobación
-------+------------------------------------------------------------+-------------------------------------------------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------
-CP-01 | Flujo nominal FIFO con los dos tipos pedidos               | Cola<String> {Ana,Bruno,Carla,Diego} y Cola<Cliente> {Ana,Bruno,Carla} vaciadas | El orden de SALIDA es idéntico al de ENTRADA en las dos colas                 | Las dos líneas "¿Coinciden EXACTAMENTE?" informan true y la comparación final da "-> OK"
-CP-02 | Estructura vacía: imprimir y consultar sin elementos       | Cola<String> recién creada, estaVacia() e imprimir()              | estaVacia() = true, "FRENTE -> null   (cola vacía)", head y tail en null      | Las dos referencias informan null y no se lanza excepción
-CP-03 | Un solo elemento: head y tail son el MISMO nodo            | encolar(new Cliente("Único","2001")) sobre cola vacía             | headYTailCoinciden() = true, head -> Único(cta 2001), tail igual              | La línea del caso especial 1 informa true y "-> OK"
-CP-04 | Vaciar por completo y volver a cargar (bug de tail)        | desencolar el único cliente y luego encolar(new Cliente("Nuevo","2002")) | tail vuelve a null; después verFrente() = Nuevo(cta 2002) y contiene() = true | "¿tail volvió a null?" informa true y el elemento nuevo resulta accesible
-CP-05 | Errores forzados: cola vacía y dato null                   | desencolar() sobre cola vacía y encolar(null)                     | IllegalStateException "...la cola está vacía." e IllegalArgumentException "No se admiten elementos null en la cola." | Se imprimen los dos mensajes seguidos de "-> OK" y el programa continúa
-*/
