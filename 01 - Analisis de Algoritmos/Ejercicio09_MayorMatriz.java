@@ -23,7 +23,7 @@
  * Complejidad: O(f * c) temporal (mejor = peor = promedio, no hay corte posible)
  * y O(1) espacial.
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio09_MayorMatriz {
@@ -362,17 +362,4 @@ public class Ejercicio09_MayorMatriz {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio09_MayorMatriz.java -d /tmp/v1
-Ejecución:   java -cp /tmp/v1 Ejercicio09_MayorMatriz
-Todos los casos ya están cableados en main(); no se lee entrada por consola.
 
-ID    | Objetivo                                              | Entrada exacta                       | Resultado esperado                                                     | Criterio de aprobación
-------+-------------------------------------------------------+--------------------------------------+------------------------------------------------------------------------+-----------------------------------------------------------
-CP-01 | Flujo nominal: máximo en el interior con negativos   | {{3,-8,5},{-2,12,0}}                 | valor 12 en (1, 1) con 6 comparaciones                                 | Termina en "-> OK" y Comparaciones = 6 (= f * c)
-CP-02 | Valor límite: matriz con todos los valores negativos | {{-9,-3},{-15,-7}}                   | valor -3 en (0, 1), nunca 0                                            | Termina en "-> OK" y el valor impreso es negativo
-CP-03 | Valor límite: máximo en la primera y última posición | {{99,1,2},{3,4,5}} y {{1,2},{3,50}}  | valor 99 en (0, 0) y valor 50 en (1, 1)                                | Ambos casos terminan en "-> OK"
-CP-04 | Entrada vacía                                         | new int[0][0] y {{}, {}}             | IllegalArgumentException "La matriz no contiene elementos: el máximo no está definido." | Se imprime el mensaje y "-> OK" en los dos casos
-CP-05 | Entrada nula (error de validación)                    | null y {{1}, null}                   | IllegalArgumentException "La matriz no puede ser nula." y "La fila 1 de la matriz es nula." | Se imprimen ambos mensajes y "-> OK"
-*/
