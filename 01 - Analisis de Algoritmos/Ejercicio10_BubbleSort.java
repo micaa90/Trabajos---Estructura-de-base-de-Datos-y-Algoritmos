@@ -44,7 +44,7 @@ import java.util.Random;
  *
  * Complejidad: O(n) mejor caso (con corte anticipado), O(n^2) peor caso y promedio; O(1) espacial.
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio10_BubbleSort {
@@ -336,18 +336,4 @@ public class Ejercicio10_BubbleSort {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio10_BubbleSort.java -d /tmp/v1
-Ejecución:   java -cp /tmp/v1 Ejercicio10_BubbleSort
-Todos los casos ya están cableados en main(); no se lee entrada por consola.
-El vector "al azar" usa semilla fija 42, por lo que sus métricas son reproducibles.
 
-ID    | Objetivo                                              | Entrada exacta                | Resultado esperado                                                     | Criterio de aprobación
-------+-------------------------------------------------------+-------------------------------+------------------------------------------------------------------------+------------------------------------------------------------
-CP-01 | Flujo nominal: vector desordenado chico               | {5, 1, 4, 2}                  | [1, 2, 4, 5]; 5 comparaciones, 4 intercambios, corta en la pasada 3    | Termina en "-> OK" y se ven las 3 líneas "pasada"
-CP-02 | Mejor caso: la bandera corta en la primera pasada     | {1,2,3,4,5,6,7,8}             | [1..8]; 7 comparaciones (n-1), 0 intercambios, corta en la pasada 1    | Termina en "-> OK" y solo se imprime "pasada 1"
-CP-03 | Peor caso: alcanza el máximo teórico n(n-1)/2         | {8,7,6,5,4,3,2,1}             | [1..8]; 28 comparaciones y 28 intercambios, sin corte anticipado       | Termina en "-> OK" y la tabla comparativa dice "true"
-CP-04 | Valores límite: vector vacío y de un solo elemento    | new int[0] y {9}              | el ciclo externo no entra: 0 comparaciones y 0 intercambios            | Ambos terminan en "-> OK" sin imprimir ninguna "pasada"
-CP-05 | Entrada nula (error de validación)                    | null                          | IllegalArgumentException "El vector no puede ser nulo."                | Se imprime el mensaje de la excepción y "-> OK"
-*/
