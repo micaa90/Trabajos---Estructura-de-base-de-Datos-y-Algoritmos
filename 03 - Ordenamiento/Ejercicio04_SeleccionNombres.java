@@ -43,7 +43,7 @@
  * costo de comparar dos String es O(L) con L la longitud del prefijo comun, por lo que el
  * costo real es O(n^2 * L); con nombres cortos L es una constante chica y no cambia el orden.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio04_SeleccionNombres {
@@ -322,45 +322,4 @@ class MetricasNombres {
     long intercambios;
 }
 
-/*
- * ===========================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * ===========================================================================
- * Compilacion: javac -encoding UTF-8 Ejercicio04_SeleccionNombres.java -d /tmp/v3
- * Ejecucion:   java -cp /tmp/v3 Ejercicio04_SeleccionNombres
- *
- * ID: CP-04-01  (flujo nominal)
- *   Objetivo: ordenar alfabeticamente el arreglo del enunciado.
- *   Entrada exacta: String[] nombres = {"Lucia", "Ana", "Pedro", "Juan"} (ya en el main).
- *   Resultado esperado: ["Ana", "Juan", "Lucia", "Pedro"]; comparaciones=6 (n(n-1)/2);
- *                       intercambios=3; estaOrdenado()=true.
- *   Criterio de aprobacion: el arreglo final esta alfabeticamente ordenado y
- *                           estaOrdenado() devuelve true.
- *
- * ID: CP-04-02  (mejor caso)
- *   Objetivo: comprobar que seleccion compara igual aunque la entrada ya este ordenada.
- *   Entrada exacta: linea "Ya ordenado (mejor caso)" con {"Ana","Juan","Lucia","Pedro"}.
- *   Resultado esperado: mismo arreglo de salida, comparaciones=6, intercambios=0, ordenado=true.
- *   Criterio de aprobacion: intercambios=0 y comparaciones=6, mostrando que seleccion no
- *                           tiene mejor caso en comparaciones.
- *
- * ID: CP-04-03  (peor caso)
- *   Objetivo: ordenar la entrada invertida y confirmar la cota de intercambios n-1.
- *   Entrada exacta: linea "Ordenado al reves (peor caso)" con {"Pedro","Lucia","Juan","Ana"}.
- *   Resultado esperado: ["Ana","Juan","Lucia","Pedro"], comparaciones=6, intercambios=2,
- *                       ordenado=true.
- *   Criterio de aprobacion: intercambios <= n-1 = 3 y resultado alfabetico.
- *
- * ID: CP-04-04  (entrada vacia)
- *   Objetivo: comprobar que un arreglo sin nombres no rompe el programa.
- *   Entrada exacta: linea "Arreglo vacio" con new String[] {}.
- *   Resultado esperado: "[] -> [] | comparaciones=0 intercambios=0 | ordenado=true".
- *   Criterio de aprobacion: no se lanza excepcion y estaOrdenado() devuelve true.
- *
- * ID: CP-04-05  (un elemento)
- *   Objetivo: comprobar el caso minimo no vacio.
- *   Entrada exacta: linea "Un solo nombre" con new String[] {"Ana"}.
- *   Resultado esperado: ["Ana"] -> ["Ana"], comparaciones=0, intercambios=0, ordenado=true.
- *   Criterio de aprobacion: el ciclo externo no se ejecuta y el arreglo queda intacto.
- * ===========================================================================
- */
+
