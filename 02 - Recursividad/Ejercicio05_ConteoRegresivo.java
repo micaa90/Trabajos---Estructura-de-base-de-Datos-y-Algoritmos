@@ -52,7 +52,7 @@
  * (0, 1, ..., n). Ninguna devuelve un valor: su resultado es un efecto sobre la salida
  * estándar.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio05_ConteoRegresivo {
@@ -221,7 +221,7 @@ public class Ejercicio05_ConteoRegresivo {
 
 /*
  * =====================================================================================
- * AJUSTES REALIZADOS AL PROMPT (requerido por la consigna general del práctico)
+ * AJUSTES REALIZADOS AL PROMPT 
  * =====================================================================================
  * Cambio 1: se agregó "implementá además un segundo método que imprima DESPUÉS de la llamada
  *   recursiva, para mostrar el conteo ascendente".
@@ -240,47 +240,4 @@ public class Ejercicio05_ConteoRegresivo {
  * =====================================================================================
  */
 
-/*
- * =====================================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * Compilar: javac Ejercicio05_ConteoRegresivo.java -d /tmp/v2
- * Ejecutar: java -cp /tmp/v2 Ejercicio05_ConteoRegresivo
- * =====================================================================================
- * ID    | CP-05-01
- * Obj.  | Verificar el flujo nominal del conteo descendente (impresión antes de recursar).
- * Entr. | contarDescendente(5) — ya incluido en el main.
- * Esper.| Línea "  obtenido: 5 4 3 2 1 0 " idéntica a la línea "  esperado: 5 4 3 2 1 0 ".
- * Crit. | Aprueba si los seis números salen en orden estrictamente decreciente y termina en 0.
- * -------------------------------------------------------------------------------------
- * ID    | CP-05-02
- * Obj.  | Verificar que la misma recursión, imprimiendo después, invierte el orden.
- * Entr. | contarAscendente(5) — ya incluido en el main.
- * Esper.| Línea "  obtenido: 0 1 2 3 4 5 " idéntica a la línea "  esperado: 0 1 2 3 4 5 ".
- * Crit. | Aprueba si la salida es exactamente la inversa de CP-05-01, lo que prueba que las
- *       | impresiones ocurrieron durante el desapilado.
- * -------------------------------------------------------------------------------------
- * ID    | CP-05-03
- * Obj.  | Verificar el caso base puro: la recursión no debe apilar ningún nivel adicional.
- * Entr. | contarDescendente(0) y contarAscendente(0) — ya incluidos en el main.
- * Esper.| Las dos imprimen "0 " y nada más, coincidiendo con sus líneas de esperado.
- * Crit. | Aprueba si cada una imprime un único 0, sin números extra ni líneas vacías.
- * -------------------------------------------------------------------------------------
- * ID    | CP-05-04
- * Obj.  | Cubrir la salida "vacía" del dominio. El parámetro es int primitivo, por lo que no
- *       | existe entrada nula; el análogo del caso vacío es n = 0, donde no hay ninguna
- *       | llamada recursiva que realizar y la salida se reduce al propio caso base.
- * Entr. | contarAscendente(0) — ya incluido en el main.
- * Esper.| "  ascendente  obtenido: 0 " igual a "  ascendente  esperado: 0 ".
- * Crit. | Aprueba si la versión ascendente con n = 0 produce la misma salida que la
- *       | descendente con n = 0, ya que con un solo nivel no hay orden que invertir.
- * -------------------------------------------------------------------------------------
- * ID    | CP-05-05
- * Obj.  | Forzar los dos errores de rango: n negativo (caso base inalcanzable) y n por encima
- *       | de la profundidad de pila segura.
- * Entr. | contarDescendente(-1) y contarAscendente(10001) — ya incluidos en el main.
- * Esper.| Dos líneas con "obtenido = No se admite n negativo (-1) ..." y
- *       | "obtenido = n = 10001 excede el máximo de recursión segura (10000) ...", ambas OK.
- * Crit. | Aprueba si las dos lanzan IllegalArgumentException, se capturan, no se imprime
- *       | ningún número del conteo y el programa termina normalmente sin StackOverflowError.
- * =====================================================================================
- */
+
