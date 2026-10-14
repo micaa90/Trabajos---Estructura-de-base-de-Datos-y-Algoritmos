@@ -64,7 +64,7 @@ Complejidad espacial: O(1) — una referencia auxiliar, un contador y el nodo nu
  * nodo nuevo hacia adelante y recién después se reconecta el nodo anterior hacia el nuevo. El
  * orden inverso pierde el resto de la lista y crea un ciclo infinito.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio04_InsertarEnPosicion {
@@ -698,18 +698,4 @@ class ListaEnlazada {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio04_InsertarEnPosicion.java -d /tmp/v5/ej04
-Ejecución:   java -cp /tmp/v5/ej04 Ejercicio04_InsertarEnPosicion
-Todos los casos están cableados en main(): el programa no lee entrada por consola,
-así que cada caso se verifica leyendo el bloque correspondiente de la salida.
 
-ID    | Objetivo                                         | Entrada exacta                                  | Resultado esperado                                   | Criterio de aprobación
-------+--------------------------------------------------+-------------------------------------------------+------------------------------------------------------+------------------------------------------------
-CP-01 | Flujo nominal: insertar en el medio             | lista 10,20,30,40; insertarEnPosicion(25, 2)    | "10 -> 20 -> 25 -> 30 -> 40 -> null", size = 5       | Bloque 3 imprime esa cadena y "[consistente]"
-CP-02 | Lista vacía: única posición válida es 0         | lista sin inserciones; insertarEnPosicion(10,0) | "10 -> null", size = 1                               | Bloque 1 muestra el nodo nuevo como head
-CP-03 | Primer nodo: la posición 0 mueve head          | lista 10,20,25,30,40; insertarEnPosicion(5, 0)  | "5 -> 10 -> 20 -> 25 -> 30 -> 40 -> null", size = 6  | Bloque 4: el 5 queda primero y nada se pierde
-CP-04 | Último nodo: posición size es válida           | lista de size 6; insertarEnPosicion(99, 6)      | El 99 queda al final, size = 7                       | Bloque 5 termina la cadena en "99 -> null"
-CP-05 | Posición inválida: negativa y size + 1          | lista de size 7; posiciones -1 y 8              | Dos IndexOutOfBoundsException y lista sin cambios    | Bloques 6 y 7: size antes = size después
-*/
