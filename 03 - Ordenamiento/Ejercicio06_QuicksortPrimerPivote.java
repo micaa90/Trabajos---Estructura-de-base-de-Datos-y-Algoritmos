@@ -48,7 +48,7 @@
  * altura n). Espacial: O(1) de datos auxiliares porque ordena in situ, mas O(log n) de pila
  * de recursion en el caso promedio y O(n) en el peor. No es estable.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio06_QuicksortPrimerPivote {
@@ -361,52 +361,4 @@ class MetricasQuicksort {
     boolean mostrarTraza;
 }
 
-/*
- * ===========================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * ===========================================================================
- * Compilacion: javac Ejercicio06_QuicksortPrimerPivote.java -d /tmp/v3
- * Ejecucion:   java -cp /tmp/v3 Ejercicio06_QuicksortPrimerPivote
- *
- * ID: CP-06-01  (flujo nominal)
- *   Objetivo: ordenar 8 elementos mostrando pivote, lado izquierdo y lado derecho por llamada.
- *   Entrada exacta: int[] numeros = {7, 2, 9, 4, 1, 8, 3, 6} (ya cargado en el main).
- *   Resultado esperado: final [1, 2, 3, 4, 6, 7, 8, 9]; 11 invocaciones totales;
- *                       5 particiones; 16 comparaciones; 17 intercambios;
- *                       profundidad maxima 4; estaOrdenado=true.
- *   Criterio de aprobacion: cada linea "Pivote ... queda FIJO en el indice i" corresponde al
- *                           indice que ese valor ocupa en el arreglo final, y el resultado
- *                           esta ordenado.
- *
- * ID: CP-06-02  (mejor caso de particion)
- *   Objetivo: ver particiones balanceadas con pocas comparaciones.
- *   Entrada exacta: escenario "Arreglo de la traza del analisis" con {6, 3, 9, 1, 7, 4}.
- *   Resultado esperado: final [1, 3, 4, 6, 7, 9]; 9 invocaciones totales; 4 particiones;
- *                       9 comparaciones; profundidad maxima 3.
- *   Criterio de aprobacion: la primera particion deja 3 menores y 2 mayores (reparto
- *                           casi equitativo) y el resultado esta ordenado.
- *
- * ID: CP-06-03  (peor caso)
- *   Objetivo: exhibir la degeneracion con entrada ya ordenada.
- *   Entrada exacta: linea "Ya ordenado (peor caso de este pivote)" con {1,2,3,4,5,6,7,8}.
- *   Resultado esperado: comparaciones=28 = n(n-1)/2 con n=8; particiones=7;
- *                       profundidadMax=7; ordenado=true.
- *   Criterio de aprobacion: comparaciones == 28 y profundidad maxima == n-1 == 7,
- *                           confirmando la cadena lineal de recursion.
- *
- * ID: CP-06-04  (entrada vacia)
- *   Objetivo: comprobar que el arreglo vacio corta en el caso base.
- *   Entrada exacta: linea "Arreglo vacio" con new int[] {}.
- *   Resultado esperado: "[] (vacio) -> [] (vacio) | invocaciones=1 particiones=0
- *                       comparaciones=0 profundidadMax=0 | ordenado=true".
- *   Criterio de aprobacion: una sola invocacion que corta por inicio(0) >= fin(-1),
- *                           sin excepcion de indice.
- *
- * ID: CP-06-05  (un elemento)
- *   Objetivo: comprobar el caso base con un unico elemento.
- *   Entrada exacta: linea "Un solo elemento" con new int[] {5}.
- *   Resultado esperado: "[5] -> [5] | invocaciones=1 particiones=0 comparaciones=0
- *                       profundidadMax=0 | ordenado=true".
- *   Criterio de aprobacion: no se particiona y el arreglo queda intacto.
- * ===========================================================================
- */
+
