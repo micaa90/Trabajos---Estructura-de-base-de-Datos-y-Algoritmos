@@ -49,7 +49,7 @@
  * dígito y {@code n / 10} devuelve todo lo demás. Entre las dos parten el número sin perder
  * información.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio07_SumarDigitos {
@@ -161,7 +161,7 @@ public class Ejercicio07_SumarDigitos {
 
 /*
  * =====================================================================================
- * AJUSTES REALIZADOS AL PROMPT (requerido por la consigna general del práctico)
+ * AJUSTES REALIZADOS AL PROMPT 
  * =====================================================================================
  * Cambio 1: se agregó "qué diferencia hay entre usar como caso base n == 0 y usar n < 10".
  *   Motivo: la primera respuesta usaba n == 0 devolviendo 0. Es correcta, pero cada número
@@ -178,45 +178,4 @@ public class Ejercicio07_SumarDigitos {
  * =====================================================================================
  */
 
-/*
- * =====================================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * Compilar: javac Ejercicio07_SumarDigitos.java -d /tmp/v2
- * Ejecutar: java -cp /tmp/v2 Ejercicio07_SumarDigitos
- * =====================================================================================
- * ID    | CP-07-01
- * Obj.  | Verificar el flujo nominal con ceros intermedios y con un valor verificable a mano.
- * Entr. | sumaDigitos(1002) y sumaDigitos(123) — ya incluidos en el main.
- * Esper.| "numero = 1002 | obtenido = 3 | esperado = 3 | OK" y
- *       | "numero = 123 | obtenido = 6 | esperado = 6 | OK".
- * Crit. | Aprueba si 1002 da 3 (los ceros suman 0 pero no interrumpen la recursión) y 123 da 6.
- * -------------------------------------------------------------------------------------
- * ID    | CP-07-02
- * Obj.  | Verificar el caso base: un número de un solo dígito es su propia suma.
- * Entr. | sumaDigitos(7) y sumaDigitos(9) — ya incluidos en el main.
- * Esper.| Devuelven 7 y 9 respectivamente, iguales a su esperado, OK.
- * Crit. | Aprueba si devuelven el propio número sin ejecutar ninguna llamada recursiva.
- * -------------------------------------------------------------------------------------
- * ID    | CP-07-03
- * Obj.  | Verificar los límites: la frontera del caso base y el máximo del tipo int.
- * Entr. | sumaDigitos(9), sumaDigitos(10) y sumaDigitos(2147483647).
- * Esper.| 9, 1 y 46 respectivamente, cada uno igual a su esperado, todos OK.
- * Crit. | Aprueba si 9 da 9, 10 da 1 (1+0) y Integer.MAX_VALUE da 46 con 10 niveles de pila.
- * -------------------------------------------------------------------------------------
- * ID    | CP-07-04
- * Obj.  | Cubrir la entrada mínima del dominio. El parámetro es int primitivo, por lo que no
- *       | existe entrada nula; el análogo del caso vacío es el 0, cuya suma de dígitos es el
- *       | neutro de la suma.
- * Entr. | sumaDigitos(0) — ya incluido en el main.
- * Esper.| Línea "numero = 0 | obtenido = 0 | esperado = 0 | OK".
- * Crit. | Aprueba si devuelve 0 sin recursar y sin lanzar excepción.
- * -------------------------------------------------------------------------------------
- * ID    | CP-07-05
- * Obj.  | Forzar el error de rango por entrada negativa, que sin validación produciría un
- *       | resultado negativo absurdo.
- * Entr. | sumaDigitos(-45) — ya incluido en el main vía probarError.
- * Esper.| Línea "obtenido = Solo se admiten enteros no negativos; se recibió: -45 ..." y OK.
- * Crit. | Aprueba si lanza IllegalArgumentException y NO devuelve -45, que es lo que
- *       | devolvería el caso base si el negativo no se rechazara.
- * =====================================================================================
- */
+
