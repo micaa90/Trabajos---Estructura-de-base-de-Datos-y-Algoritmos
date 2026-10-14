@@ -23,7 +23,7 @@
  *
  * Complejidad: O(1) mejor caso, O(n) peor caso, O(n) promedio; O(1) espacial.
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio06_CompararVectores {
@@ -206,17 +206,4 @@ public class Ejercicio06_CompararVectores {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio06_CompararVectores.java -d /tmp/v1
-Ejecución:   java -cp /tmp/v1 Ejercicio06_CompararVectores
-Todos los casos ya están cableados en main(); no se lee entrada por consola.
 
-ID    | Objetivo                                        | Entrada exacta                      | Resultado esperado                                           | Criterio de aprobación
-------+-------------------------------------------------+-------------------------------------+--------------------------------------------------------------+-----------------------------------------------------------
-CP-01 | Flujo nominal: vectores iguales (peor caso)     | a={1,2,3}, b={1,2,3}                | true con 3 comparaciones                                     | Termina en "-> OK" y comparaciones = 3 (= n)
-CP-02 | Corte anticipado en la primera posición         | a={1,2,3}, b={9,2,3}                | false con 1 comparación                                      | Termina en "-> OK" y comparaciones = 1
-CP-03 | Valor límite: diferencia en la última posición  | a={1,2,3}, b={1,2,9}                | false con 3 comparaciones                                    | Termina en "-> OK" y comparaciones = 3, igual que CP-01
-CP-04 | Entrada vacía y longitudes distintas            | a=new int[0], b=new int[0]; a={1,2,3}, b={1,2} | true con 0 comparaciones; false con 0 comparaciones | Ambas filas terminan en "-> OK" con comparaciones = 0
-CP-05 | Entrada nula (error de validación)              | a=null, b={1}                       | IllegalArgumentException "Ninguno de los vectores puede ser nulo." | Se imprime el mensaje de la excepción y "-> OK"
-*/
