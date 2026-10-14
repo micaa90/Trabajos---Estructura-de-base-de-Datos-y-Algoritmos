@@ -90,7 +90,7 @@ para String o Alumno es O(longitud del nombre) en lugar de una comparación de e
  * {@code eliminar} y {@code contarOcurrencias}): esos sí dependen del tipo y por eso usan
  * {@code equals()}.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio10_ListaGenerica {
@@ -957,22 +957,4 @@ class Alumno {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio10_ListaGenerica.java -d /tmp/v5/ej10
-Ejecución:   java -cp /tmp/v5/ej10 Ejercicio10_ListaGenerica
-Todos los casos están cableados en main(): el programa no lee entrada por consola,
-así que cada caso se verifica leyendo el bloque correspondiente de la salida.
 
-ID    | Objetivo                                         | Entrada exacta                                  | Resultado esperado                                   | Criterio de aprobación
-------+--------------------------------------------------+-------------------------------------------------+------------------------------------------------------+------------------------------------------------
-CP-01 | Flujo nominal con tres tipos de dato            | main(): listas de Integer, String y Alumno      | Las tres ejecutan insertar, buscar, eliminar,        | Bloques 1, 2 y 3 terminan con sus listas
-      |                                                  |                                                 | contarOcurrencias e invertir sin excepciones         | invertidas y todas las líneas "[consistente]"
-CP-02 | Lista vacía de cualquier tipo                   | ListaEnlazada<Alumno> sin inserciones           | estaVacia() = true, buscar(null) = false,            | Bloque 5 imprime esos valores y el mensaje de
-      |                                                  |                                                 | obtener(0) lanza IndexOutOfBoundsException           | la excepción, sin cortar el programa
-CP-03 | Primer nodo: eliminar por valor mueve head      | lista de Alumno; eliminar(Alumno("Ana", 101))   | true y la cadena arranca en Alumno(Beto, 102)        | Bloque 3: el estado posterior no contiene a Ana
-CP-04 | Último nodo: buscar el dato del final           | ListaEnlazada<String>; obtener(3) sobre         | Devuelve "carla" sin lanzar excepción                | Bloque 2 imprime "obtener(3) = carla"
-      |                                                  | ana,beto,ana,carla                              |                                                      |
-CP-05 | Identidad contra contenido y posición inválida  | new String("ana") dos veces; obtener(size)      | == da false, equals() da true, buscar(segunda) da    | Bloque 4 imprime false/true/true y el bloque 1
-      |                                                  | sobre la lista de Integer                       | true; obtener(size) lanza la excepción de rango      | muestra el mensaje de IndexOutOfBoundsException
-*/
