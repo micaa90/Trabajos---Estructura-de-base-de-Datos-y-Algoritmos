@@ -25,7 +25,7 @@
  *
  * Complejidad: O(1) mejor caso, O(log n) peor caso y promedio; O(1) espacial (versión iterativa).
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio03_BusquedaBinaria {
@@ -275,17 +275,4 @@ public class Ejercicio03_BusquedaBinaria {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio03_BusquedaBinaria.java -d /tmp/v1
-Ejecución:   java -cp /tmp/v1 Ejercicio03_BusquedaBinaria
-Todos los casos ya están cableados en main(); no se lee entrada por consola.
 
-ID    | Objetivo                                      | Entrada exacta                                 | Resultado esperado                                       | Criterio de aprobación
-------+-----------------------------------------------+------------------------------------------------+----------------------------------------------------------+--------------------------------------------------------
-CP-01 | Flujo nominal: valor presente                 | {2,5,8,12,16,23,38,56,72,91}, valor 23         | índice 5 en 3 iteraciones, con los pasos impresos        | Termina en "-> OK" e Iteraciones = 3 con 3 líneas "iter"
-CP-02 | Valor límite: primer y último elemento        | mismo vector, valores 2 y 91                   | índices 0 y 9 respectivamente                            | Ambos casos terminan en "-> OK"
-CP-03 | Error de rango: valor fuera de los extremos   | mismo vector, valores -1 y 100                 | -1 en ambos, sin excepción ni índice inválido            | Ambos terminan en "-> OK" y no hay stack trace
-CP-04 | Entrada vacía                                 | new int[0], valor 5                            | -1 con 0 iteraciones (el while no entra)                 | Termina en "-> OK" e Iteraciones = 0
-CP-05 | Entrada nula (validación)                     | null, valor 5                                  | IllegalArgumentException "El vector no puede ser nulo."  | Se imprime el mensaje de la excepción y "-> OK"
-*/
