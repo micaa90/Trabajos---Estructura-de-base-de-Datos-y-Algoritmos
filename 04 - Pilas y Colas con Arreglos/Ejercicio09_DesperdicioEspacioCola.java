@@ -93,7 +93,7 @@
  * clasificado después de cada operación, y termina intentando el enqueue que la cola rechaza
  * teniendo posiciones libres.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio09_DesperdicioEspacioCola {
@@ -477,29 +477,4 @@ class ColaSimpleInstrumentada {
     }
 }
 
-/*
- * ============================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * ============================================================================
- * Compilación: javac Ejercicio09_DesperdicioEspacioCola.java -d /tmp/v4
- * Ejecución:   java -cp /tmp/v4 Ejercicio09_DesperdicioEspacioCola
- * Todos los casos están cableados en main(); el programa no lee entrada por consola.
- * La SALIDA del programa es la demostración: cada caso se verifica leyendo la consola.
- *
- * ID    | Objetivo                          | Entrada exacta                              | Resultado esperado                                                      | Criterio de aprobación
- * ------+-----------------------------------+---------------------------------------------+-------------------------------------------------------------------------+-----------------------------------------------------------
- * CP-01 | Flujo nominal de la secuencia que | new ColaSimpleInstrumentada(5); enqueue(10),| los dequeue devuelven 10 y 20; después del paso 7 queda front = 2,      | "dequeue() -> 10" y "dequeue() -> 20"; el estado del paso
- *       | expone el defecto                 | enqueue(20), enqueue(30), dequeue(),        | rear = 4, size = 3 y las posiciones 0 y 1 clasificadas LIBRE            | 7 muestra front = 2, rear = 4, size = 3
- *       |                                   | dequeue(), enqueue(40), enqueue(50)         | INUTILIZABLE                                                            |
- * CP-02 | Estructura vacía: clasificación   | cola recién creada (paso 0)                 | front = 0, rear = -1, size = 0, isEmpty = true, isFull = false y las 5  | El paso 0 clasifica las 5 posiciones como LIBRE
- *       | inicial                           |                                             | posiciones clasificadas LIBRE DISPONIBLE                                | DISPONIBLE y muestra rear = -1
- * CP-03 | El falso positivo de isFull:      | el estado alcanzado tras el paso 7          | isFull() = true con size = 3 sobre capacidad 5, y el mensaje            | Aparece ">>> La cola reporta LLENA pero hay 2 posiciones
- *       | LLENA con posiciones libres       |                                             | ">>> La cola reporta LLENA pero hay 2 posiciones libres al inicio"      | libres al inicio" junto con "isFull()  = true" y
- *       |                                   |                                             | y "Se está usando el 60% del arreglo"                                   | "size()    = 3 elementos"
- * CP-04 | Error forzado: enqueue sobre la   | enqueue(60) sobre el estado del paso 7      | IllegalStateException "La cola está LLENA según rear (rear = 4, último  | Se imprime el mensaje de la excepción y el estado posterior
- *       | cola "llena" con huecos libres    |                                             | índice 4), aunque hay 2 posición(es) libre(s) al inicio."               | sigue mostrando front = 2, rear = 4, size = 3
- * CP-05 | Peor caso: el arreglo entero      | vaciar la cola con dequeue sucesivos y      | las 5 posiciones quedan LIBRE INUTILIZABLE con isEmpty = true e        | "isEmpty() = true e isFull() = true AL MISMO TIEMPO." y la
- *       | queda inutilizable                | luego enqueue(70)                           | isFull = true a la vez; el enqueue(70) lanza IllegalStateException con  | excepción de enqueue(70) informando 5 posiciones libres
- *       |                                   |                                             | 5 posiciones libres al inicio                                           | al inicio; el programa llega al "=== Fin de la demostración ==="
- * ============================================================================
- */
+
