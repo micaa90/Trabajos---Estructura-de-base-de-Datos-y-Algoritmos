@@ -76,7 +76,7 @@ O(n) espacial por los n marcos de la pila de llamadas.
  * <p>El método tiene un modo verboso que imprime iteración por iteración el valor de las tres
  * referencias y el estado de los enlaces ya invertidos.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio09_InvertirLista {
@@ -998,18 +998,4 @@ class ListaEnlazada {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio09_InvertirLista.java -d /tmp/v5/ej09
-Ejecución:   java -cp /tmp/v5/ej09 Ejercicio09_InvertirLista
-Todos los casos están cableados en main(): el programa no lee entrada por consola,
-así que cada caso se verifica leyendo el bloque correspondiente de la salida.
 
-ID    | Objetivo                                         | Entrada exacta                                  | Resultado esperado                                   | Criterio de aprobación
-------+--------------------------------------------------+-------------------------------------------------+------------------------------------------------------+------------------------------------------------
-CP-01 | Flujo nominal: invertir la lista del enunciado  | lista 10,20,30,40; invertir(true)               | "40 -> 30 -> 20 -> 10 -> null" con size = 4          | Bloque 4 termina en "OK"
-CP-02 | Lista vacía: el ciclo no se ejecuta             | lista sin inserciones; invertir()               | Sigue en "null" con size = 0                         | Bloque 1 no lanza excepción y el recuento da 0
-CP-03 | Primer nodo: lista de un solo elemento          | lista 10; invertir(true)                        | "10 -> null" con size = 1, una sola iteración        | Bloque 2 imprime exactamente una iteración
-CP-04 | Último nodo: el viejo primero queda al final    | lista 10,20; invertir(true)                     | "20 -> 10 -> null" y el 10 apunta a null             | Bloque 3: la cadena final termina en "10 -> null"
-CP-05 | Idempotencia doble y ausencia de ciclos         | lista 10,20,30,40; invertir() dos veces         | Vuelve a "10 -> 20 -> 30 -> 40 -> null"              | Bloque 5 termina en "OK" y el programa no se cuelga
-*/
