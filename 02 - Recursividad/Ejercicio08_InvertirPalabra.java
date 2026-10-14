@@ -57,7 +57,7 @@
  * después pegar esa primera letra al final. La parte "invertir todo menos la primera letra" es
  * el mismo problema sobre una cadena más corta, y por eso admite solución recursiva.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio08_InvertirPalabra {
@@ -194,7 +194,7 @@ public class Ejercicio08_InvertirPalabra {
 
 /*
  * =====================================================================================
- * AJUSTES REALIZADOS AL PROMPT (requerido por la consigna general del práctico)
+ * AJUSTES REALIZADOS AL PROMPT 
  * =====================================================================================
  * Cambio 1: se agregó "por qué esta solución tiene complejidad espacial mayor a O(n)".
  *   Motivo: la primera respuesta declaraba O(n) espacial contando únicamente los marcos de la
@@ -215,47 +215,4 @@ public class Ejercicio08_InvertirPalabra {
  * =====================================================================================
  */
 
-/*
- * =====================================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * Compilar: javac Ejercicio08_InvertirPalabra.java -d /tmp/r2
- * Ejecutar: java -cp /tmp/r2 Ejercicio08_InvertirPalabra
- * =====================================================================================
- * ID    | CP-08-01
- * Obj.  | Verificar el flujo nominal con una palabra de longitud impar y otra de longitud par.
- * Entr. | invertir("algoritmo") e invertir("java") — ya incluidos en el main.
- * Esper.| "original = "algoritmo" | obtenido = "omtirogla" | esperado = "omtirogla" | OK" y
- *       | "original = "java" | obtenido = "avaj" | esperado = "avaj" | OK".
- * Crit. | Aprueba si ambas invierten carácter por carácter y la longitud se conserva.
- * -------------------------------------------------------------------------------------
- * ID    | CP-08-02
- * Obj.  | Verificar el caso base de un solo carácter y el de una palabra ya simétrica, donde
- *       | la inversión es indistinguible del original.
- * Entr. | invertir("a") e invertir("ana") — ya incluidos en el main.
- * Esper.| Devuelven "a" y "ana" respectivamente, iguales a su esperado, OK.
- * Crit. | Aprueba si "a" no ejecuta ninguna llamada recursiva y "ana" devuelve "ana" tras
- *       | recorrer sus tres niveles (coincidir con el original no es saltarse la recursión).
- * -------------------------------------------------------------------------------------
- * ID    | CP-08-03
- * Obj.  | Verificar la frontera del caso base: la cadena más corta que obliga a recursar.
- * Entr. | invertir("ab") — ya incluido en el main.
- * Esper.| Línea "original = "ab" | obtenido = "ba" | esperado = "ba" | OK".
- * Crit. | Aprueba si devuelve "ba" usando exactamente dos niveles de pila: "ab" y "b".
- * -------------------------------------------------------------------------------------
- * ID    | CP-08-04
- * Obj.  | Cubrir la entrada vacía, que es un valor válido del dominio y el caso base extremo.
- * Entr. | invertir("") — ya incluido en el main.
- * Esper.| Línea "original = "" | obtenido = "" | esperado = "" | OK".
- * Crit. | Aprueba si devuelve la cadena vacía sin recursar y sin lanzar excepción.
- * -------------------------------------------------------------------------------------
- * ID    | CP-08-05
- * Obj.  | Forzar los dos errores validados: la entrada nula y la cadena que excede la
- *       | profundidad de recursión segura.
- * Entr. | invertir(null) e invertir("x".repeat(10001)) — ya incluidos vía probarError.
- * Esper.| "invertir(null) | esperado = IllegalArgumentException | obtenido = No se admite
- *       | null: ... | OK" y "cadena de 10001 caracteres | ... excede el máximo de recursión
- *       | segura (10000) ... | OK".
- * Crit. | Aprueba si las dos lanzan IllegalArgumentException, se capturan y el programa
- *       | termina normalmente, sin NullPointerException ni StackOverflowError.
- * =====================================================================================
- */
+
