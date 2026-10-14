@@ -75,7 +75,7 @@
  * vacía, cola llena, dequeue y front sobre cola vacía, vaciado total, capacidad 1 y
  * capacidad negativa.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio06_ColaEnteros {
@@ -491,28 +491,3 @@ class ColaEnteros {
     }
 }
 
-/*
- * ============================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * ============================================================================
- * Compilación: javac Ejercicio06_ColaEnteros.java -d /tmp/v4
- * Ejecución:   java -cp /tmp/v4 Ejercicio06_ColaEnteros
- * Todos los casos están cableados en main(); el programa no lee entrada por consola.
- *
- * ID    | Objetivo                          | Entrada exacta                              | Resultado esperado                                                      | Criterio de aprobación
- * ------+-----------------------------------+---------------------------------------------+-------------------------------------------------------------------------+-----------------------------------------------------------
- * CP-01 | Flujo nominal FIFO                | new ColaEnteros(5); enqueue(10), enqueue(20),| los dequeue devuelven 10 y 20 (orden de llegada) y front() devuelve 30; | "dequeue() -> 10", "dequeue() -> 20", "front() -> 30" y
- *       |                                   | enqueue(30), dequeue(), dequeue(),           | el 40 entra en la posición 3, no en los huecos 0 y 1                    | front = 2 / rear = 3 en imprimirEstado()
- *       |                                   | enqueue(40), front()                         |                                                                         |
- * CP-02 | Estructura vacía: consultas        | cola recién construida ColaEnteros(5)       | front = 0, rear = -1, size = 0, isEmpty = true, vista FIFO "(vacía)"    | La primera impresión de estado muestra front = 0, rear = -1
- *       |                                   |                                             |                                                                         | y size = 0
- * CP-03 | Estructura llena con huecos       | sobre la cola de CP-01, enqueue(50)         | isFull = true y size = 3 sobre capacidad 5: hay 2 posiciones libres al  | "isFull() -> true" con size = 3 y el mensaje
- *       | (el defecto del ej. 9)            |                                             | inicio marcadas <F que no se pueden reutilizar                          | "sobran 2 posiciones libres al inicio"
- * CP-04 | Error forzado: enqueue en llena   | sobre la cola de CP-03, enqueue(60)         | IllegalStateException "Desbordamiento: la cola está llena (rear = 4,    | Se imprime el mensaje de la excepción y el estado queda
- *       |                                   |                                             | capacidad 5)."                                                          | intacto (front = 2, rear = 4, size = 3)
- * CP-05 | Error forzado: dequeue/front en   | vaciar la cola con dequeue sucesivos y      | IllegalStateException "Subdesbordamiento: la cola está vacía." y "La    | Se imprimen los dos mensajes, la cola de capacidad 1
- *       | vacía, y capacidad 1              | luego dequeue() y front(); después          | cola está vacía: no hay frente para consultar."; la cola de capacidad 1 | queda isEmpty = true e isFull = true, y el programa llega
- *       |                                   | ColaEnteros(1) con enqueue(7), dequeue(),   | queda vacía y llena a la vez y rechaza el enqueue(8)                    | a "=== Fin de la demostración ==="
- *       |                                   | enqueue(8)                                   |                                                                         |
- * ============================================================================
- */
