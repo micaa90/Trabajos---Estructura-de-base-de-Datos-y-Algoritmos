@@ -83,7 +83,7 @@
  * cola llena, documento de 0 páginas, dos documentos con el mismo nombre, páginas negativas e
  * impresión con la cola vacía.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio08_ColaDeImpresion {
@@ -563,31 +563,3 @@ class ColaDeImpresion {
     }
 }
 
-/*
- * ============================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * ============================================================================
- * Compilación: javac Ejercicio08_ColaDeImpresion.java -d /tmp/v4
- * Ejecución:   java -cp /tmp/v4 Ejercicio08_ColaDeImpresion
- * Todos los casos están cableados en main(); el programa no lee entrada por consola.
- *
- * ID    | Objetivo                          | Entrada exacta                              | Resultado esperado                                                      | Criterio de aprobación
- * ------+-----------------------------------+---------------------------------------------+-------------------------------------------------------------------------+-----------------------------------------------------------
- * CP-01 | Flujo nominal: el orden de        | new ColaDeImpresion(6); agregarDocumento    | consultarSiguiente() devuelve "Tesis_Final.pdf (120 pág.)" y el total   | "consultarSiguiente() -> Tesis_Final.pdf (120 pág.)" y
- *       | impresión es el orden de envío,   | ("Tesis_Final.pdf",120), ("Recibo_Sueldo    | pendiente es 139 páginas; la tesis de 120 páginas sale ANTES del        | "totalPaginasPendientes() -> 139 páginas"; al procesar,
- *       | sin importar las páginas          | .pdf",1), ("Apunte_Pilas.pdf",15),          | recibo de 1 página porque se envió primero                              | la primera línea IMPRIMIENDO es Tesis_Final.pdf
- *       |                                   | ("Planilla_Notas.xlsx",3)                   |                                                                         |
- * CP-02 | Estructura vacía y valores en el  | cola recién construida; documento de 0      | "(sin trabajos pendientes) | 0 páginas pendientes" al inicio;           | La primera imprimirCola() muestra "(sin trabajos
- *       | límite (0 páginas, nombre         | páginas; segundo documento llamado          | Portada_Vacia.pdf (0 pág.) y el segundo Recibo_Sueldo.pdf (2 pág.) se  | pendientes)" y los dos documentos límite aparecen
- *       | repetido)                         | "Recibo_Sueldo.pdf" con 2 páginas           | aceptan sin error y conviven en la cola                                 | encolados en las posiciones 4 y 5
- * CP-03 | Estructura llena                  | con los 6 trabajos cargados,                | colaLlena = true con pendientes = 6/6 y rear = 5                        | "colaLlena() -> true | pendientes = 6/6"
- *       |                                   | agregarDocumento("Informe_Tarde.docx",8)    |                                                                         |
- * CP-04 | Error forzado: cola llena y       | agregarDocumento("Informe_Tarde.docx",8)    | IllegalStateException "La cola de impresión está llena (capacidad 6):   | Se imprimen los tres mensajes de excepción y la cola
- *       | datos inválidos                   | con la cola llena; (..., -3); (null, 5)     | Informe_Tarde.docx se rechaza." e IllegalArgumentException "La cantidad | sigue con los mismos 6 trabajos
- *       |                                   |                                             | de páginas no puede ser negativa: -3" y "El nombre del documento no     |
- *       |                                   |                                             | puede estar vacío."                                                      |
- * CP-05 | Error forzado: imprimir y         | procesar los 6 trabajos y luego             | IllegalStateException "No hay trabajos pendientes: la cola de impresión | Las 6 líneas IMPRIMIENDO salen en el orden de envío, el
- *       | consultar con la cola vacía       | imprimirSiguiente() y consultarSiguiente()  | está vacía." en las dos llamadas; total impreso = 141 páginas           | total impreso es 141 y se imprimen los dos mensajes de
- *       |                                   |                                             |                                                                         | excepción antes de "=== Fin de la demostración ==="
- * ============================================================================
- */
