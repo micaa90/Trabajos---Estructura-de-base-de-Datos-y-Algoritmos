@@ -1,0 +1,1015 @@
+/*
+=====================================================================================
+Práctico 5 - Listas Enlazadas Simples. Ejercicio 9: Invertir una lista enlazada simple
+=====================================================================================
+
+Prompt inicial utilizado:
+
+  "Analizá el diseño del método void invertir() sobre una lista enlazada simple, que debe
+  transformar 10 -> 20 -> 30 -> 40 -> null en 40 -> 30 -> 20 -> 10 -> null.
+  El punto central: explicá QUÉ REFERENCIAS AUXILIARES HACEN FALTA PARA INVERTIR LA LISTA SIN
+  PERDER NODOS (por ejemplo anterior, actual y siguiente) y POR QUÉ EL ORDEN DE ACTUALIZACIÓN
+  DE REFERENCIAS ES FUNDAMENTAL. Desarrollá:
+  - la idea general: invertir una lista enlazada no significa mover los datos de lugar, sino
+    DAR VUELTA EL SENTIDO DE CADA ENLACE. Aclará esto primero;
+  - por qué hacen falta exactamente TRES referencias y qué rol cumple cada una:
+    * anterior: el nodo que ya quedó invertido, hacia el cual el actual debe apuntar ahora;
+    * actual: el nodo cuyo enlace se está dando vuelta en este paso;
+    * siguiente: un RESCATE del nodo que viene, porque al reescribir actual.siguiente se
+      destruye la única referencia que existía hacia el resto de la lista;
+  - por qué sin la referencia siguiente la lista se parte irremediablemente: en el momento en
+    que se hace actual.setSiguiente(anterior), el resto de la lista queda inalcanzable. Guardarlo
+    ANTES es obligatorio. Desarrollá este punto con todo detalle, es el corazón del ejercicio;
+  - el orden exacto de las cuatro operaciones dentro del ciclo y por qué ninguna puede adelantarse:
+    1) guardar siguiente = actual.getSiguiente();
+    2) dar vuelta el enlace: actual.setSiguiente(anterior);
+    3) avanzar anterior = actual;
+    4) avanzar actual = siguiente;
+  - cuáles son los valores iniciales de anterior (null) y actual (head), y por qué anterior
+    arranca en null: porque el primer nodo de la lista original pasa a ser el ÚLTIMO de la
+    invertida, y por lo tanto su siguiente debe ser null;
+  - por qué al terminar el ciclo hay que hacer head = anterior y no head = actual (actual quedó
+    en null);
+  - el invariante del ciclo: la porción ya procesada está invertida y la porción pendiente sigue
+    intacta;
+  - por qué la complejidad espacial es O(1) a pesar de usar tres variables, y cuál es la
+    complejidad temporal;
+  - mencioná que existe una versión recursiva y qué complejidad espacial tendría.
+  Casos límite: lista vacía, lista de un solo elemento, lista de dos elementos, invertir dos
+  veces (debe volver al estado original).
+  No escribas la implementación."
+
+Ajustes realizados luego de la primera respuesta de OpenCode:
+
+1) La primera respuesta resolvía la inversión copiando los datos a un arreglo auxiliar y
+    volviéndolos a escribir al revés. Se descartó por dos motivos: usa una estructura
+    prohibida por la consigna y su complejidad espacial es O(n). Se pasó a la versión
+    iterativa con tres referencias, que es O(1) espacial y da vuelta los ENLACES en lugar
+    de mover los datos.
+ 2) La primera versión del ciclo hacía actual.setSiguiente(anterior) antes de guardar la
+    referencia al nodo siguiente, con lo cual perdía el resto de la lista y oscilaba entre
+    dos nodos sin alcanzar null nunca. Se corrigió el orden de las cuatro operaciones y se
+    dejó el escenario documentado en el código.
+ 3) Se agregó el modo verboso invertir(boolean) que imprime en cada iteración las tres
+    referencias y el estado de la porción ya invertida y de la pendiente, y se agregó al
+    main la doble inversión para verificar que la lista vuelve al estado original.
+
+Estrategia: recorrido único dando vuelta el sentido de cada enlace con tres referencias (anterior, actual, siguiente) y reasignación final de head al último nodo procesado.
+
+Complejidad temporal de invertir: O(n) — una iteración por nodo, con cuatro asignaciones
+de costo constante en cada una.
+Complejidad espacial: O(1) — tres referencias y un contador, sin importar cuántos nodos
+tenga la lista. No se usa arreglo auxiliar ni segunda lista. Una versión recursiva sería
+O(n) espacial por los n marcos de la pila de llamadas.
+=====================================================================================
+*/
+
+/**
+ * Ejercicio 9 del Práctico 5 (Listas Enlazadas Simples): inversión en el lugar de una lista
+ * enlazada simple.
+ *
+ * <p>El eje del ejercicio son las tres referencias auxiliares ({@code anterior},
+ * {@code actual} y {@code siguiente}) y el orden de las cuatro operaciones del ciclo: hay que
+ * RESCATAR la referencia al resto de la lista antes de reescribir el enlace, porque es la
+ * única que existe.</p>
+ *
+ * <p>El método tiene un modo verboso que imprime iteración por iteración el valor de las tres
+ * referencias y el estado de los enlaces ya invertidos.</p>
+ *
+ * @author Estudiante
+ * @version 1.0
+ */
+public class Ejercicio09_InvertirLista {
+
+    /**
+     * Método principal: ejecuta las pruebas manuales del ejercicio.
+     *
+     * @param args argumentos de la línea de comandos (no se utilizan)
+     */
+    public static void main(String[] args) {
+        System.out.println("=== Práctico 5 - Ejercicio 9: invertir una lista enlazada simple ===");
+
+        System.out.println();
+        System.out.println("--- 1) Caso límite: lista vacía (el ciclo no se ejecuta) ---");
+        ListaEnlazada vacia = new ListaEnlazada();
+        mostrarEstado("Antes: ", vacia);
+        vacia.invertir();
+        mostrarEstado("Después:", vacia);
+        System.out.println("    actual arrancó en null, así que head = anterior = null: sigue vacía.");
+
+        System.out.println();
+        System.out.println("--- 2) Caso límite: un solo elemento ---");
+        ListaEnlazada unitaria = new ListaEnlazada();
+        unitaria.insertarAlFinal(10);
+        mostrarEstado("Antes: ", unitaria);
+        unitaria.invertir(true);
+        mostrarEstado("Después:", unitaria);
+        System.out.println("    Una única iteración: el 10 pasa de apuntar a null a apuntar a null.");
+
+        System.out.println();
+        System.out.println("--- 3) Caso límite: dos elementos (modo verboso) ---");
+        ListaEnlazada dos = new ListaEnlazada();
+        dos.insertarAlFinal(10);
+        dos.insertarAlFinal(20);
+        mostrarEstado("Antes: ", dos);
+        dos.invertir(true);
+        mostrarEstado("Después:", dos);
+
+        System.out.println();
+        System.out.println("--- 4) Lista del enunciado: 10 -> 20 -> 30 -> 40 -> null (modo verboso) ---");
+        ListaEnlazada lista = new ListaEnlazada();
+        lista.insertarAlFinal(10);
+        lista.insertarAlFinal(20);
+        lista.insertarAlFinal(30);
+        lista.insertarAlFinal(40);
+        mostrarEstado("Antes: ", lista);
+        lista.invertir(true);
+        mostrarEstado("Después:", lista);
+        System.out.println("Esperado 40 -> 30 -> 20 -> 10 -> null, obtenido " + lista.aCadena()
+                + ": " + ("40 -> 30 -> 20 -> 10 -> null".equals(lista.aCadena()) ? "OK" : "FALLA"));
+
+        System.out.println();
+        System.out.println("--- 5) Invertir DOS veces debe devolver la lista original ---");
+        ListaEnlazada doble = new ListaEnlazada();
+        doble.insertarAlFinal(10);
+        doble.insertarAlFinal(20);
+        doble.insertarAlFinal(30);
+        doble.insertarAlFinal(40);
+        String original = doble.aCadena();
+        mostrarEstado("Original: ", doble);
+        doble.invertir();
+        mostrarEstado("1ra inversión:", doble);
+        doble.invertir();
+        mostrarEstado("2da inversión:", doble);
+        System.out.println("Original era " + original + ", ahora es " + doble.aCadena()
+                + ": " + (original.equals(doble.aCadena()) ? "OK" : "FALLA"));
+        System.out.println("    Invertir es su propia inversa: dar vuelta dos veces cada enlace");
+        System.out.println("    lo deja como estaba, y ningún nodo se perdió en el proceso.");
+
+        System.out.println();
+        System.out.println("--- 6) Verificación de consistencia final ---");
+        System.out.println("Que contarNodosEnlazados() TERMINE ya demuestra que no quedó ningún ciclo:");
+        System.out.println("la cadena sigue acabando en null. Y su valor coincide con size, que invertir()");
+        System.out.println("no modifica porque la longitud de la lista no cambia.");
+        mostrarEstado("Lista del bloque 4:", lista);
+        mostrarEstado("Lista del bloque 5:", doble);
+    }
+
+    /**
+     * Imprime la lista con una etiqueta, el {@code size} declarado y el recuento real de
+     * nodos enlazados, marcando si ambos coinciden.
+     *
+     * Complejidad: O(n) por el recorrido de verificación.
+     *
+     * @param etiqueta texto que precede al estado
+     * @param lista    lista a mostrar
+     */
+    private static void mostrarEstado(String etiqueta, ListaEnlazada lista) {
+        int reales = lista.contarNodosEnlazados();
+        System.out.println(etiqueta + " " + lista.aCadena()
+                + "   | size = " + lista.getSize()
+                + " | nodos enlazados = " + reales
+                + (reales == lista.getSize() ? "  [consistente]" : "  [INCONSISTENTE]"));
+    }
+}
+
+/**
+ * Nodo de una lista enlazada simple de enteros: la unidad mínima de la estructura.
+ *
+ * <p>Un nodo tiene exactamente dos atributos, con roles completamente distintos:</p>
+ * <ul>
+ *   <li>{@code dato}: el CONTENIDO, el entero que la lista almacena.</li>
+ *   <li>{@code siguiente}: la ESTRUCTURA, una referencia al nodo que viene después. Es lo
+ *       único que mantiene la lista unida. Cada nodo conoce solamente al que le sigue, y la
+ *       dirección de un nodo sólo puede obtenerse preguntándosela al nodo anterior: de ahí
+ *       que el recorrido sea obligatoriamente secuencial.</li>
+ * </ul>
+ *
+ * <p>Que {@code siguiente} valga {@code null} significa que el nodo es el ÚLTIMO: no hay
+ * nadie más después. Por eso {@code null} funciona como marca de fin de recorrido.</p>
+ *
+ * <p>Se implementa como clase aparte (de paquete, no pública) y no como clase interna de
+ * {@code ListaEnlazada} para que cada clase tenga una sola responsabilidad: el nodo guarda
+ * un dato y un enlace, la lista coordina los enlaces. Va en este mismo archivo para que el
+ * ejercicio sea compilable y entregable por sí solo.</p>
+ */
+class Nodo {
+
+    /** Contenido del nodo. */
+    private int dato;
+
+    /** Referencia al nodo siguiente; {@code null} si este nodo es el último. */
+    private Nodo siguiente;
+
+    /**
+     * Crea un nodo suelto, todavía sin enlazar a ninguna lista.
+     *
+     * Complejidad: O(1).
+     *
+     * @param dato entero a almacenar
+     */
+    Nodo(int dato) {
+        this.dato = dato;
+        this.siguiente = null; // un nodo nuevo nace sin sucesor
+    }
+
+    /**
+     * Devuelve el contenido del nodo.
+     *
+     * Complejidad: O(1).
+     *
+     * @return el entero almacenado
+     */
+    int getDato() {
+        return dato;
+    }
+
+    /**
+     * Cambia el contenido del nodo. Operación NO estructural: no altera ningún enlace.
+     *
+     * Complejidad: O(1).
+     *
+     * @param dato nuevo entero a almacenar
+     */
+    void setDato(int dato) {
+        this.dato = dato;
+    }
+
+    /**
+     * Devuelve la referencia al nodo siguiente.
+     *
+     * Complejidad: O(1).
+     *
+     * @return el nodo siguiente, o {@code null} si este es el último
+     */
+    Nodo getSiguiente() {
+        return siguiente;
+    }
+
+    /**
+     * Cambia la referencia al nodo siguiente. Operación ESTRUCTURAL: reescribe un enlace,
+     * así que el orden en que se la invoca respecto de otras asignaciones es crítico.
+     *
+     * Complejidad: O(1).
+     *
+     * @param siguiente nodo que pasa a ser el sucesor, o {@code null} para marcar el final
+     */
+    void setSiguiente(Nodo siguiente) {
+        this.siguiente = siguiente;
+    }
+}
+
+/**
+ * Lista enlazada simple de números enteros, implementada desde cero: sin {@code ArrayList},
+ * sin {@code LinkedList}, sin arreglos y sin ninguna estructura de la librería de Java.
+ *
+ * <p>La estructura es una cadena de objetos {@code Nodo} dispersos en el Heap y unidos por
+ * referencias. {@code head} es el único punto de entrada y {@code null} marca el final.
+ * A diferencia de un arreglo, no hay memoria contigua ni acceso directo por índice: se gana
+ * inserción y eliminación en O(1) una vez localizado el punto de la operación, y se pierde
+ * el acceso O(1) por posición.</p>
+ *
+ * <p><b>Invariantes de la clase:</b></p>
+ * <ul>
+ *   <li>{@code head == null} si y sólo si la lista está vacía (y entonces {@code size == 0});</li>
+ *   <li>{@code size} es exactamente la cantidad de nodos alcanzables desde {@code head};</li>
+ *   <li>la cadena termina siempre en {@code null}: no hay ciclos;</li>
+ *   <li>cada nodo es alcanzable desde {@code head} por un único camino.</li>
+ * </ul>
+ *
+ * <p>Métodos disponibles en este ejercicio: insertarAlInicio, insertarAlFinal, imprimir, estaVacia, getSize, buscar, obtener, insertarEnPosicion, eliminar, eliminarEnPosicion, modificar, contarOcurrencias e invertir.</p>
+ */
+class ListaEnlazada {
+
+    /**
+     * Único punto de entrada a la estructura: referencia al PRIMER nodo.
+     *
+     * <p>Sin {@code head} la lista entera se vuelve inaccesible, porque los enlaces apuntan
+     * en un solo sentido y no existe ninguna otra forma de alcanzar al primer nodo (y, a
+     * través de él, a todos los demás). Que {@code head} sea {@code null} significa que la
+     * lista está vacía.</p>
+     */
+    private Nodo head;
+
+    /**
+     * Cantidad de nodos enlazados.
+     *
+     * <p>Se mantiene como atributo y se actualiza en TODA operación que cambia la longitud.
+     * Así {@code getSize()} cuesta O(1); recontar los nodos en cada consulta costaría O(n).
+     * El precio es la disciplina: si una operación se olvida de actualizarlo, las
+     * validaciones de posición empiezan a mentir.</p>
+     */
+    private int size;
+
+    /**
+     * Crea una lista vacía: todavía no hay primer nodo y la longitud es cero.
+     *
+     * Complejidad: O(1).
+     */
+    ListaEnlazada() {
+        this.head = null;
+        this.size = 0;
+    }
+
+    /**
+     * Nodos visitados por la última operación de recorrido ({@code buscar},
+     * {@code obtener} o {@code contarOcurrencias}).
+     *
+     * <p>No forma parte de la estructura de datos: es instrumentación para poder OBSERVAR
+     * el costo real del acceso secuencial desde el {@code main}.</p>
+     */
+    private int nodosVisitados;
+
+    /**
+     * Inserta un dato como PRIMER elemento de la lista.
+     *
+     * <p>Orden obligatorio de las dos asignaciones de referencias:</p>
+     * <ol>
+     *   <li>{@code nuevo.setSiguiente(head)}: el nodo nuevo queda conectado hacia adelante
+     *       con la lista que ya existía.</li>
+     *   <li>{@code head = nuevo}: recién ahora se mueve el punto de entrada.</li>
+     * </ol>
+     *
+     * <p><b>Qué pasaría con el orden invertido:</b> si primero se hiciera
+     * {@code head = nuevo}, se sobrescribiría la ÚNICA referencia que existía al viejo
+     * primer nodo sin haberla guardado en ninguna parte. Todo el resto de la lista quedaría
+     * inalcanzable (candidato para el Garbage Collector) y la asignación posterior
+     * {@code nuevo.setSiguiente(head)} haría que el nodo nuevo se apunte a sí mismo: un
+     * ciclo que dejaría a {@code imprimir()} dando vueltas para siempre.</p>
+     *
+     * Complejidad: O(1) temporal — no hay recorrido, sólo dos asignaciones. O(1) espacial.
+     *
+     * @param dato entero a almacenar en el nuevo primer nodo
+     */
+    void insertarAlInicio(int dato) {
+        Nodo nuevo = new Nodo(dato);
+        nuevo.setSiguiente(head); // 1) primero conectar el nodo nuevo hacia adelante
+        head = nuevo;             // 2) después mover el punto de entrada
+        size++;                   // la longitud cambió: hay que reflejarlo
+    }
+
+    /**
+     * Inserta un dato como ÚLTIMO elemento de la lista.
+     *
+     * <p>Caso especial, la lista vacía: no hay ningún nodo al que engancharse, así que el
+     * nodo nuevo pasa a ser también el primero y lo que hay que actualizar es {@code head}.
+     * En cualquier otro caso hay que RECORRER hasta el último nodo (el único que tiene
+     * {@code siguiente == null}), porque una lista simplemente enlazada no guarda ninguna
+     * referencia al final.</p>
+     *
+     * <p>Mantener un atributo {@code tail} volvería esta operación O(1), pero obligaría a
+     * actualizarlo en cada inserción y cada eliminación; no se usa acá porque la consigna
+     * pide la estructura mínima y el costo de mantenerlo consistente no se justifica.</p>
+     *
+     * Complejidad: O(n) temporal por el recorrido (O(1) sólo si la lista está vacía).
+     * O(1) espacial: una única referencia auxiliar.
+     *
+     * @param dato entero a almacenar en el nuevo último nodo
+     */
+    void insertarAlFinal(int dato) {
+        Nodo nuevo = new Nodo(dato);
+        if (head == null) { // caso especial: lista vacía, el nuevo nodo es también el primero
+            head = nuevo;
+        } else {
+            // El recorrido usa SIEMPRE una variable auxiliar: mover head perdería la lista.
+            Nodo actual = head;
+            while (actual.getSiguiente() != null) {
+                actual = actual.getSiguiente();
+            }
+            actual.setSiguiente(nuevo); // el viejo último ahora apunta al nodo nuevo
+        }
+        size++;
+    }
+
+    /**
+     * Valida una posición de INSERCIÓN, cuyo rango válido es {@code 0 .. size}.
+     *
+     * <p><b>Por qué acá el máximo es {@code size} y no {@code size - 1}:</b> insertar no
+     * requiere que ya exista un nodo en esa posición, sino que exista un LUGAR donde
+     * engancharse. El lugar número {@code size} es el hueco que queda después del último
+     * nodo, es decir "insertar al final", que es una operación perfectamente válida. En
+     * {@code obtener}, {@code modificar} y {@code eliminarEnPosicion} el nodo tiene que
+     * existir de antemano, y por eso ahí el máximo es {@code size - 1}.</p>
+     *
+     * Complejidad: O(1).
+     *
+     * @param posicion índice en base 0 donde se quiere insertar
+     * @throws IndexOutOfBoundsException si {@code posicion < 0} o {@code posicion > size}
+     */
+    private void validarPosicionDeInsercion(int posicion) {
+        if (posicion < 0) {
+            throw new IndexOutOfBoundsException("Posición inválida: " + posicion
+                    + ". Las posiciones son base 0 y nunca negativas.");
+        }
+        if (posicion > size) {
+            throw new IndexOutOfBoundsException("Posición inválida: " + posicion
+                    + ". Para insertar, la posición máxima válida es size = " + size
+                    + " (que significa insertar al final).");
+        }
+    }
+
+    /**
+     * Inserta un dato en una posición determinada, desplazando hacia atrás al nodo que
+     * estaba ahí. Admite insertar al inicio, en el medio y al final.
+     *
+     * <p><b>Por qué hay que llegar al nodo {@code posicion - 1} y no al {@code posicion}:</b>
+     * en una lista simplemente enlazada el nodo nuevo entra en la cadena porque ALGUIEN lo
+     * apunta, y ese alguien es el nodo anterior. El nodo que está en la posición destino no
+     * tiene ninguna manera de "hacerse lugar" a sí mismo.</p>
+     *
+     * <p><b>Caso especial, posición 0:</b> no existe un nodo anterior al primero, así que lo
+     * que hay que modificar es {@code head}. Se delega en {@code insertarAlInicio}.</p>
+     *
+     * <p>Orden correcto de actualización de referencias (y el corazón de este ejercicio):</p>
+     * <ol>
+     *   <li>{@code nuevo.setSiguiente(anterior.getSiguiente())} — conectar el nodo nuevo
+     *       hacia adelante, con el nodo que hasta ahora seguía a {@code anterior}.</li>
+     *   <li>{@code anterior.setSiguiente(nuevo)} — reconectar el nodo anterior hacia el
+     *       nodo nuevo.</li>
+     * </ol>
+     *
+     * Complejidad: O(1) para la posición 0; O(posicion) en el caso general, es decir O(n) en
+     * el peor caso (insertar al final). O(1) espacial.
+     *
+     * @param dato     entero a insertar
+     * @param posicion índice en base 0 donde quedará el dato, entre 0 y {@code size}
+     * @throws IndexOutOfBoundsException si {@code posicion < 0} o {@code posicion > size}
+     */
+    void insertarEnPosicion(int dato, int posicion) {
+        validarPosicionDeInsercion(posicion); // validar ANTES de recorrer y de crear enlaces
+
+        if (posicion == 0) {
+            // Caso especial: no hay nodo anterior; el punto de entrada es lo que cambia.
+            insertarAlInicio(dato);
+            return;
+        }
+
+        // Recorrido hasta el nodo anterior al destino (posicion - 1), con auxiliar.
+        Nodo anterior = head;
+        int indice = 0;
+        while (indice < posicion - 1) {
+            anterior = anterior.getSiguiente();
+            indice++;
+        }
+
+        Nodo nuevo = new Nodo(dato);
+
+        /*
+         * ORDEN DE LAS DOS ASIGNACIONES. Qué pasaría si se invirtieran:
+         *
+         *     anterior.setSiguiente(nuevo);                 // (mal) PRIMERO
+         *     nuevo.setSiguiente(anterior.getSiguiente());  // (mal) DESPUÉS
+         *
+         * La primera línea sobrescribe la única referencia que existía hacia el resto de la
+         * lista, así que anterior.getSiguiente() ya no devuelve el nodo que seguía: devuelve
+         * el nodo nuevo. Consecuencias:
+         *   1) el resto de la lista queda inalcanzable desde head (se pierde, y el Garbage
+         *      Collector puede recogerlo);
+         *   2) la segunda línea equivale a nuevo.setSiguiente(nuevo), es decir un nodo que
+         *      se apunta a sí mismo: un CICLO. A partir de ahí imprimir(), buscar() o
+         *      contarNodosEnlazados() no terminan nunca, porque nunca alcanzan null.
+         *
+         * El estado INTERMEDIO del orden correcto, en cambio, es seguro: después de la
+         * asignación 1) el nodo nuevo ya apunta al resto de la lista pero todavía nadie lo
+         * apunta a él; la lista sigue siendo exactamente la de antes y nada se perdió.
+         */
+        nuevo.setSiguiente(anterior.getSiguiente()); // 1) conectar hacia adelante
+        anterior.setSiguiente(nuevo);                // 2) reconectar hacia atrás
+
+        size++; // la longitud cambió
+    }
+
+    /**
+     * Indica si un dato está presente en la lista, recorriéndola desde {@code head}.
+     *
+     * <p><b>Por qué no se puede acceder directamente por índice:</b> en un arreglo los
+     * elementos ocupan memoria CONTIGUA, así que la dirección del elemento {@code i} se
+     * calcula con una cuenta ({@code base + i * tamaño}) y el acceso es O(1). En una lista
+     * enlazada los nodos están dispersos en el Heap y no hay ninguna fórmula que permita
+     * saltar: la dirección de un nodo la conoce únicamente el nodo anterior. Para llegar al
+     * nodo {@code i} hay que pasar obligatoriamente por los {@code i} anteriores, y eso es
+     * lo que hace que la búsqueda sea secuencial.</p>
+     *
+     * <p><b>Corolario:</b> por el mismo motivo NO se puede aplicar búsqueda binaria sobre
+     * una lista enlazada aunque esté ordenada. La búsqueda binaria necesita saltar al
+     * elemento del medio en O(1); acá llegar al medio ya cuesta O(n/2), con lo cual el
+     * supuesto ahorro desaparece.</p>
+     *
+     * <p>El recorrido avanza con una variable auxiliar de tipo {@code Nodo} y nunca con
+     * {@code head}: si se usara {@code head} como variable de recorrido, al terminar
+     * apuntaría a {@code null} y la lista entera quedaría inalcanzable.</p>
+     *
+     * <p>Hay dos condiciones de corte: encontrar el dato (éxito) o llegar a {@code null}
+     * (fin de la cadena, el dato no está).</p>
+     *
+     * Complejidad: O(1) en el mejor caso (dato en el primer nodo), O(n) en el peor (dato en
+     * el último o inexistente), O(n) en promedio ((n+1)/2 nodos visitados si está presente).
+     * O(1) espacial.
+     *
+     * @param dato entero buscado
+     * @return {@code true} si algún nodo contiene el dato, {@code false} si no
+     */
+    boolean buscar(int dato) {
+        nodosVisitados = 0;
+        Nodo actual = head; // auxiliar de recorrido: head no se mueve nunca
+        while (actual != null) { // corte 1: se llegó al final de la cadena
+            nodosVisitados++;
+            if (actual.getDato() == dato) {
+                return true; // corte 2: la existencia ya quedó demostrada, no hace falta más
+            }
+            actual = actual.getSiguiente();
+        }
+        return false;
+    }
+
+    /**
+     * Valida una posición que debe corresponder a un nodo EXISTENTE, es decir del rango
+     * {@code 0 .. size - 1} (indexación base 0). La usan {@code obtener},
+     * {@code modificar} y {@code eliminarEnPosicion}.
+     *
+     * <p><b>Por qué se lanza una excepción y no se devuelve un valor centinela:</b>
+     * {@code obtener} devuelve {@code int}, y cualquier número que se eligiera como
+     * centinela ({@code -1}, {@code Integer.MIN_VALUE}) es también un dato perfectamente
+     * válido para guardar en la lista. El llamador no podría distinguir "ahí no hay nodo" de
+     * "ahí hay un -1". La excepción, en cambio, viaja por un canal separado del valor de
+     * retorno y no puede confundirse con un dato.</p>
+     *
+     * <p>La validación se hace ANTES de recorrer: evita trabajo inútil y garantiza que la
+     * estructura nunca quede a medio modificar.</p>
+     *
+     * Complejidad: O(1) — sólo compara contra {@code size}, que se mantiene actualizado.
+     *
+     * @param posicion índice en base 0 que se quiere usar
+     * @throws IndexOutOfBoundsException si {@code posicion < 0} o {@code posicion >= size}
+     */
+    private void validarPosicionExistente(int posicion) {
+        if (posicion < 0) {
+            // Una posición negativa no podría encontrarse nunca: no existe sintácticamente.
+            throw new IndexOutOfBoundsException("Posición inválida: " + posicion
+                    + ". Las posiciones son base 0 y nunca negativas.");
+        }
+        if (posicion >= size) {
+            // Acá la posición sí es sintácticamente válida, pero no hay ningún nodo ahí.
+            String detalle = (size == 0)
+                    ? " (la lista está vacía: ninguna posición es válida)."
+                    : ", así que la última posición válida es " + (size - 1) + ".";
+            throw new IndexOutOfBoundsException("Posición inválida: " + posicion
+                    + ". La lista tiene size = " + size + detalle);
+        }
+    }
+
+    /**
+     * Devuelve el dato almacenado en una posición determinada (indexación base 0).
+     *
+     * <p><b>La trampa conceptual del método:</b> la firma se parece a la de un arreglo
+     * ({@code vector[i]}) y eso puede hacer creer que el costo es el mismo. No lo es:
+     * adentro hay un RECORRIDO nodo por nodo. El arreglo resuelve el acceso en O(1) con una
+     * cuenta de direcciones; la lista enlazada necesita O(n) porque la única forma de
+     * conocer la dirección de un nodo es preguntándosela al anterior. Recorrer una lista
+     * entera con {@code obtener(i)} dentro de un {@code for} cuesta O(n²), mientras que el
+     * mismo bucle sobre un arreglo cuesta O(n).</p>
+     *
+     * Complejidad: O(1) en el mejor caso ({@code posicion == 0}), O(n) en el peor
+     * ({@code posicion == size - 1}), O(n) en promedio. O(1) espacial.
+     *
+     * @param posicion índice en base 0 del nodo cuyo dato se quiere leer
+     * @return el entero almacenado en esa posición
+     * @throws IndexOutOfBoundsException si {@code posicion < 0} o {@code posicion >= size}
+     */
+    int obtener(int posicion) {
+        validarPosicionExistente(posicion); // validar ANTES de recorrer
+
+        Nodo actual = head;
+        int indice = 0;
+        nodosVisitados = 1; // ya estamos parados sobre el nodo de la posición 0
+        while (indice < posicion) { // avanzar auxiliar y contador en paralelo
+            actual = actual.getSiguiente();
+            indice++;
+            nodosVisitados++;
+        }
+        return actual.getDato();
+    }
+
+    /**
+     * Cambia el dato almacenado en una posición determinada, sin tocar ningún enlace.
+     *
+     * <p><b>Diferencia entre modificar el dato y modificar la referencia:</b> el dato es el
+     * CONTENIDO del nodo y la referencia {@code siguiente} es la ESTRUCTURA. Cambiar el dato
+     * es una operación LOCAL e inofensiva: la longitud, el orden de los nodos, los enlaces y
+     * {@code size} quedan exactamente igual, y por eso ningún invariante de la estructura
+     * puede romperse. Cambiar la referencia {@code siguiente}, en cambio, es una operación
+     * ESTRUCTURAL: puede reordenar la lista, dejar nodos inalcanzables, perder toda la cola
+     * de la cadena o crear un ciclo infinito.</p>
+     *
+     * <p>Justamente por eso este método NO toca ninguna referencia y NO modifica
+     * {@code size}: ninguna de las dos cosas cambia cuando sólo se reemplaza contenido.</p>
+     *
+     * <p>El recorrido es idéntico al de {@code obtener}: la única diferencia es que al
+     * llegar se escribe en lugar de leer.</p>
+     *
+     * Complejidad: O(1) en el mejor caso, O(n) en el peor, O(n) en promedio. O(1) espacial.
+     *
+     * @param posicion  índice en base 0 del nodo a modificar
+     * @param nuevoDato entero que reemplaza al contenido anterior
+     * @throws IndexOutOfBoundsException si {@code posicion < 0} o {@code posicion >= size}
+     */
+    void modificar(int posicion, int nuevoDato) {
+        validarPosicionExistente(posicion); // validar ANTES de recorrer
+
+        Nodo actual = head;
+        int indice = 0;
+        while (indice < posicion) {
+            actual = actual.getSiguiente();
+            indice++;
+        }
+
+        // Única escritura del método: sólo CONTENIDO. No se toca siguiente ni size.
+        actual.setDato(nuevoDato);
+    }
+
+    /**
+     * Cuenta cuántas veces aparece un dato en la lista, recorriéndola COMPLETA.
+     *
+     * <p><b>Por qué no se corta el recorrido en la primera coincidencia:</b> hay que
+     * distinguir dos clases de problema. {@code buscar} responde "¿existe?", y una sola
+     * coincidencia ya determina la respuesta definitiva, así que cortar es correcto y además
+     * conveniente. {@code contarOcurrencias} responde "¿cuántas veces?", y una coincidencia
+     * no determina nada sobre el resto de la lista: podría haber más adelante. Cortar en la
+     * primera daría como máximo 1, que es un resultado incorrecto.</p>
+     *
+     * <p>La regla general: los problemas de EXISTENCIA admiten corte anticipado; los
+     * problemas de AGREGACIÓN (contar, sumar, promediar, buscar el máximo) exigen recorrido
+     * completo. De ahí que acá el mejor caso y el peor caso coincidan en O(n), y que la única
+     * condición de corte sea llegar a {@code null}.</p>
+     *
+     * <p>Invariante del contador: al terminar de procesar el nodo {@code k}, el contador vale
+     * exactamente la cantidad de apariciones del dato entre los nodos {@code 0..k}.</p>
+     *
+     * Complejidad: O(n) siempre, mejor caso = peor caso = promedio. O(1) espacial.
+     *
+     * @param dato entero cuyas apariciones se cuentan
+     * @return cantidad de nodos que contienen ese dato; 0 si no aparece o la lista está vacía
+     */
+    int contarOcurrencias(int dato) {
+        nodosVisitados = 0;
+        int ocurrencias = 0;
+        Nodo actual = head;
+        while (actual != null) { // única condición de corte: el final de la cadena
+            nodosVisitados++;
+            if (actual.getDato() == dato) {
+                ocurrencias++; // se sigue recorriendo: puede haber más apariciones
+            }
+            actual = actual.getSiguiente();
+        }
+        return ocurrencias;
+    }
+
+    /**
+     * Elimina la PRIMERA aparición de un dato en la lista.
+     *
+     * <p><b>Qué significa "eliminar" en Java:</b> no se libera memoria a mano ni se destruye
+     * el objeto. Lo único que se hace es REDIRIGIR la referencia del nodo anterior para que
+     * apunte al siguiente del eliminado, salteándolo. A partir de ese momento el nodo
+     * eliminado ya no es alcanzable desde {@code head}, y un objeto inalcanzable es
+     * candidato a ser recogido por el GARBAGE COLLECTOR, en algún momento que el programa no
+     * controla ni puede observar. En C habría que llamar explícitamente a {@code free()} y
+     * olvidarse produciría una fuga de memoria; acá el riesgo opuesto es dejar sin querer
+     * una referencia viva, que impediría la recolección.</p>
+     *
+     * <p>Por eso igualmente se pone en {@code null} la referencia {@code siguiente} del nodo
+     * eliminado: si alguien todavía conservara una referencia a ese nodo, a través de él
+     * mantendría vivo todo el resto de la cadena.</p>
+     *
+     * <p><b>Por qué hace falta conocer el nodo ANTERIOR:</b> un nodo no puede desconectarse a
+     * sí mismo, porque en una lista simplemente enlazada no tiene forma de llegar a su
+     * predecesor. De ahí el recorrido con dos referencias ({@code anterior} y {@code actual}).
+     * En una lista DOBLEMENTE enlazada esto no sería necesario: cada nodo conoce a su
+     * anterior.</p>
+     *
+     * <p>Casos tratados: lista vacía, primer nodo (caso especial, hay que mover
+     * {@code head}), nodo del medio, último nodo (el nuevo último hereda el {@code null}) y
+     * dato inexistente. Si el dato está repetido sólo se elimina la primera aparición.</p>
+     *
+     * Complejidad: O(1) si el dato está en el primer nodo, O(n) en el peor caso (último nodo
+     * o dato inexistente). O(1) espacial.
+     *
+     * @param dato entero cuya primera aparición se quiere eliminar
+     * @return {@code true} si se eliminó un nodo, {@code false} si el dato no estaba
+     */
+    boolean eliminar(int dato) {
+        if (head == null) { // CASO lista vacía: no hay nada que eliminar
+            return false;
+        }
+
+        if (head.getDato() == dato) { // CASO primer nodo: el caso especial, cambia head
+            Nodo eliminado = head;
+            head = head.getSiguiente(); // el punto de entrada pasa al segundo nodo
+            eliminado.setSiguiente(null); // el nodo desconectado no debe retener la cadena
+            size--;
+            return true;
+        }
+
+        // Recorrido con dos referencias: hay que llegar al ANTERIOR del nodo buscado.
+        Nodo anterior = head;
+        Nodo actual = head.getSiguiente();
+        while (actual != null) {
+            if (actual.getDato() == dato) { // CASO nodo del medio o CASO último nodo
+                // Si actual era el último, getSiguiente() es null y el nuevo último lo hereda.
+                anterior.setSiguiente(actual.getSiguiente());
+                actual.setSiguiente(null); // queda inalcanzable: trabajo del Garbage Collector
+                size--;
+                return true;
+            }
+            anterior = actual;
+            actual = actual.getSiguiente();
+        }
+
+        return false; // CASO dato inexistente: se recorrió todo sin encontrarlo
+    }
+
+    /**
+     * Elimina el nodo que está en una posición determinada (indexación base 0).
+     *
+     * <p><b>Por qué se localiza el nodo {@code posicion - 1} y no el {@code posicion}:</b>
+     * eliminar un nodo consiste en modificar la referencia del nodo ANTERIOR, y un nodo no
+     * puede desconectarse a sí mismo en una lista simplemente enlazada. La asignación que
+     * realiza la eliminación es el DOBLE SALTO
+     * {@code anterior.setSiguiente(anterior.getSiguiente().getSiguiente())}: el anterior deja
+     * de apuntar a su sucesor inmediato y pasa a apuntar al sucesor de su sucesor, salteando
+     * un nodo de la cadena.</p>
+     *
+     * <p>Antes de reconectar se guarda una referencia al nodo a eliminar, porque después del
+     * doble salto ya no habría manera de alcanzarlo para ponerle {@code siguiente} en
+     * {@code null}.</p>
+     *
+     * <p><b>Caso especial, posición 0:</b> no existe un nodo anterior, así que lo que hay que
+     * modificar es {@code head}.</p>
+     *
+     * <p><b>Rango válido:</b> acá la posición máxima es {@code size - 1}, porque el nodo debe
+     * EXISTIR. En {@code insertarEnPosicion} el máximo era {@code size}, porque ahí sólo se
+     * necesita un lugar donde engancharse. Si {@code size} no se actualizara en esta
+     * operación, {@code obtener} e {@code insertarEnPosicion} empezarían a validar contra una
+     * longitud que ya no es la real.</p>
+     *
+     * Complejidad: O(1) para la posición 0; O(posicion) en el caso general, O(n) en el peor.
+     * O(1) espacial.
+     *
+     * @param posicion índice en base 0 del nodo a eliminar
+     * @throws IndexOutOfBoundsException si {@code posicion < 0} o {@code posicion >= size}
+     *         (incluye el caso de la lista vacía, donde ninguna posición es válida)
+     */
+    void eliminarEnPosicion(int posicion) {
+        validarPosicionExistente(posicion); // cubre lista vacía, negativos y posicion >= size
+
+        if (posicion == 0) { // caso especial: no hay anterior, se mueve el punto de entrada
+            Nodo eliminado = head;
+            head = head.getSiguiente();
+            eliminado.setSiguiente(null);
+            size--;
+            return;
+        }
+
+        // Recorrido hasta el nodo anterior al que se quiere eliminar.
+        Nodo anterior = head;
+        int indice = 0;
+        while (indice < posicion - 1) {
+            anterior = anterior.getSiguiente();
+            indice++;
+        }
+
+        Nodo eliminado = anterior.getSiguiente(); // guardar antes de reconectar
+        anterior.setSiguiente(eliminado.getSiguiente()); // DOBLE SALTO: saltea el eliminado
+        eliminado.setSiguiente(null); // ya es inalcanzable desde head
+        size--; // una sola vez, exactamente una eliminación
+    }
+
+    /**
+     * Invierte el orden de la lista en el lugar: {@code 10 -> 20 -> 30 -> null} pasa a ser
+     * {@code 30 -> 20 -> 10 -> null}.
+     *
+     * <p>Invertir NO significa mover los datos de lugar, sino DAR VUELTA EL SENTIDO DE CADA
+     * ENLACE. Los objetos {@code Nodo} son los mismos y siguen en el mismo lugar del Heap;
+     * lo único que cambia es a quién apunta cada uno.</p>
+     *
+     * Complejidad: O(n) temporal — una iteración por nodo. O(1) espacial: tres referencias y
+     * un contador, sin importar cuántos nodos haya (no se usa arreglo auxiliar ni segunda
+     * lista). Una versión recursiva sería O(n) espacial por la pila de llamadas.
+     */
+    void invertir() {
+        invertir(false);
+    }
+
+    /**
+     * Invierte la lista con la posibilidad de mostrar el proceso paso a paso.
+     *
+     * <p>Hacen falta exactamente TRES referencias auxiliares:</p>
+     * <ul>
+     *   <li>{@code anterior}: la porción YA invertida; es el nodo hacia el que {@code actual}
+     *       debe apuntar ahora. Arranca en {@code null} porque el primer nodo de la lista
+     *       original pasa a ser el ÚLTIMO de la invertida, y el último debe tener
+     *       {@code siguiente == null}.</li>
+     *   <li>{@code actual}: el nodo cuyo enlace se está dando vuelta en este paso.</li>
+     *   <li>{@code siguiente}: un RESCATE del nodo que viene. Es obligatorio guardarlo ANTES
+     *       de reescribir {@code actual.siguiente}, porque esa referencia es la única que
+     *       existe hacia el resto de la lista.</li>
+     * </ul>
+     *
+     * <p>Las cuatro operaciones del ciclo, en un orden que ninguna puede adelantarse:
+     * 1) rescatar {@code siguiente}; 2) dar vuelta el enlace; 3) avanzar {@code anterior};
+     * 4) avanzar {@code actual}. Al terminar se hace {@code head = anterior} y no
+     * {@code head = actual}, porque {@code actual} quedó en {@code null}: {@code anterior}
+     * es el último nodo procesado, es decir el nuevo primero.</p>
+     *
+     * <p>Invariante del ciclo: la porción que va de {@code anterior} hacia atrás ya está
+     * invertida, y la porción que arranca en {@code actual} sigue intacta en su orden
+     * original. La estructura nunca pierde un nodo.</p>
+     *
+     * Complejidad: O(n) temporal, O(1) espacial.
+     *
+     * @param verboso si es {@code true} imprime, en cada iteración, las tres referencias y
+     *                el estado de los enlaces ya invertidos y pendientes
+     */
+    void invertir(boolean verboso) {
+        /*
+         * QUÉ PASARÍA SI SE OMITIERA LA REFERENCIA siguiente:
+         *
+         *     while (actual != null) {
+         *         actual.setSiguiente(anterior);   // (mal) se destruye el enlace al resto
+         *         anterior = actual;
+         *         actual = actual.getSiguiente();  // (mal) esto ahora devuelve "anterior"
+         *     }
+         *
+         * La primera línea sobrescribe la ÚNICA referencia que existía hacia el resto de la
+         * lista. Después, actual.getSiguiente() ya no devuelve el nodo que venía sino el que
+         * acabamos de dejar atrás, así que el recorrido vuelve sobre sus pasos: el ciclo
+         * oscila entre dos nodos y nunca alcanza null. Todos los nodos a partir del tercero
+         * quedan inalcanzables. De ahí que el rescate sea obligatorio y vaya PRIMERO.
+         */
+        Nodo anterior = null; // la parte ya invertida; null = el futuro final de la lista
+        Nodo actual = head;   // el nodo que se está procesando
+        int iteracion = 0;
+
+        if (verboso) {
+            System.out.println("    [verboso] estado inicial: anterior=null, actual="
+                    + textoNodo(actual) + ", lista = " + aCadena());
+        }
+
+        while (actual != null) {
+            Nodo anteriorAlEmpezar = anterior; // sólo para el modo verboso
+            Nodo enProceso = actual;           // sólo para el modo verboso
+
+            Nodo siguiente = actual.getSiguiente(); // 1) RESCATE del resto de la lista
+            actual.setSiguiente(anterior);          // 2) dar vuelta el enlace de actual
+            anterior = actual;                      // 3) avanzar anterior
+            actual = siguiente;                     // 4) avanzar actual
+            iteracion++;
+
+            if (verboso) {
+                System.out.println("    [verboso] iteración " + iteracion
+                        + ": anterior=" + textoNodo(anteriorAlEmpezar)
+                        + ", actual=" + textoNodo(enProceso)
+                        + ", siguiente=" + textoNodo(siguiente));
+                System.out.println("              ya invertido: " + cadenaDesde(anterior)
+                        + "  |  pendiente: " + cadenaDesde(actual));
+            }
+        }
+
+        head = anterior; // actual quedó en null; anterior es el nuevo primer nodo
+
+        if (verboso) {
+            System.out.println("    [verboso] fin del ciclo: head reasignado a "
+                    + textoNodo(head) + ", lista = " + aCadena());
+        }
+    }
+
+    /**
+     * Representación corta de un nodo para el modo verboso.
+     *
+     * Complejidad: O(1).
+     *
+     * @param nodo nodo a describir, puede ser {@code null}
+     * @return el dato del nodo, o la palabra {@code null}
+     */
+    private String textoNodo(Nodo nodo) {
+        return (nodo == null) ? "null" : String.valueOf(nodo.getDato());
+    }
+
+    /**
+     * Indica si la lista no tiene ningún nodo.
+     *
+     * <p>Se consulta {@code head == null} porque es la condición estructural; por el
+     * invariante de la clase es equivalente a {@code size == 0}.</p>
+     *
+     * Complejidad: O(1).
+     *
+     * @return {@code true} si la lista está vacía
+     */
+    boolean estaVacia() {
+        return head == null;
+    }
+
+    /**
+     * Devuelve la cantidad de elementos de la lista.
+     *
+     * Complejidad: O(1), porque {@code size} se mantiene actualizado en cada operación.
+     *
+     * @return la longitud de la lista
+     */
+    int getSize() {
+        return size;
+    }
+
+    /**
+     * Imprime la lista por consola en el formato {@code 10 -> 20 -> 30 -> null}, de modo que
+     * se vean los enlaces y el {@code null} final que marca el fin de la cadena. Una lista
+     * vacía se imprime como {@code null}.
+     *
+     * Complejidad: O(n) temporal — un paso por nodo. O(n) espacial por el texto construido.
+     */
+    void imprimir() {
+        System.out.println(aCadena());
+    }
+
+    /**
+     * Devuelve la lista como texto en el formato {@code 10 -> 20 -> 30 -> null}.
+     *
+     * Complejidad: O(n) temporal.
+     *
+     * @return representación textual de la cadena de nodos
+     */
+    String aCadena() {
+        return cadenaDesde(head);
+    }
+
+    /**
+     * Devuelve como texto la cadena de nodos que arranca en un nodo dado. Se usa para
+     * mostrar porciones de la lista (por ejemplo, la parte ya invertida).
+     *
+     * <p>Se concatenan Strings en lugar de usar un StringBuilder o cualquier colección,
+     * para no introducir estructuras de la librería en un práctico que las prohíbe.</p>
+     *
+     * Complejidad: O(n) pasos de recorrido.
+     *
+     * @param inicio nodo donde empieza la cadena, puede ser {@code null}
+     * @return texto con los datos separados por flechas y terminado en {@code null}
+     */
+    private String cadenaDesde(Nodo inicio) {
+        String texto = "";
+        Nodo actual = inicio;
+        while (actual != null) {
+            texto = texto + actual.getDato() + " -> ";
+            actual = actual.getSiguiente();
+        }
+        return texto + "null";
+    }
+
+    /**
+     * Cuenta los nodos REALMENTE enlazados recorriendo la cadena desde {@code head}.
+     *
+     * <p>No reemplaza a {@code getSize()}: existe para VERIFICAR que el atributo
+     * {@code size} siga coincidiendo con la estructura después de cada operación. Si los dos
+     * números difieren, hay una operación que se olvidó de actualizar {@code size} o un
+     * enlace mal puesto.</p>
+     *
+     * Complejidad: O(n) temporal, O(1) espacial.
+     *
+     * @return cantidad de nodos alcanzables desde {@code head}
+     */
+    int contarNodosEnlazados() {
+        int cuenta = 0;
+        Nodo actual = head;
+        while (actual != null) {
+            cuenta++;
+            actual = actual.getSiguiente();
+        }
+        return cuenta;
+    }
+
+    /**
+     * Devuelve cuántos nodos visitó la última operación de recorrido.
+     *
+     * Complejidad: O(1).
+     *
+     * @return nodos visitados por la última llamada a {@code buscar}, {@code obtener} o
+     *         {@code contarOcurrencias}
+     */
+    int getNodosVisitados() {
+        return nodosVisitados;
+    }
+}
+
+/*
+MATRIZ DE CASOS DE PRUEBA MANUALES
+Compilación: javac Ejercicio09_InvertirLista.java -d /tmp/v5/ej09
+Ejecución:   java -cp /tmp/v5/ej09 Ejercicio09_InvertirLista
+Todos los casos están cableados en main(): el programa no lee entrada por consola,
+así que cada caso se verifica leyendo el bloque correspondiente de la salida.
+
+ID    | Objetivo                                         | Entrada exacta                                  | Resultado esperado                                   | Criterio de aprobación
+------+--------------------------------------------------+-------------------------------------------------+------------------------------------------------------+------------------------------------------------
+CP-01 | Flujo nominal: invertir la lista del enunciado  | lista 10,20,30,40; invertir(true)               | "40 -> 30 -> 20 -> 10 -> null" con size = 4          | Bloque 4 termina en "OK"
+CP-02 | Lista vacía: el ciclo no se ejecuta             | lista sin inserciones; invertir()               | Sigue en "null" con size = 0                         | Bloque 1 no lanza excepción y el recuento da 0
+CP-03 | Primer nodo: lista de un solo elemento          | lista 10; invertir(true)                        | "10 -> null" con size = 1, una sola iteración        | Bloque 2 imprime exactamente una iteración
+CP-04 | Último nodo: el viejo primero queda al final    | lista 10,20; invertir(true)                     | "20 -> 10 -> null" y el 10 apunta a null             | Bloque 3: la cadena final termina en "10 -> null"
+CP-05 | Idempotencia doble y ausencia de ciclos         | lista 10,20,30,40; invertir() dos veces         | Vuelve a "10 -> 20 -> 30 -> 40 -> null"              | Bloque 5 termina en "OK" y el programa no se cuelga
+*/
