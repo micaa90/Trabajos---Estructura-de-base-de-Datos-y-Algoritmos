@@ -50,7 +50,7 @@
  * una versión iterativa equivalente. Ambas devuelven {@code long} y rechazan los valores
  * que desbordarían el tipo.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio01_Factorial {
@@ -184,59 +184,4 @@ public class Ejercicio01_Factorial {
     }
 }
 
-/*
- * =====================================================================================
- * AJUSTES REALIZADOS AL PROMPT (requerido por la consigna general del práctico)
- * =====================================================================================
- * Cambio 1: se pidió explícitamente "usá long e indicá a partir de qué n desborda int".
- *   Motivo: con int, factorial(13) devolvía 1932053504 (valor negativo o truncado según el
- *   caso) sin ninguna señal de error. Un resultado incorrecto silencioso es peor que una
- *   excepción, así que se agregó también la validación n > 20 para el long.
- * Cambio 2: se pidió definir el comportamiento ante n negativo.
- *   Motivo: la primera versión del prompt no lo mencionaba y el código resultante entraba en
- *   recursión infinita (n = -1 nunca cumple n <= 1 decreciendo), terminando en
- *   StackOverflowError en lugar de informar una entrada inválida.
- * Cambio 3: se agregó "implementá además una versión iterativa en un método aparte".
- *   Motivo: la consigna evalúa el razonamiento; tener las dos versiones permite mostrar en la
- *   salida y en la documentación que ambas son O(n) en tiempo pero solo la recursiva paga
- *   O(n) de memoria en la pila.
- * =====================================================================================
- */
 
-/*
- * =====================================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * Compilar: javac Ejercicio01_Factorial.java -d /tmp/v2
- * Ejecutar: java -cp /tmp/v2 Ejercicio01_Factorial
- * =====================================================================================
- * ID    | CP-01-01
- * Obj.  | Verificar el flujo nominal con un valor chico verificable a mano.
- * Entr. | factorial(5) — ya incluido en el main.
- * Esper.| Línea "n = 5 | recursivo = 120 | iterativo = 120 | esperado = 120 | OK".
- * Crit. | Aprueba si recursivo e iterativo valen 120 y la línea termina en OK.
- * -------------------------------------------------------------------------------------
- * ID    | CP-01-02
- * Obj.  | Verificar el caso base de la recursión (0! y 1!).
- * Entr. | factorial(0) y factorial(1) — ya incluidos en el main.
- * Esper.| Ambas líneas informan resultado 1 y esperado 1, con OK.
- * Crit. | Aprueba si ninguna de las dos devuelve 0 ni lanza excepción.
- * -------------------------------------------------------------------------------------
- * ID    | CP-01-03
- * Obj.  | Verificar el límite superior del tipo long.
- * Entr. | factorial(20) — ya incluido en el main.
- * Esper.| Línea con resultado 2432902008176640000 y esperado igual, con OK.
- * Crit. | Aprueba si el valor coincide exactamente y no aparece un número negativo.
- * -------------------------------------------------------------------------------------
- * ID    | CP-01-04
- * Obj.  | Forzar el error de desborde controlado (entrada fuera del rango soportado).
- * Entr. | factorial(21) — ya incluido en el main vía probarError.
- * Esper.| Línea "obtenido = ArithmeticException: Desborde: 21! no cabe en un long ..." y OK.
- * Crit. | Aprueba si lanza ArithmeticException, se captura y el programa continúa.
- * -------------------------------------------------------------------------------------
- * ID    | CP-01-05
- * Obj.  | Forzar el error de rango por entrada negativa (dominio inválido).
- * Entr. | factorial(-3) — ya incluido en el main vía probarError.
- * Esper.| Línea "obtenido = IllegalArgumentException: El factorial no está definido ..." y OK.
- * Crit. | Aprueba si lanza IllegalArgumentException y NO se produce StackOverflowError.
- * =====================================================================================
- */
