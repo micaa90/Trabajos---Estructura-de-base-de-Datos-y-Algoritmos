@@ -69,7 +69,7 @@
  * <p>El validador no devuelve un simple true/false: informa cuál de las tres condiciones de
  * invalidez se cumplió y en qué posición de la cadena.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio03_ParentesisBalanceados {
@@ -629,26 +629,3 @@ class PilaDelimitadores {
     }
 }
 
-/*
- * ============================================================================
- * MATRIZ DE CASOS DE PRUEBA MANUALES
- * ============================================================================
- * Compilación: javac Ejercicio03_ParentesisBalanceados.java -d /tmp/v4
- * Ejecución:   java -cp /tmp/v4 Ejercicio03_ParentesisBalanceados
- * Todas las expresiones están cableadas en main(); el programa no lee entrada por consola.
- *
- * ID    | Objetivo                              | Entrada exacta        | Resultado esperado                                                        | Criterio de aprobación
- * ------+---------------------------------------+-----------------------+---------------------------------------------------------------------------+------------------------------------------------------
- * CP-01 | Flujo nominal: expresión balanceada   | "(5 + 3) * (2 + 1)"   | VÁLIDO, motivo "Todos los delimitadores están correctamente balanceados   | Imprime "Resultado: VÁLIDO" y altura máxima 1
- *       |                                       |                       | y anidados.", altura máxima 1                                             |
- * CP-02 | Estructura vacía: pila sin aperturas  | ""  y "sin parentesis"| VÁLIDO en los dos casos, altura máxima 0 (la pila nunca se usa)          | Las dos expresiones dan VÁLIDO con altura máxima 0
- * CP-03 | Orden incorrecto: contar no alcanza   | ")("                  | INVÁLIDO, condición 1, posición 0; y el bloque comparativo muestra que   | Aparece "Condición de invalidez N° 1 | posición del
- *       |                                       |                       | aperturas = 1 y cierres = 1                                               | problema: 0" y el contador dice BALANCEADO
- * CP-04 | Error forzado: aperturas sin cerrar   | "(((" y "(5 + 3)) *   | "(((": INVÁLIDO condición 2, 3 aperturas pendientes, posición 2.          | "(((" reporta condición 2 con 3 pendientes y
- *       | y cierre sin apertura                 | (2 + 1"               | "(5 + 3)) * (2 + 1": INVÁLIDO condición 1 en la posición 7                | "(5 + 3)) * (2 + 1" reporta condición 1 en pos 7
- * CP-05 | Error forzado: estructura llena y     | PilaDelimitadores(2)  | IllegalStateException "Desbordamiento: la pila de delimitadores está      | Se imprimen los tres mensajes de excepción y el
- *       | pop/peek en pila vacía                | con 2 push y un 3er    | llena (capacidad 2)."; "Subdesbordamiento: la pila está vacía."; "La     | programa llega a "=== Fin de la demostración ==="
- *       |                                       | push; pila vacía pop/  | pila está vacía: no hay tope para consultar."                             |
- *       |                                       | peek                   |                                                                           |
- * ============================================================================
- */
