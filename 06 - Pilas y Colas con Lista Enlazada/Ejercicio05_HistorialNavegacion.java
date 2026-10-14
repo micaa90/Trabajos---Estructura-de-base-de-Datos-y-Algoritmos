@@ -110,7 +110,7 @@
  * de la JVM. El precio es la memoria extra de una referencia por nodo y la pérdida de
  * localidad: los nodos quedan dispersos en el Heap en lugar de contiguos.
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 
@@ -667,17 +667,4 @@ public class Ejercicio05_HistorialNavegacion {
     }
 }
 
-/*
-MATRIZ DE CASOS DE PRUEBA MANUALES
-Compilación: javac Ejercicio05_HistorialNavegacion.java -d /tmp/v6/ej05
-Ejecución:   java -cp /tmp/v6/ej05 Ejercicio05_HistorialNavegacion
-Todos los casos están cableados en main(); el programa no lee entrada por consola.
 
-ID    | Objetivo                                                 | Entrada exacta                                                      | Resultado esperado                                                               | Criterio de aprobación
-------+----------------------------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------
-CP-01 | Flujo nominal LIFO: "atrás" lleva a la página ANTERIOR   | visitar inicio/noticias/deportes/clima y dos volverAtras()          | paginaActual() pasa de clima.com a deportes.com y luego a noticias.com           | Las dos líneas de volverAtras() informan esa secuencia y el historial impreso pierde el tope en cada paso
-CP-02 | Estructura vacía: consultar e imprimir sin páginas       | historial recién creado, hayPaginaActual() e imprimirHistorial()    | hayPaginaActual() = false, "TOPE -> null   (pila vacía)   [tamanio=0]"           | Se imprime la marca "(pila vacía)", head informa null y no se corta el programa
-CP-03 | Una sola página: hay actual pero NO hay anterior         | visitar("inicio.com") y volverAtras() inmediato                     | IllegalStateException "...es la primera página de la sesión y no tiene anterior." | Se imprime ese mensaje seguido de "-> OK" y cantidadPaginas() sigue en 1
-CP-04 | Rama nueva: visitar después de volver atrás              | tras dos volverAtras(), visitar("mapas.com") y fueVisitada()        | fueVisitada("clima.com") = false y fueVisitada("deportes.com") = false            | Las dos consultas informan false: el camino hacia adelante se perdió al desapilar
-CP-05 | Errores forzados: historial vacío y URL inválida         | volverAtras() sobre historial vacío, visitar(null) y visitar("   ") | IllegalStateException "...el historial está vacío..." e IllegalArgumentException "La URL es obligatoria y no puede estar en blanco." | Se imprimen los tres mensajes seguidos de "-> OK" y el historial queda intacto
-*/
