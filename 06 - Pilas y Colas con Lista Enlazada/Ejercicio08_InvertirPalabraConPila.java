@@ -59,7 +59,7 @@
  * orden natural y se recuperan en el único orden que una pila permite: el inverso. La inversión
  * la produce la estructura.</p>
  *
- * @author Estudiante
+ * @author Micaela Gimenez
  * @version 1.0
  */
 public class Ejercicio08_InvertirPalabraConPila {
